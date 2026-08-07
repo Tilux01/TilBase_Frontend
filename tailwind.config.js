@@ -1,0 +1,68 @@
+// tailwind.config.js
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "surface-dim": "var(--color-surface-dim)",
+        "surface-container-highest": "var(--color-surface-container-highest)",
+        "on-tertiary-fixed-variant": "var(--color-on-tertiary-fixed-variant)",
+        "on-secondary-container": "var(--color-on-secondary-container)",
+        "surface-bright": "var(--color-surface-bright)",
+        "on-secondary-fixed": "var(--color-on-secondary-fixed)",
+        "secondary-fixed": "var(--color-secondary-fixed)",
+        "on-secondary-fixed-variant": "var(--color-on-secondary-fixed-variant)",
+        "on-primary-container": "var(--color-on-primary-container)",
+        "primary-container": "var(--color-primary-container)",
+        "on-tertiary-container": "var(--color-on-tertiary-container)",
+        "on-tertiary": "var(--color-on-tertiary)",
+        "inverse-primary": "var(--color-inverse-primary)",
+        "surface-container-high": "var(--color-surface-container-high)",
+        "error-container": "var(--color-error-container)",
+        "on-primary": "var(--color-on-primary)",
+        "tertiary-fixed-dim": "var(--color-tertiary-fixed-dim)",
+        "on-primary-fixed-variant": "var(--color-on-primary-fixed-variant)",
+        "on-surface": "var(--color-on-surface)",
+        "surface-container-low": "var(--color-surface-container-low)",
+        "secondary-container": "var(--color-secondary-container)",
+        "on-error": "var(--color-on-error)",
+        "on-primary-fixed": "var(--color-on-primary-fixed)",
+        "surface-container-lowest": "var(--color-surface-container-lowest)",
+        "error": "var(--color-error)",
+        "tertiary-fixed": "var(--color-tertiary-fixed)",
+        "on-surface-variant": "var(--color-on-surface-variant)",
+        "primary-fixed-dim": "var(--color-primary-fixed-dim)",
+        "outline": "var(--color-outline)",
+        "inverse-on-surface": "var(--color-inverse-on-surface)",
+        "surface-container": "var(--color-surface-container)",
+        "surface-variant": "var(--color-surface-variant)",
+        "on-background": "var(--color-on-background)",
+        "background": "var(--color-background)",
+        "primary": "var(--color-primary)",
+        "on-tertiary-fixed": "var(--color-on-tertiary-fixed)",
+        "outline-variant": "var(--color-outline-variant)",
+        "on-error-container": "var(--color-on-error-container)",
+        "secondary": "var(--color-secondary)",
+        "primary-fixed": "var(--color-primary-fixed)",
+        "tertiary-container": "var(--color-tertiary-container)",
+        "secondary-fixed-dim": "var(--color-secondary-fixed-dim)",
+        "inverse-surface": "var(--color-inverse-surface)",
+        "surface-tint": "var(--color-surface-tint)",
+        "tertiary": "var(--color-tertiary)",
+        "on-secondary": "var(--color-on-secondary)",
+        "surface": "var(--color-surface)",
+      },
+      borderRadius: {
+        DEFAULT: "0.125rem",
+        lg: "0.25rem",
+        xl: "0.5rem",
+        full: "0.75rem"
+      }
+    }
+  },
+  plugins: []
+}
