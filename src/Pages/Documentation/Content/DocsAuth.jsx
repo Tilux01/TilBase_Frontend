@@ -5,7 +5,7 @@ import CodeWindow from '../../../Components/CodeWindow';
 const DocsAuth = () => {
     return (
         <DocsLayout>
-            <div className="mb-12 border-b border-outline-variant/20 pb-8">
+            <div className="mb-12 border-b border-black/5 dark:border-black/5 dark:border-white/5 pb-8">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-primary font-bold tracking-widest uppercase text-sm">Getting Started</span>
                     <span className="material-symbols-outlined text-outline-variant/50 text-[16px]">chevron_right</span>
@@ -24,7 +24,7 @@ const DocsAuth = () => {
                     <span className="material-symbols-outlined text-primary">admin_panel_settings</span>
                     Role-Based Access Control
                 </h2>
-                <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
+                <div className="bg-surface-container-highest border border-primary rounded-xl p-6">
                     <p className="text-on-surface leading-relaxed font-medium">
                         TilBase enforces strict RBAC (Role-Based Access Control) on the server. When you create a Database User in the <b>Database Access</b> tab, you assign them a specific role:
                     </p>
@@ -43,9 +43,9 @@ const DocsAuth = () => {
                 <p className="text-on-surface-variant leading-relaxed">
                     To connect to a specific cluster, you must instantiate the <code>TilBase</code> class and call the asynchronous <code>Auth()</code> method with your 6 credentials.
                 </p>
-                <div className="overflow-x-auto bg-surface-container rounded-xl border border-outline-variant/20 mb-6">
+                <div className="overflow-x-auto bg-surface-container rounded-xl border border-black/5 dark:border-black/5 dark:border-white/5 mb-6">
                     <table className="w-full text-left text-sm">
-                        <thead className="bg-surface-container-high border-b border-outline-variant/20 text-on-surface">
+                        <thead className="bg-surface-container-high border-b border-black/5 dark:border-black/5 dark:border-white/5 text-on-surface">
                             <tr>
                                 <th className="p-4 font-bold">Parameter</th>
                                 <th className="p-4 font-bold">Description</th>

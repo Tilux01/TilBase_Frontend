@@ -80,10 +80,10 @@ const Payment = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
                     <div className="md:col-span-7 space-y-8">
-                        <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                        <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                             <h2 className="text-xl font-bold mb-6 text-on-surface">1. Select Tier</h2>
                             <div className="space-y-4">
-                                <label className={`flex items-center p-5 border-2 rounded-xl cursor-pointer transition-all ${selectedPlan === 'standard' ? 'border-primary bg-primary/5' : 'border-outline-variant/30 bg-surface hover:border-primary/50'}`}>
+                                <label className={`flex items-center p-5 border-2 rounded-xl cursor-pointer transition-all ${selectedPlan === 'standard' ? 'border-primary bg-surface-container-highest' : 'border-black/5 dark:border-white/5 bg-surface hover:border-primary'}`}>
                                     <input 
                                         type="radio" 
                                         name="plan" 
@@ -102,7 +102,7 @@ const Payment = () => {
                                     </div>
                                 </label>
 
-                                <label className={`flex items-center p-5 border-2 rounded-xl cursor-pointer transition-all ${selectedPlan === 'premium' ? 'border-primary bg-primary/5' : 'border-outline-variant/30 bg-surface hover:border-primary/50'}`}>
+                                <label className={`flex items-center p-5 border-2 rounded-xl cursor-pointer transition-all ${selectedPlan === 'premium' ? 'border-primary bg-surface-container-highest' : 'border-black/5 dark:border-white/5 bg-surface hover:border-primary'}`}>
                                     <input 
                                         type="radio" 
                                         name="plan" 
@@ -126,7 +126,7 @@ const Payment = () => {
                             </div>
                         </div>
 
-                        <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                        <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                             <h2 className="text-xl font-bold mb-6 text-on-surface">2. Payment Details</h2>
                             <form className="space-y-6" onSubmit={handlePayment}>
                                 <div className="space-y-2">
@@ -136,7 +136,7 @@ const Payment = () => {
                                         value={nameOnCard}
                                         onChange={(e) => setNameOnCard(e.target.value)}
                                         placeholder="John Doe" 
-                                        className="w-full p-4 bg-surface-container border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none"
+                                        className="w-full p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -147,7 +147,7 @@ const Payment = () => {
                                             value={cardNumber}
                                             onChange={(e) => setCardNumber(e.target.value)}
                                             placeholder="0000 0000 0000 0000" 
-                                            className="w-full p-4 pl-12 bg-surface-container border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none font-mono"
+                                            className="w-full p-4 pl-12 bg-surface-container border border-black/5 dark:border-white/5 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none font-mono"
                                         />
                                         <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">credit_card</span>
                                     </div>
@@ -160,7 +160,7 @@ const Payment = () => {
                                             value={expiry}
                                             onChange={(e) => setExpiry(e.target.value)}
                                             placeholder="MM/YY" 
-                                            className="w-full p-4 bg-surface-container border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none font-mono"
+                                            className="w-full p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none font-mono"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -170,7 +170,7 @@ const Payment = () => {
                                             value={cvc}
                                             onChange={(e) => setCvc(e.target.value)}
                                             placeholder="123" 
-                                            className="w-full p-4 bg-surface-container border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none font-mono"
+                                            className="w-full p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none font-mono"
                                         />
                                     </div>
                                 </div>
@@ -179,7 +179,7 @@ const Payment = () => {
                     </div>
 
                     <div className="md:col-span-5">
-                        <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 sticky top-10">
+                        <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5 sticky top-10">
                             <h3 className="font-bold text-lg mb-6">Order Summary</h3>
                             <div className="space-y-4 mb-6">
                                 <div className="flex justify-between text-sm">
@@ -190,7 +190,7 @@ const Payment = () => {
                                     <span className="text-on-surface-variant">Billing Cycle</span>
                                     <span className="font-medium text-on-surface">Monthly</span>
                                 </div>
-                                <div className="pt-4 border-t border-outline-variant/20 flex justify-between items-center">
+                                <div className="pt-4 border-t border-black/5 dark:border-white/5 flex justify-between items-center">
                                     <span className="font-bold text-on-surface">Total Due Today</span>
                                     <span className="text-2xl font-black text-primary">${planDetails[selectedPlan].price}.00</span>
                                 </div>
@@ -199,7 +199,7 @@ const Payment = () => {
                             <button 
                                 onClick={handlePayment}
                                 disabled={isProcessing}
-                                className={`w-full py-4 rounded-xl font-bold transition-all shadow-md flex justify-center items-center gap-2 ${isProcessing ? 'bg-primary/50 cursor-not-allowed text-white' : 'bg-primary hover:bg-primary/90 text-on-primary hover:shadow-lg'}`}
+                                className={`w-full py-4 rounded-xl font-bold transition-all shadow-md flex justify-center items-center gap-2 ${isProcessing ? 'bg-surface-container-highest0 cursor-not-allowed text-white' : 'bg-primary hover:bg-primary/90 text-on-primary hover:shadow-lg'}`}
                             >
                                 {isProcessing ? (
                                     <>

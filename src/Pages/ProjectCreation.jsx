@@ -3,7 +3,7 @@ import CopyButton from '../DataBaseComponent/CopyButton'
 const ProjectCreation = () => {
     return (
         <>
-            <header className="fixed top-0 w-full h-16 z-40 bg-white border-b border-gray-200 flex justify-between items-center px-6">
+            <header className="fixed top-0 w-full h-16 z-40 bg-surface-container-highest border-b border-gray-200 flex justify-between items-center px-6">
                 <div className="flex items-center gap-8">
                     <span className="text-xl font-bold tracking-tighter text-emerald-900">TIlBase</span>
                     <nav className="hidden md:flex items-center gap-6">
@@ -57,7 +57,7 @@ const ProjectCreation = () => {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     <div className="lg:col-span-8 space-y-8">
-                        <section className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-primary">
+                        <section className="bg-surface-container-highestest p-8 rounded-xl shadow-sm border-l-4 border-primary">
                             <div className="flex items-center gap-3 mb-6">
                                 <span className="material-symbols-outlined text-primary">inventory_2</span>
                                 <h2 className="text-2xl font-bold tracking-tight text-on-surface">Step 1: Project Details</h2>
@@ -65,22 +65,22 @@ const ProjectCreation = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label className="block text-sm font-semibold text-on-surface-variant">Project Name</label>
-                                    <input className="w-full px-4 py-3 bg-surface-container-low border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="e.g. Production Analytics" type="text" />
+                                    <input className="w-full px-4 py-3 bg-surface-container-highest border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none" placeholder="e.g. Production Analytics" type="text" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="block text-sm font-semibold text-on-surface-variant">Project ID (Auto-generated)</label>
-                                    <div className="w-full px-4 py-3 bg-surface-container border border-dashed border-outline-variant rounded-lg font-mono text-xs flex items-center justify-between">
+                                    <div className="w-full px-4 py-3 bg-surface-container border border-dashed border-black/5 dark:border-white/5 rounded-lg font-mono text-xs flex items-center justify-between">
                                         <span className="text-on-surface-variant">proj_alpha_9921_x2</span>
                                         <CopyButton textToCopy="proj_alpha_9921_x2" className="text-sm cursor-pointer hover:text-primary" />
                                     </div>
                                 </div>
                                 <div className="md:col-span-2 space-y-2">
                                     <label className="block text-sm font-semibold text-on-surface-variant">Description</label>
-                                    <textarea className="w-full px-4 py-3 bg-surface-container-low border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none resize-none" placeholder="Describe the purpose of this fleet..." rows="3"></textarea>
+                                    <textarea className="w-full px-4 py-3 bg-surface-container-highest border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none resize-none" placeholder="Describe the purpose of this fleet..." rows="3"></textarea>
                                 </div>
                                 <div className="space-y-2">
                                     <label className="block text-sm font-semibold text-on-surface-variant">Environment</label>
-                                    <select className="w-full px-4 py-3 bg-surface-container-low border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none">
+                                    <select className="w-full px-4 py-3 bg-surface-container-highest border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none">
                                         <option>Production</option>
                                         <option>Staging</option>
                                         <option>Development</option>
@@ -89,29 +89,29 @@ const ProjectCreation = () => {
                                 </div>
                             </div>
                         </section>
-                        <section className="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+                        <section className="bg-surface-container-highestest p-8 rounded-xl shadow-sm">
                             <div className="flex items-center gap-3 mb-6">
                                 <span className="material-symbols-outlined text-secondary">cloud</span>
                                 <h2 className="text-2xl font-bold tracking-tight text-on-surface">Step 2: Cloud Provider &amp; Region</h2>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                                <button className="flex flex-col items-center gap-4 p-6 border-2 border-primary bg-primary/5 rounded-xl text-left transition-all">
+                                <button className="flex flex-col items-center gap-4 p-6 border-2 border-primary bg-surface-container-highest rounded-xl text-left transition-all">
                                     <span className="material-symbols-outlined text-3xl text-primary">deployed_code</span>
                                     <span className="font-bold text-on-surface">AWS</span>
                                     <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Recommended</span>
                                 </button>
-                                <button className="flex flex-col items-center gap-4 p-6 border border-outline-variant hover:border-secondary hover:bg-secondary/5 rounded-xl transition-all grayscale opacity-60 hover:grayscale-0 hover:opacity-100">
+                                <button className="flex flex-col items-center gap-4 p-6 border border-black/5 dark:border-white/5 hover:border-secondary hover:bg-surface-container-highest rounded-xl transition-all grayscale opacity-60 hover:grayscale-0 hover:opacity-100">
                                     <span className="material-symbols-outlined text-3xl text-secondary">database</span>
                                     <span className="font-bold text-on-surface">Google Cloud</span>
                                 </button>
-                                <button className="flex flex-col items-center gap-4 p-6 border border-outline-variant hover:border-secondary hover:bg-secondary/5 rounded-xl transition-all grayscale opacity-60 hover:grayscale-0 hover:opacity-100">
+                                <button className="flex flex-col items-center gap-4 p-6 border border-black/5 dark:border-white/5 hover:border-secondary hover:bg-surface-container-highest rounded-xl transition-all grayscale opacity-60 hover:grayscale-0 hover:opacity-100">
                                     <span className="material-symbols-outlined text-3xl text-secondary">grid_view</span>
                                     <span className="font-bold text-on-surface">Azure</span>
                                 </button>
                             </div>
                             <div className="space-y-2">
                                 <label className="block text-sm font-semibold text-on-surface-variant">Region</label>
-                                <select className="w-full px-4 py-3 bg-surface-container-low border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none">
+                                <select className="w-full px-4 py-3 bg-surface-container-highest border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none">
                                     <option>us-east-1 (N. Virginia)</option>
                                     <option>us-west-2 (Oregon)</option>
                                     <option>eu-central-1 (Frankfurt)</option>
@@ -119,7 +119,7 @@ const ProjectCreation = () => {
                                 </select>
                             </div>
                         </section>
-                        <section className="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+                        <section className="bg-surface-container-highestest p-8 rounded-xl shadow-sm">
                             <div className="flex items-center gap-3 mb-6">
                                 <span className="material-symbols-outlined text-emerald-600">settings_suggest</span>
                                 <h2 className="text-2xl font-bold tracking-tight text-on-surface">Step 3: Cluster Configuration</h2>
@@ -127,17 +127,17 @@ const ProjectCreation = () => {
                             <div className="mb-8">
                                 <label className="block text-sm font-semibold text-on-surface-variant mb-4">Tier Selection</label>
                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                                    <div className="p-4 border-2 border-primary bg-primary/5 rounded-lg flex flex-col cursor-pointer">
+                                    <div className="p-4 border-2 border-primary bg-surface-container-highest rounded-lg flex flex-col cursor-pointer">
                                         <span className="font-bold font-mono text-primary">M10</span>
                                         <span className="text-[10px] text-on-surface-variant mb-2">2GB RAM / 10GB Storage</span>
                                         <span className="text-xs font-medium">Standard workloads</span>
                                     </div>
-                                    <div className="p-4 border border-outline-variant rounded-lg flex flex-col cursor-pointer hover:border-primary/50 transition-all">
+                                    <div className="p-4 border border-black/5 dark:border-white/5 rounded-lg flex flex-col cursor-pointer hover:border-primary transition-all">
                                         <span className="font-bold font-mono text-on-surface">M20</span>
                                         <span className="text-[10px] text-on-surface-variant mb-2">4GB RAM / 20GB Storage</span>
                                         <span className="text-xs font-medium text-slate-500">High traffic APIs</span>
                                     </div>
-                                    <div className="p-4 border border-outline-variant rounded-lg flex flex-col cursor-pointer hover:border-primary/50 transition-all opacity-50 grayscale">
+                                    <div className="p-4 border border-black/5 dark:border-white/5 rounded-lg flex flex-col cursor-pointer hover:border-primary transition-all opacity-50 grayscale">
                                         <span className="font-bold font-mono text-on-surface">M30</span>
                                         <span className="text-[10px] text-on-surface-variant mb-2">8GB RAM / 40GB Storage</span>
                                         <span className="text-xs font-medium text-slate-500">Enterprise Scale</span>
@@ -147,18 +147,18 @@ const ProjectCreation = () => {
                             <div className="space-y-6">
                                 <div className="space-y-2">
                                     <label className="block text-sm font-semibold text-on-surface-variant">Cluster Name</label>
-                                    <input className="w-full px-4 py-3 bg-surface-container-low border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none font-mono" type="text" value="Cluster0" />
+                                    <input className="w-full px-4 py-3 bg-surface-container-highest border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none font-mono" type="text" value="Cluster0" />
                                 </div>
                                 <div className="flex flex-wrap gap-6">
                                     <label className="flex items-center gap-3 cursor-pointer group">
-                                        <input checked="" className="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox" />
+                                        <input checked="" className="w-5 h-5 rounded border-black/5 dark:border-white/5 text-primary focus:ring-primary" type="checkbox" />
                                         <div className="flex flex-col">
                                             <span className="text-sm font-semibold">Enable Automated Backups</span>
                                             <span className="text-[10px] text-on-surface-variant">Daily snapshots (Free tier)</span>
                                         </div>
                                     </label>
                                     <label className="flex items-center gap-3 cursor-pointer group">
-                                        <input className="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox" />
+                                        <input className="w-5 h-5 rounded border-black/5 dark:border-white/5 text-primary focus:ring-primary" type="checkbox" />
                                         <div className="flex flex-col">
                                             <span className="text-sm font-semibold">Enable Sharding</span>
                                             <span className="text-[10px] text-on-surface-variant">Requires Tier M30+</span>
@@ -167,7 +167,7 @@ const ProjectCreation = () => {
                                 </div>
                             </div>
                         </section>
-                        <section className="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+                        <section className="bg-surface-container-highestest p-8 rounded-xl shadow-sm">
                             <div className="flex items-center gap-3 mb-6">
                                 <span className="material-symbols-outlined text-blue-600">key</span>
                                 <h2 className="text-2xl font-bold tracking-tight text-on-surface">Step 4: Database Access</h2>
@@ -175,12 +175,12 @@ const ProjectCreation = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                                 <div className="space-y-2">
                                     <label className="block text-sm font-semibold text-on-surface-variant">Master Username</label>
-                                    <input className="w-full px-4 py-3 bg-surface-container-low border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none font-mono text-sm" placeholder="admin_user" type="text" />
+                                    <input className="w-full px-4 py-3 bg-surface-container-highest border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none font-mono text-sm" placeholder="admin_user" type="text" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="block text-sm font-semibold text-on-surface-variant">Password</label>
                                     <div className="relative">
-                                        <input className="w-full px-4 py-3 bg-surface-container-low border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none font-mono text-sm" type="password" value="••••••••••••" />
+                                        <input className="w-full px-4 py-3 bg-surface-container-highest border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none font-mono text-sm" type="password" value="••••••••••••" />
                                         <button className="absolute right-3 top-3 text-primary text-xs font-bold uppercase tracking-tighter hover:underline">Generate</button>
                                     </div>
                                 </div>
@@ -189,17 +189,17 @@ const ProjectCreation = () => {
                                     <div className="flex flex-wrap gap-2">
                                         <span className="px-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full text-xs font-semibold flex items-center gap-1">Read/Write <span className="material-symbols-outlined text-[14px]">close</span></span>
                                         <span className="px-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full text-xs font-semibold flex items-center gap-1">Atlas Admin <span className="material-symbols-outlined text-[14px]">close</span></span>
-                                        <button className="px-3 py-1 border border-dashed border-outline-variant rounded-full text-xs font-medium text-on-surface-variant hover:bg-surface-container">+ Add Role</button>
+                                        <button className="px-3 py-1 border border-dashed border-black/5 dark:border-white/5 rounded-full text-xs font-medium text-on-surface-variant hover:bg-surface-container">+ Add Role</button>
                                     </div>
                                 </div>
                             </div>
-                            <div className="p-4 bg-surface-container-low rounded-lg border border-outline-variant/30">
+                            <div className="p-4 bg-surface-container-highest rounded-lg border border-black/5 dark:border-white/5">
                                 <div className="flex items-center justify-between mb-3">
                                     <span className="text-sm font-semibold">IP Access List</span>
                                     <button className="text-[10px] text-secondary font-bold uppercase hover:underline">Add current IP</button>
                                 </div>
                                 <div className="space-y-2">
-                                    <div className="flex items-center justify-between font-mono text-xs bg-white p-2 rounded border border-outline-variant/20">
+                                    <div className="flex items-center justify-between font-mono text-xs bg-surface-container-highest p-2 rounded border border-black/5 dark:border-white/5">
                                         <span>192.168.1.1/32</span>
                                         <span className="text-on-surface-variant italic">My Laptop</span>
                                     </div>
@@ -209,7 +209,7 @@ const ProjectCreation = () => {
                     </div>
                     <aside className="lg:col-span-4 sticky top-24">
                         <div className="bg-surface-container p-1 rounded-2xl">
-                            <div className="bg-surface-container-lowest p-6 rounded-xl shadow-lg shadow-on-surface/5 border border-outline-variant/20">
+                            <div className="bg-surface-container-highestest p-6 rounded-xl shadow-lg shadow-on-surface/5 border border-black/5 dark:border-white/5">
                                 <h3 className="text-lg font-extrabold tracking-tight mb-6 flex items-center gap-2">
                                     <span className="material-symbols-outlined text-primary">fact_check</span>
                                     Review &amp; Create
@@ -231,7 +231,7 @@ const ProjectCreation = () => {
                                         <span className="text-xs font-medium text-on-surface-variant">Backup</span>
                                         <span className="text-xs font-bold text-right text-emerald-600">Enabled</span>
                                     </div>
-                                    <div className="pt-4 border-t border-outline-variant/30 mt-4">
+                                    <div className="pt-4 border-t border-black/5 dark:border-white/5 mt-4">
                                         <div className="flex justify-between items-center mb-1">
                                             <span className="text-sm font-bold">Estimated Cost</span>
                                             <span className="text-lg font-extrabold text-on-surface">$0.08<span className="text-xs font-medium text-on-surface-variant">/hr</span></span>

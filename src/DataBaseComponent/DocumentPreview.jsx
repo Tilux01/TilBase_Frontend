@@ -29,7 +29,7 @@ const DocumentPreview = () => {
                     </div>
                 </div>
                 <nav className="flex-1 px-3 space-y-1">
-                    <a className="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all rounded-r-lg group" href="#">
+                    <a className="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:text-primary hover:bg-surface-container border border-black/5 dark:border-white/5 transition-all rounded-r-lg group" href="#">
                         <span className="material-symbols-outlined text-xl">dashboard</span>
                         <span className="text-sm font-medium">Dashboard</span>
                     </a>
@@ -37,15 +37,15 @@ const DocumentPreview = () => {
                         <span className="material-symbols-outlined text-xl">database</span>
                         <span className="text-sm font-semibold">Collections</span>
                     </a>
-                    <a className="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all rounded-r-lg" href="#">
+                    <a className="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:text-primary hover:bg-surface-container border border-black/5 dark:border-white/5 transition-all rounded-r-lg" href="#">
                         <span className="material-symbols-outlined text-xl">terminal</span>
                         <span className="text-sm font-medium">Query Engine</span>
                     </a>
-                    <a className="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all rounded-r-lg" href="#">
+                    <a className="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:text-primary hover:bg-surface-container border border-black/5 dark:border-white/5 transition-all rounded-r-lg" href="#">
                         <span className="material-symbols-outlined text-xl">folder_open</span>
                         <span className="text-sm font-medium">Storage</span>
                     </a>
-                    <a className="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all rounded-r-lg" href="#">
+                    <a className="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:text-primary hover:bg-surface-container border border-black/5 dark:border-white/5 transition-all rounded-r-lg" href="#">
                         <span className="material-symbols-outlined text-xl">group</span>
                         <span className="text-sm font-medium">Users</span>
                     </a>
@@ -56,7 +56,7 @@ const DocumentPreview = () => {
                         New Collection
                     </button>
                 </div>
-                <div className="px-3 pt-4 border-t border-outline-variant/20 space-y-1">
+                <div className="px-3 pt-4 border-t border-black/5 dark:border-white/5 space-y-1">
                     <a className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary transition-all rounded-lg" href="#">
                         <span className="material-symbols-outlined text-xl">help_outline</span>
                         <span className="text-sm font-medium">Support</span>
@@ -80,13 +80,13 @@ const DocumentPreview = () => {
                     <div className="flex items-center gap-4">
                         <div className="relative group hidden sm:block">
                             <span className="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-lg">search</span>
-                            <input className="bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 rounded-full pl-10 pr-4 py-2 text-sm w-64 transition-all" placeholder="Search clusters..." type="text" />
+                            <input className="bg-surface-container-highest-highest border-none focus:ring-2 focus:ring-primary/20 rounded-full pl-10 pr-4 py-2 text-sm w-64 transition-all" placeholder="Search clusters..." type="text" />
                         </div>
-                        <button className="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+                        <button className="p-2 text-on-surface-variant hover:bg-surface-container border border-black/5 dark:border-white/5 rounded-full transition-colors">
                             <span className="material-symbols-outlined">notifications</span>
                         </button>
                         <div className="h-8 w-[1px] bg-outline-variant/30"></div>
-                        <button className="flex items-center gap-2 pl-2 pr-1 py-1 rounded-full hover:bg-surface-container transition-colors">
+                        <button className="flex items-center gap-2 pl-2 pr-1 py-1 rounded-full hover:bg-surface-container border border-black/5 dark:border-white/5 transition-colors">
                             <div className="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
                                 <img alt="User profile" className="w-full h-full object-cover" data-alt="A professional headshot of a software engineer in a bright, modern studio setting. The lighting is soft and even, highlighting a friendly and confident expression. The overall aesthetic is clean and high-end, utilizing a palette of soft neutrals and deep forest greens to match the architectural UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC74FH4ZpX8EwZMf-uxU2K41MKhiaMwoN3wjppok1bCUxrLOAcIvXIgP8jCsPf9KejAylY3Osa1a8YRBrtZG9z5gGwQS3UxEdIcpxeRzZSAhFVK04jHT8dceVAq8FhlFiMay_OguG4FteQ28IuZ1H4alED_GJye3P69hes4-xzVNMw42POLkIgojCr7CYdCqskATG_XcdMI_Q0Rl0ehTAj6bhrHPRUUPperfYBQ4lW0WOZj0K0AYagXV-ca_I6V-UJ3P2QFXY5sh72W" />
                             </div>
@@ -114,7 +114,7 @@ const DocumentPreview = () => {
                 </div>
                 <div className="flex-1 px-8 pb-8 flex flex-col gap-6 overflow-hidden">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <div className="md:col-span-3 bg-surface-container-lowest rounded-xl p-4 flex items-center gap-4 border border-outline-variant/10 shadow-sm">
+                        <div className="md:col-span-3 bg-surface-container rounded-xl p-4 flex items-center gap-4 border border-black/5 dark:border-white/5 shadow-sm">
                             <span className="material-symbols-outlined text-primary bg-primary-fixed/30 p-2 rounded-lg">filter_alt</span>
                             <input 
                                 className="flex-1 border-none focus:ring-0 text-sm placeholder:text-outline p-0 bg-transparent" 
@@ -123,7 +123,7 @@ const DocumentPreview = () => {
                                 onChange={() => {}}
                             />
                             <div className="h-6 w-[1px] bg-outline-variant/30"></div>
-                            <button className="text-xs font-bold text-primary px-3 py-1 hover:bg-primary/5 rounded-md">Run Query</button>
+                            <button className="text-xs font-bold text-primary px-3 py-1 hover:bg-surface-container-highest rounded-md">Run Query</button>
                         </div>
                         <div className="bg-primary text-white rounded-xl p-4 flex items-center justify-between shadow-md overflow-hidden relative">
                             <div className="relative z-10">
@@ -133,13 +133,13 @@ const DocumentPreview = () => {
                             <span className="material-symbols-outlined text-4xl opacity-20 absolute -right-2 -bottom-2 scale-150">analytics</span>
                         </div>
                     </div>
-                    <div className="flex-1 bg-surface-container-lowest rounded-2xl flex flex-col overflow-hidden border border-outline-variant/10 shadow-sm">
-                        <div className="px-6 py-4 border-b border-outline-variant/10 flex items-center justify-between bg-surface-container-lowest">
+                    <div className="flex-1 bg-surface-container rounded-2xl flex flex-col overflow-hidden border border-black/5 dark:border-white/5 shadow-sm">
+                        <div className="px-6 py-4 border-b border-black/5 dark:border-white/5 flex items-center justify-between bg-surface-container">
                             <div className="flex items-center gap-2">
                                 <span className="material-symbols-outlined text-on-surface-variant">description</span>
                                 <span className="text-sm font-bold text-on-surface">Document: <span className="mono font-normal text-secondary ml-1 select-all">507f1f77bcf86cd799439011</span></span>
                             </div>
-                            <div className="flex p-1 bg-surface-container-low rounded-xl">
+                            <div className="flex p-1 bg-surface-container-highest rounded-xl">
                                 <button className="flex items-center gap-2 px-4 py-1.5 text-xs font-bold transition-all rounded-lg bg-white text-primary shadow-sm">
                                     <span className="material-symbols-outlined text-sm">account_tree</span>
                                     Tree View
@@ -163,15 +163,15 @@ const DocumentPreview = () => {
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
                                             <span className="mono text-sm font-medium text-on-surface">metadata</span>
-                                            <span className="text-[10px] text-outline px-1.5 py-0.5 bg-surface-container rounded font-bold">OBJECT</span>
+                                            <span className="text-[10px] text-outline px-1.5 py-0.5 bg-surface-container border border-black/5 dark:border-white/5 rounded font-bold">OBJECT</span>
                                             <span className="text-xs text-outline italic"></span>
                                         </div>
-                                        <div className="mt-3 ml-6 pl-4 border-l-2 border-outline-variant/20 space-y-3">
+                                        <div className="mt-3 ml-6 pl-4 border-l-2 border-black/5 dark:border-white/5 space-y-3">
                                             <div className="flex items-center justify-between group/row">
                                                 <div className="flex items-center gap-4">
                                                     <span className="mono text-sm text-on-surface-variant">created_at</span>
                                                     <span className="mono text-sm text-primary font-medium select-all">"2023-11-24T14:22:01.000Z"</span>
-                                                    <span className="hidden group-hover/row:inline-block text-[10px] text-primary/60 font-bold px-1.5 bg-primary/5 rounded">STRING</span>
+                                                    <span className="hidden group-hover/row:inline-block text-[10px] text-primary/60 font-bold px-1.5 bg-surface-container-highest rounded">STRING</span>
                                                 </div>
                                                 <CopyButton textToCopy="2023-11-24T14:22:01.000Z" className="opacity-0 group-hover/row:opacity-100 transition-opacity material-symbols-outlined text-outline hover:text-primary" />
                                             </div>
@@ -179,7 +179,7 @@ const DocumentPreview = () => {
                                                 <div className="flex items-center gap-4">
                                                     <span className="mono text-sm text-on-surface-variant">version</span>
                                                     <span className="mono text-sm text-secondary font-medium select-all">2.4</span>
-                                                    <span className="hidden group-hover/row:inline-block text-[10px] text-secondary/60 font-bold px-1.5 bg-secondary/5 rounded">NUMBER</span>
+                                                    <span className="hidden group-hover/row:inline-block text-[10px] text-secondary/60 font-bold px-1.5 bg-surface-container-highest rounded">NUMBER</span>
                                                 </div>
                                                 <CopyButton textToCopy="2.4" className="opacity-0 group-hover/row:opacity-100 transition-opacity material-symbols-outlined text-outline hover:text-primary" />
                                             </div>
@@ -201,7 +201,7 @@ const DocumentPreview = () => {
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
                                             <span className="mono text-sm font-medium text-on-surface">activity_log</span>
-                                            <span className="text-[10px] text-outline px-1.5 py-0.5 bg-surface-container rounded font-bold uppercase">Array</span>
+                                            <span className="text-[10px] text-outline px-1.5 py-0.5 bg-surface-container border border-black/5 dark:border-white/5 rounded font-bold uppercase">Array</span>
                                             <span className="text-xs text-outline italic">[ 142 items ]</span>
                                         </div>
                                     </div>
@@ -213,9 +213,9 @@ const DocumentPreview = () => {
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
                                             <span className="mono text-sm font-medium text-on-surface">user_profile</span>
-                                            <span className="text-[10px] text-outline px-1.5 py-0.5 bg-surface-container rounded font-bold uppercase">Object</span>
+                                            <span className="text-[10px] text-outline px-1.5 py-0.5 bg-surface-container border border-black/5 dark:border-white/5 rounded font-bold uppercase">Object</span>
                                         </div>
-                                        <div className="mt-3 ml-6 pl-4 border-l-2 border-outline-variant/20 space-y-3">
+                                        <div className="mt-3 ml-6 pl-4 border-l-2 border-black/5 dark:border-white/5 space-y-3">
                                             <div className="flex items-center justify-between group/row">
                                                 <div className="flex items-center gap-4">
                                                     <span className="mono text-sm text-on-surface-variant">display_name</span>
@@ -237,15 +237,15 @@ const DocumentPreview = () => {
                                     <div className="flex items-center gap-4">
                                         <span className="mono text-sm text-on-surface-variant">tags</span>
                                         <div className="flex gap-2">
-                                            <span className="px-2 py-0.5 bg-surface-container text-primary text-[10px] font-bold rounded">priority</span>
-                                            <span className="px-2 py-0.5 bg-surface-container text-primary text-[10px] font-bold rounded">api_access</span>
-                                            <span className="px-2 py-0.5 bg-surface-container text-primary text-[10px] font-bold rounded">node_v14</span>
+                                            <span className="px-2 py-0.5 bg-surface-container border border-black/5 dark:border-white/5 text-primary text-[10px] font-bold rounded">priority</span>
+                                            <span className="px-2 py-0.5 bg-surface-container border border-black/5 dark:border-white/5 text-primary text-[10px] font-bold rounded">api_access</span>
+                                            <span className="px-2 py-0.5 bg-surface-container border border-black/5 dark:border-white/5 text-primary text-[10px] font-bold rounded">node_v14</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="px-6 py-3 border-t border-outline-variant/10 bg-surface-container-low flex items-center justify-between">
+                        <div className="px-6 py-3 border-t border-black/5 dark:border-white/5 bg-surface-container-highest flex items-center justify-between">
                             <div className="flex items-center gap-4">
                                 <div className="flex items-center gap-1.5">
                                     <span className="w-2 h-2 rounded-full bg-primary"></span>
@@ -255,17 +255,17 @@ const DocumentPreview = () => {
                                 <span className="text-[10px] font-medium text-on-surface-variant">Query Execution Time: <span className="text-primary font-bold">14ms</span></span>
                             </div>
                             <div className="flex items-center gap-1">
-                                <button className="p-1 hover:bg-surface-container rounded transition-colors text-outline">
+                                <button className="p-1 hover:bg-surface-container border border-black/5 dark:border-white/5 rounded transition-colors text-outline">
                                     <span className="material-symbols-outlined text-sm">first_page</span>
                                 </button>
-                                <button className="p-1 hover:bg-surface-container rounded transition-colors text-outline">
+                                <button className="p-1 hover:bg-surface-container border border-black/5 dark:border-white/5 rounded transition-colors text-outline">
                                     <span className="material-symbols-outlined text-sm">chevron_left</span>
                                 </button>
                                 <span className="text-[10px] font-bold px-3 text-on-surface-variant">Page 1 of 429</span>
-                                <button className="p-1 hover:bg-surface-container rounded transition-colors text-on-surface">
+                                <button className="p-1 hover:bg-surface-container border border-black/5 dark:border-white/5 rounded transition-colors text-on-surface">
                                     <span className="material-symbols-outlined text-sm">chevron_right</span>
                                 </button>
-                                <button className="p-1 hover:bg-surface-container rounded transition-colors text-on-surface">
+                                <button className="p-1 hover:bg-surface-container border border-black/5 dark:border-white/5 rounded transition-colors text-on-surface">
                                     <span className="material-symbols-outlined text-sm">last_page</span>
                                 </button>
                             </div>

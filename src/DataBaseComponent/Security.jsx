@@ -111,7 +111,7 @@ const Security = () => {
 
                 <div className="flex flex-col gap-6 w-full">
                     {/* SECTION 1: API KEYS */}
-                    <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                    <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                         <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
                             <span className="material-symbols-outlined text-primary">key</span>
                             API & Access Keys
@@ -119,13 +119,13 @@ const Security = () => {
                         
                         <div className="space-y-6">
                             {/* Profile Key */}
-                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 border border-outline-variant/20 rounded-lg">
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 border border-black/5 dark:border-white/5 rounded-lg">
                                 <div>
                                     <h3 className="font-bold text-on-surface text-sm">Profile API Key</h3>
                                     <p className="text-xs text-on-surface-variant mt-1">Used to authenticate the user programmatically across all projects.</p>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <div className="bg-surface-container px-4 py-2 rounded-md font-mono text-sm min-w-[250px] text-center">
+                                    <div className="bg-surface-container border border-black/5 dark:border-white/5 px-4 py-2 rounded-md font-mono text-sm min-w-[250px] text-center">
                                         {showProfileKey ? userCred?.Profile_Key : "********************************"}
                                     </div>
                                     <button onClick={() => setShowProfileKey(!showProfileKey)} className="text-on-surface-variant hover:text-primary transition-colors">
@@ -139,13 +139,13 @@ const Security = () => {
                             </div>
 
                             {/* Project Key */}
-                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 border border-outline-variant/20 rounded-lg">
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 border border-black/5 dark:border-white/5 rounded-lg">
                                 <div>
                                     <h3 className="font-bold text-on-surface text-sm">Project API Key</h3>
                                     <p className="text-xs text-on-surface-variant mt-1">Used to authenticate specific interactions within this project workspace.</p>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <div className="bg-surface-container px-4 py-2 rounded-md font-mono text-sm min-w-[250px] text-center">
+                                    <div className="bg-surface-container border border-black/5 dark:border-white/5 px-4 py-2 rounded-md font-mono text-sm min-w-[250px] text-center">
                                         {showProjectKey ? currentProjectCred?.Project_Key : "********************************"}
                                     </div>
                                     <button onClick={() => setShowProjectKey(!showProjectKey)} className="text-on-surface-variant hover:text-primary transition-colors">
@@ -162,16 +162,16 @@ const Security = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                         {/* SECTION 2: NETWORK ACCESS OVERVIEW */}
-                        <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                        <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                             <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
                                 <span className="material-symbols-outlined text-primary">public</span>
                                 Network Overview
                             </h2>
                             {loading ? (
-                                <div className="animate-pulse h-20 bg-surface-container rounded-lg"></div>
+                                <div className="animate-pulse h-20 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg"></div>
                             ) : (
                                 <div className="space-y-4">
-                                    <div className="flex items-center justify-between p-4 bg-surface-container rounded-lg border border-outline-variant/20">
+                                    <div className="flex items-center justify-between p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg border border-black/5 dark:border-white/5">
                                         <div className="flex items-center gap-3">
                                             <span className="material-symbols-outlined text-on-surface-variant">dns</span>
                                             <span className="font-bold text-sm text-on-surface">Whitelisted IP Addresses</span>
@@ -195,13 +195,13 @@ const Security = () => {
                         </div>
 
                         {/* SECTION 3: ENCRYPTION STANDARDS */}
-                        <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                        <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                             <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
                                 <span className="material-symbols-outlined text-primary">lock</span>
                                 Encryption Standards
                             </h2>
                             <div className="space-y-4">
-                                <div className="flex items-start gap-3 p-4 bg-surface-container rounded-lg border border-outline-variant/20">
+                                <div className="flex items-start gap-3 p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg border border-black/5 dark:border-white/5">
                                     <span className="material-symbols-outlined text-primary mt-0.5">enhanced_encryption</span>
                                     <div>
                                         <h3 className="font-bold text-sm text-on-surface">Data in Transit</h3>
@@ -210,7 +210,7 @@ const Security = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex items-start gap-3 p-4 bg-surface-container rounded-lg border border-outline-variant/20">
+                                <div className="flex items-start gap-3 p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg border border-black/5 dark:border-white/5">
                                     <span className="material-symbols-outlined text-primary mt-0.5">shield</span>
                                     <div>
                                         <h3 className="font-bold text-sm text-on-surface">Data at Rest</h3>
@@ -224,7 +224,7 @@ const Security = () => {
                     </div>
 
                     {/* SECTION 4: SECURITY AUDIT LOG */}
-                    <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 w-full overflow-hidden">
+                    <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5 w-full overflow-hidden">
                         <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
                             <span className="material-symbols-outlined text-primary">history</span>
                             Security Audit Log
@@ -232,14 +232,14 @@ const Security = () => {
                         {loading ? (
                             <div className="space-y-2">
                                 {[1, 2, 3].map((n) => (
-                                    <div key={n} className="animate-pulse h-12 bg-surface-container rounded-md w-full"></div>
+                                    <div key={n} className="animate-pulse h-12 bg-surface-container border border-black/5 dark:border-white/5 rounded-md w-full"></div>
                                 ))}
                             </div>
                         ) : (
                             <div className="overflow-x-auto w-full">
                                 <table className="w-full text-left border-collapse">
                                     <thead>
-                                        <tr className="border-b border-outline-variant/20">
+                                        <tr className="border-b border-black/5 dark:border-white/5">
                                             <th className="pb-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Event</th>
                                             <th className="pb-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Description</th>
                                             <th className="pb-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Type</th>
@@ -249,7 +249,7 @@ const Security = () => {
                                     <tbody className="divide-y divide-outline-variant/10">
                                         {securityData?.auditLogs?.length > 0 ? (
                                             securityData.auditLogs.slice(0, 15).map((log) => (
-                                                <tr key={log.id} className="hover:bg-surface-container-high/30 transition-colors">
+                                                <tr key={log.id} className="hover:bg-surface-container-high transition-colors">
                                                     <td className="py-4 pr-4">
                                                         <span className="text-sm font-bold text-on-surface">{log.History_Title}</span>
                                                     </td>
@@ -263,7 +263,7 @@ const Security = () => {
                                                     </td>
                                                     <td className="py-4">
                                                         <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest ${
-                                                            log.Status?.toLowerCase() === 'active' || log.Status?.toLowerCase() === 'success' ? 'bg-primary/10 text-primary' : 
+                                                            log.Status?.toLowerCase() === 'active' || log.Status?.toLowerCase() === 'success' ? 'bg-surface-container-highest text-primary' : 
                                                             log.Status?.toLowerCase() === 'deleted' ? 'bg-error/10 text-error' :
                                                             'bg-secondary/10 text-secondary'
                                                         }`}>

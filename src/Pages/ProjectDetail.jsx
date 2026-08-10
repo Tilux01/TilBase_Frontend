@@ -75,7 +75,7 @@ const ProjectDetail = () => {
                             </div>
                             <div className="space-y-2">
                                 <label className="block text-sm font-semibold text-on-surface" for="project-id">Project ID</label>
-                                <div className="flex items-center px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-lg select-none">
+                                <div className="flex items-center px-4 py-3 bg-surface-container border border-outline-variant rounded-lg select-none">
                                     <span className="text-sm font-mono text-on-surface-variant">{ProjectKey}</span>
                                     <CopyButton textToCopy={ProjectKey} className="ml-auto text-on-surface-variant text-sm" />
                                 </div>
@@ -89,19 +89,19 @@ const ProjectDetail = () => {
                         <div className="space-y-4">
                             <label className="block text-sm font-semibold text-on-surface">Environment Selection</label>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                <label onClick={(e) => { setEnvironment("production") }} style={Environment == "production" ? { border: "2px solid #004e36" } : null} className="relative flex flex-col p-4 bg-surface-container-lowest border-2 border-outline-variant/30 rounded-xl cursor-pointer hover:border-primary/50 transition-all group has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                <label onClick={(e) => { setEnvironment("production") }} style={Environment == "production" ? { border: "2px solid #004e36" } : null} className="relative flex flex-col p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all group has-[:checked]:border-primary has-[:checked]:bg-surface-container-highest">
                                     <input checked="" className="sr-only" name="environment" type="radio" value="production" />
                                     <span className="material-symbols-outlined text-primary mb-2">rocket_launch</span>
                                     <span className="font-bold text-sm mb-1">Production</span>
                                     <span className="text-[10px] text-on-surface-variant uppercase tracking-tighter">Mission Critical</span>
                                 </label>
-                                <label onClick={(e) => { setEnvironment("stagging") }} style={Environment == "stagging" ? { border: "2px solid #004e36" } : null} className="relative flex flex-col p-4 bg-surface-container-lowest border-2 border-outline-variant/30 rounded-xl cursor-pointer hover:border-primary/50 transition-all group has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                <label onClick={(e) => { setEnvironment("stagging") }} style={Environment == "stagging" ? { border: "2px solid #004e36" } : null} className="relative flex flex-col p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all group has-[:checked]:border-primary has-[:checked]:bg-surface-container-highest">
                                     <input className="sr-only" name="environment" type="radio" value="staging" />
                                     <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors mb-2">science</span>
                                     <span className="font-bold text-sm mb-1">Staging</span>
                                     <span className="text-[10px] text-on-surface-variant uppercase tracking-tighter">Pre-deployment</span>
                                 </label>
-                                <label onClick={(e) => { setEnvironment("development") }} style={Environment == "development" ? { border: "2px solid #004e36" } : null} className="relative flex flex-col p-4 bg-surface-container-lowest border-2 border-outline-variant/30 rounded-xl cursor-pointer hover:border-primary/50 transition-all group has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                <label onClick={(e) => { setEnvironment("development") }} style={Environment == "development" ? { border: "2px solid #004e36" } : null} className="relative flex flex-col p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all group has-[:checked]:border-primary has-[:checked]:bg-surface-container-highest">
                                     <input className="sr-only" name="environment" type="radio" value="development" />
                                     <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors mb-2">code</span>
                                     <span className="font-bold text-sm mb-1">Development</span>
@@ -132,7 +132,7 @@ const ProjectDetail = () => {
                                 </button>
                             </div>
                         </section>
-                        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-outline-variant/20">
+                        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-outline-variant">
                             <Link to="/projectSeclection">
                                 <button className="w-full sm:w-auto px-8 py-3 text-sm font-semibold text-on-primary-fixed-variant bg-surface-container-high rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center gap-2" type="button">
                                     <span className="material-symbols-outlined text-sm">arrow_back</span>
@@ -157,7 +157,7 @@ const ProjectDetail = () => {
                     You can modify these settings later in the Project Console.
                 </p>
             </main>
-            <footer className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant/30 px-6 py-2 flex justify-around items-center z-40">
+            <footer className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant px-6 py-2 flex justify-around items-center z-40">
                 <div className="flex flex-col items-center p-2 text-primary">
                     <span className="material-symbols-outlined">edit_square</span>
                     <span className="text-[10px] font-medium mt-1">Details</span>

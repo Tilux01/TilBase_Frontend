@@ -74,7 +74,7 @@ const NotFound = () => {
                         </button>
                         <button 
                             onClick={() => navigate('/monitoring')}
-                            className="px-6 py-3 bg-surface-container-high border border-outline-variant/30 text-on-surface font-semibold rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center gap-2"
+                            className="px-6 py-3 bg-surface-container-high border border-outline-variant text-on-surface font-semibold rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center gap-2"
                         >
                             <span className="material-symbols-outlined">query_stats</span>
                             View System Status
@@ -91,11 +91,11 @@ const NotFound = () => {
                 <div className="relative flex flex-col gap-6 perspective-[1000px]">
                     
                     {}
-                    <div className="w-full h-48 bg-surface-container rounded-2xl border border-outline-variant/20 shadow-2xl relative overflow-hidden flex items-center justify-center group transform -rotate-y-12 rotate-x-6 hover:rotate-0 transition-transform duration-700">
+                    <div className="w-full h-48 bg-surface-container rounded-2xl border border-outline-variant shadow-2xl relative overflow-hidden flex items-center justify-center group transform -rotate-y-12 rotate-x-6 hover:rotate-0 transition-transform duration-700">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
                         <div className="grid grid-cols-4 gap-4 p-6 w-full">
                             {[1, 2, 3, 4, 5, 6, 7, 8].map((node) => (
-                                <div key={node} className={`h-12 rounded-lg border ${node === 6 ? 'bg-error/20 border-error animate-pulse shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-surface-container-high border-outline-variant/30 group-hover:border-primary/50 transition-colors'}`}>
+                                <div key={node} className={`h-12 rounded-lg border ${node === 6 ? 'bg-error/20 border-error animate-pulse shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-surface-container-high border-outline-variant group-hover:border-primary transition-colors'}`}>
                                     {node === 6 && <div className="w-full h-full flex items-center justify-center"><span className="material-symbols-outlined text-error text-sm">warning</span></div>}
                                 </div>
                             ))}
@@ -103,8 +103,8 @@ const NotFound = () => {
                     </div>
 
                     {}
-                    <div className="w-full bg-[#0a0a0a] rounded-xl border border-outline-variant/30 shadow-2xl overflow-hidden font-mono text-sm transform -rotate-y-6 rotate-x-6 hover:rotate-0 transition-transform duration-700">
-                        <div className="flex items-center gap-2 px-4 py-2 bg-surface-container-highest border-b border-outline-variant/30">
+                    <div className="w-full bg-[#0a0a0a] rounded-xl border border-outline-variant shadow-2xl overflow-hidden font-mono text-sm transform -rotate-y-6 rotate-x-6 hover:rotate-0 transition-transform duration-700">
+                        <div className="flex items-center gap-2 px-4 py-2 bg-surface-container-highest border-b border-outline-variant">
                             <div className="w-3 h-3 rounded-full bg-error"></div>
                             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                             <div className="w-3 h-3 rounded-full bg-emerald-500"></div>

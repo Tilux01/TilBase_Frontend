@@ -68,7 +68,7 @@ const Support = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                     <h3 className="text-xl font-bold text-on-surface mb-6">Submit a Ticket</h3>
                     <form className="space-y-4" onSubmit={handleSubmit}>
                         <div className="space-y-2">
@@ -76,7 +76,7 @@ const Support = () => {
                             <select 
                                 value={category} 
                                 onChange={(e) => setCategory(e.target.value)}
-                                className="w-full bg-surface-container p-3 rounded-lg border border-outline-variant/30 text-on-surface focus:outline-none focus:border-primary transition-colors appearance-none"
+                                className="w-full bg-surface-container border border-black/5 dark:border-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface focus:outline-none focus:border-primary transition-colors appearance-none"
                             >
                                 <option>Database Connection Issue</option>
                                 <option>Billing Inquiry</option>
@@ -91,7 +91,7 @@ const Support = () => {
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
                                 placeholder="Brief description of the issue" 
-                                className="w-full bg-surface-container p-3 rounded-lg border border-outline-variant/30 text-on-surface focus:outline-none focus:border-primary transition-colors" 
+                                className="w-full bg-surface-container border border-black/5 dark:border-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface focus:outline-none focus:border-primary transition-colors" 
                             />
                         </div>
                         <div className="space-y-2">
@@ -101,7 +101,7 @@ const Support = () => {
                                 value={details}
                                 onChange={(e) => setDetails(e.target.value)}
                                 placeholder="Please provide as much detail as possible..." 
-                                className="w-full bg-surface-container p-3 rounded-lg border border-outline-variant/30 text-on-surface focus:outline-none focus:border-primary transition-colors resize-none"
+                                className="w-full bg-surface-container border border-black/5 dark:border-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface focus:outline-none focus:border-primary transition-colors resize-none"
                             ></textarea>
                         </div>
                         <button type="submit" disabled={isSubmitting} className="w-full bg-primary hover:bg-primary/90 text-on-primary py-3 rounded-lg font-bold transition-all shadow-md mt-4 disabled:opacity-50">
@@ -111,8 +111,8 @@ const Support = () => {
                 </div>
 
                 <div className="flex flex-col gap-6">
-                    <div className="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
-                        <div className="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+                    <div className="bg-surface-container rounded-xl shadow-sm border border-black/5 dark:border-white/5 overflow-hidden">
+                        <div className="p-6 border-b border-black/5 dark:border-white/5 flex justify-between items-center">
                             <h3 className="font-bold text-on-surface">Recent Tickets</h3>
                             <button className="text-sm text-primary font-bold hover:underline">View All</button>
                         </div>
@@ -120,7 +120,7 @@ const Support = () => {
                             {tickets.length === 0 ? (
                                 <div className="p-6 text-center text-on-surface-variant text-sm">No tickets found.</div>
                             ) : tickets.slice(0, 15).map((ticket, i) => (
-                                <div key={i} className="p-4 px-6 flex justify-between items-center hover:bg-surface-container/50 transition-colors cursor-pointer">
+                                <div key={i} className="p-4 px-6 flex justify-between items-center hover:bg-surface-container border border-black/5 dark:border-white/5 transition-colors cursor-pointer">
                                     <div>
                                         <p className="font-medium text-sm text-on-surface">{ticket.subject}</p>
                                         <p className="text-xs text-on-surface-variant mt-1">Ticket #{ticket.id} • {new Date(ticket.created_at).toLocaleDateString()}</p>

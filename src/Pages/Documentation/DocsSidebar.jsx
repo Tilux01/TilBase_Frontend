@@ -42,7 +42,7 @@ const DocsSidebar = () => {
     ];
 
     return (
-        <aside className="fixed left-0 top-16 w-72 h-[calc(100vh-64px)] bg-surface-container-lowest border-r border-outline-variant/30 overflow-y-auto hidden md:flex flex-col z-40 transition-colors duration-300">
+        <aside className="fixed left-0 top-16 w-72 h-[calc(100vh-64px)] bg-surface-container border-r border-black/5 dark:border-black/5 dark:border-white/5 overflow-y-auto hidden md:flex flex-col z-40 transition-colors duration-300">
             <div className="p-6">
                 {navGroups.map((group, groupIdx) => (
                     <div key={groupIdx} className="mb-8 last:mb-0">
@@ -56,7 +56,7 @@ const DocsSidebar = () => {
                                     <NavLink 
                                         key={linkIdx} 
                                         to={link.path}
-                                        className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-primary/10 text-primary' : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'}`}
+                                        className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-surface-container-highest text-primary' : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'}`}
                                     >
                                         {link.icon && (
                                             <span className="material-symbols-outlined text-[18px]">

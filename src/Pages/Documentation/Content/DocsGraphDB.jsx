@@ -49,7 +49,7 @@ const DocsGraphDB = () => {
                     onClick={() => scrollTo(section.id)}
                     className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${
                         activeSection === section.id 
-                            ? 'bg-primary/10 text-primary font-bold' 
+                            ? 'bg-surface-container-highest text-primary font-bold' 
                             : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
                     }`}
                 >
@@ -61,7 +61,7 @@ const DocsGraphDB = () => {
 
     return (
         <DocsLayout toc={toc}>
-            <div className="mb-12 border-b border-outline-variant/20 pb-8">
+            <div className="mb-12 border-b border-black/5 dark:border-black/5 dark:border-white/5 pb-8">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-primary font-bold tracking-widest uppercase text-sm">Database SDKs</span>
                     <span className="material-symbols-outlined text-outline-variant/50 text-[16px]">chevron_right</span>

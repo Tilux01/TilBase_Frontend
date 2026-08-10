@@ -68,7 +68,7 @@ function App() {
   const [projectHistory, setProjectHistory] = useState([])
   const [AllProject, setAllProject] = useState()
   const [currentProjectCred, setCurrentProjectCred] = useState()
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
   const [globalSearch, setGlobalSearch] = useState("")
   useEffect(() => {
     console.log("project history", projectHistory);

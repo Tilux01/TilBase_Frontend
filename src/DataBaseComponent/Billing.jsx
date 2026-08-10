@@ -65,16 +65,16 @@ const Billing = () => {
                     <p className="text-xs text-on-primary/80">{usagePercent}% of project limit used ({projectCount}/{projectLimit})</p>
                 </div>
 
-                <div className="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-center">
+                <div className="bg-surface-container p-6 rounded-xl shadow-sm border border-black/5 dark:border-white/5 flex flex-col justify-center">
                     <h3 className="text-on-surface-variant font-medium mb-1">Next Invoice</h3>
                     <p className="text-3xl font-bold text-on-surface mb-2">${userPlan?.plan_price || 0}.00</p>
                     <p className="text-sm text-on-surface-variant mb-4">Due on 1st of next month</p>
                     <button className="text-primary font-bold text-sm text-left hover:underline w-max">Manage Payment Method →</button>
                 </div>
 
-                <div className="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-center">
+                <div className="bg-surface-container p-6 rounded-xl shadow-sm border border-black/5 dark:border-white/5 flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-8 bg-surface-container rounded border border-outline-variant flex items-center justify-center">
+                        <div className="w-12 h-8 bg-surface-container border border-black/5 dark:border-white/5 rounded border border-black/5 dark:border-white/5 flex items-center justify-center">
                             <span className="material-symbols-outlined text-on-surface-variant text-[20px]">account_balance</span>
                         </div>
                         <div>
@@ -86,10 +86,10 @@ const Billing = () => {
                 </div>
             </div>
 
-            <div className="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
-                <div className="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+            <div className="bg-surface-container rounded-xl shadow-sm border border-black/5 dark:border-white/5 overflow-hidden">
+                <div className="p-6 border-b border-black/5 dark:border-white/5 flex justify-between items-center">
                     <h3 className="font-bold text-on-surface">Invoice History</h3>
-                    <span className="text-xs font-bold bg-primary/10 text-primary px-2 py-1 rounded">Live Data</span>
+                    <span className="text-xs font-bold bg-surface-container-highest text-primary px-2 py-1 rounded">Live Data</span>
                 </div>
                 <div className="divide-y divide-outline-variant/10">
                     {loading ? (
@@ -98,7 +98,7 @@ const Billing = () => {
                         <div className="p-8 text-center text-on-surface-variant">No invoices found.</div>
                     ) : (
                         invoices.slice(0, 15).map((invoice) => (
-                            <div key={invoice.id} className="p-4 px-6 flex justify-between items-center hover:bg-surface-container/50 transition-colors cursor-pointer group">
+                            <div key={invoice.id} className="p-4 px-6 flex justify-between items-center hover:bg-surface-container border border-black/5 dark:border-white/5 transition-colors cursor-pointer group">
                                 <div className="flex items-center gap-4">
                                     <span className="material-symbols-outlined text-on-surface-variant/50 group-hover:text-primary transition-colors">receipt_long</span>
                                     <div>

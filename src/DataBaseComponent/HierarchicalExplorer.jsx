@@ -225,9 +225,9 @@ const HierarchicalExplorer = ({ cluster }) => {
         <div className="flex flex-col h-screen w-full bg-background text-on-surface font-sans overflow-hidden">
             
             {/* Top Navigation Bar */}
-            <header className="flex-none bg-surface-container-lowest border-b border-outline-variant/30 px-6 py-4 flex items-center justify-between z-10 shadow-sm">
+            <header className="flex-none bg-surface-container border-b border-black/5 dark:border-white/5 px-6 py-4 flex items-center justify-between z-10 shadow-sm">
                 <div className="flex items-center gap-4">
-                    <Link to="/clusters" className="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors border border-outline-variant/20">
+                    <Link to="/clusters" className="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container border border-black/5 dark:border-white/5 hover:bg-surface-container-high text-on-surface-variant transition-colors border border-black/5 dark:border-white/5">
                         <span className="material-symbols-outlined text-sm">arrow_back</span>
                     </Link>
                     <div className="h-5 w-px bg-outline-variant/30"></div>
@@ -236,17 +236,17 @@ const HierarchicalExplorer = ({ cluster }) => {
                         <span className="font-bold text-on-surface">
                             {cluster?.Cluster_Name || 'Hierarchical Cluster'}
                         </span>
-                        <span className="bg-primary/10 text-primary px-2 py-0.5 rounded text-xs font-bold tracking-wider ml-2">HIERARCHICAL ENGINE</span>
+                        <span className="bg-surface-container-highest text-primary px-2 py-0.5 rounded text-xs font-bold tracking-wider ml-2">HIERARCHICAL ENGINE</span>
                     </div>
                 </div>
             </header>
 
             <div className="flex-1 flex overflow-hidden">
                 {/* PANE 1: Hierarchy Context & Search (1/3 Width) */}
-                <div className="w-1/3 border-r border-outline-variant/30 flex flex-col bg-surface-container-lowest relative">
+                <div className="w-1/3 border-r border-black/5 dark:border-white/5 flex flex-col bg-surface-container relative">
                 
                 {/* Header & Search */}
-                <div className="p-3 border-b border-outline-variant/30 sticky top-0 bg-surface-container-lowest z-10">
+                <div className="p-3 border-b border-black/5 dark:border-white/5 sticky top-0 bg-surface-container z-10">
                     <h3 className="font-bold flex items-center gap-2 text-xs tracking-widest uppercase mb-3 text-primary">
                         <span className="material-symbols-outlined text-[16px]">account_tree</span>
                         Hierarchy Matrix
@@ -258,7 +258,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                             placeholder="Search Node ID or Payload..."
                             value={searchQuery}
                             onChange={handleSearch}
-                            className="w-full bg-surface-container text-sm rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all border border-outline-variant/30"
+                            className="w-full bg-surface-container-highest-highest border border-black/5 dark:border-white/5 text-sm rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all border border-black/5 dark:border-white/5"
                         />
                     </div>
                 </div>
@@ -274,7 +274,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                                     <div 
                                         key={res.id}
                                         onClick={() => { setSelectedNodeId(res.id); setSearchQuery(''); setIsSearching(false); }}
-                                        className="px-3 py-2 rounded-xl cursor-pointer hover:bg-surface-container transition-colors flex items-center gap-3 group border border-transparent hover:border-outline-variant/30"
+                                        className="px-3 py-2 rounded-xl cursor-pointer hover:bg-surface-container border border-black/5 dark:border-white/5 transition-colors flex items-center gap-3 group border border-transparent hover:border-black/5 dark:border-white/5"
                                     >
                                         <span className="material-symbols-outlined text-primary text-[18px]">manage_search</span>
                                         <div className="overflow-hidden">
@@ -303,9 +303,9 @@ const HierarchicalExplorer = ({ cluster }) => {
                                             <div 
                                                 key={anc.id}
                                                 onClick={() => setSelectedNodeId(anc.id)}
-                                                className={`relative z-10 px-3 py-2 rounded-xl cursor-pointer transition-all flex items-center gap-3 ${anc.id === selectedNodeId ? 'bg-primary text-on-primary shadow-lg shadow-primary/20 scale-[1.02]' : 'hover:bg-surface-container text-on-surface-variant'}`}
+                                                className={`relative z-10 px-3 py-2 rounded-xl cursor-pointer transition-all flex items-center gap-3 ${anc.id === selectedNodeId ? 'bg-primary text-on-primary shadow-lg shadow-primary/20 scale-[1.02]' : 'hover:bg-surface-container border border-black/5 dark:border-white/5 text-on-surface-variant'}`}
                                             >
-                                                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[14px] ${anc.id === selectedNodeId ? 'bg-white/20' : 'bg-surface-container-high'}`}>
+                                                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[14px] ${anc.id === selectedNodeId ? 'bg-surface-container-highest/20' : 'bg-surface-container-high'}`}>
                                                     <span className="material-symbols-outlined text-[14px]">{anc.id === selectedNodeId ? 'my_location' : 'trip_origin'}</span>
                                                 </div>
                                                 <div className="overflow-hidden">
@@ -326,7 +326,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                                         <div 
                                             key={node.id}
                                             onClick={() => setSelectedNodeId(node.id)}
-                                            className="px-3 py-2 rounded-xl cursor-pointer hover:bg-surface-container transition-colors flex items-center justify-between group border border-transparent hover:border-outline-variant/30"
+                                            className="px-3 py-2 rounded-xl cursor-pointer hover:bg-surface-container border border-black/5 dark:border-white/5 transition-colors flex items-center justify-between group border border-transparent hover:border-black/5 dark:border-white/5"
                                         >
                                             <div className="flex items-center gap-2">
                                                 <span className="material-symbols-outlined text-outline-variant text-[16px]">folder_special</span>
@@ -339,7 +339,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                                     ))}
                                     <button 
                                         onClick={() => handleAddNode(null)}
-                                        className="mt-3 w-full py-2 border border-dashed border-outline-variant/50 rounded-xl text-primary font-bold hover:bg-primary/5 transition-colors flex items-center justify-center gap-1 text-xs"
+                                        className="mt-3 w-full py-2 border border-dashed border-black/5 dark:border-white/5 rounded-xl text-primary font-bold hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-1 text-xs"
                                     >
                                         <span className="material-symbols-outlined text-[16px]">add</span>
                                         Add Root Node
@@ -352,10 +352,10 @@ const HierarchicalExplorer = ({ cluster }) => {
             </div>
 
             {/* PANE 2: Children Context (1/3 Width) */}
-            <div className="w-1/3 border-r border-outline-variant/30 flex flex-col bg-surface-container">
+            <div className="w-1/3 border-r border-black/5 dark:border-white/5 flex flex-col bg-surface-container">
                 {selectedNodeId ? (
                     <>
-                        <div className="p-3 border-b border-outline-variant/30 flex items-center justify-between sticky top-0 bg-surface-container z-10">
+                        <div className="p-3 border-b border-black/5 dark:border-white/5 flex items-center justify-between sticky top-0 bg-surface-container border border-black/5 dark:border-white/5 z-10">
                             <h3 className="font-bold flex items-center gap-2 text-xs tracking-widest uppercase">
                                 <span className="material-symbols-outlined text-primary text-[16px]">schema</span>
                                 Child Nodes
@@ -365,7 +365,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                         
                         <div className="flex-1 overflow-y-auto p-3 space-y-1">
                             {children.length === 0 ? (
-                                <div className="text-center p-8 border border-dashed border-outline-variant/30 rounded-2xl">
+                                <div className="text-center p-8 border border-dashed border-black/5 dark:border-white/5 rounded-2xl">
                                     <span className="material-symbols-outlined text-4xl text-outline-variant mb-2">account_tree</span>
                                     <p className="text-sm text-on-surface-variant font-medium">This node is a leaf</p>
                                     <p className="text-xs text-outline-variant mt-1">Add children to expand the tree.</p>
@@ -375,7 +375,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                                     <div 
                                         key={child.id}
                                         onClick={() => setSelectedNodeId(child.id)}
-                                        className="px-3 py-2 rounded-xl bg-surface-container-lowest cursor-pointer hover:bg-surface-container-high transition-all flex items-center justify-between group shadow-sm border border-outline-variant/10 hover:border-outline-variant/30"
+                                        className="px-3 py-2 rounded-xl bg-surface-container cursor-pointer hover:bg-surface-container-high transition-all flex items-center justify-between group shadow-sm border border-black/5 dark:border-white/5 hover:border-black/5 dark:border-white/5"
                                     >
                                         <div className="flex items-center gap-2 overflow-hidden">
                                             <span className="material-symbols-outlined text-outline-variant text-[16px]">segment</span>
@@ -386,7 +386,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                                         <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                             <button 
                                                 onClick={(e) => { e.stopPropagation(); setNodeToMove(child.id); setMoveModalOpen(true); }}
-                                                className="w-6 h-6 rounded-lg hover:bg-primary/10 text-primary flex items-center justify-center"
+                                                className="w-6 h-6 rounded-lg hover:bg-surface-container-highest text-primary flex items-center justify-center"
                                                 title="Move Node"
                                             >
                                                 <span className="material-symbols-outlined text-[14px]">drive_file_move</span>
@@ -406,7 +406,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                             <button 
                                 onClick={() => handleAddNode(selectedNodeId)}
                                 disabled={isAddingNode}
-                                className="mt-3 w-full py-2 bg-primary/10 rounded-xl text-primary font-bold hover:bg-primary/20 transition-colors flex items-center justify-center gap-1 text-xs disabled:opacity-50"
+                                className="mt-3 w-full py-2 bg-surface-container-highest rounded-xl text-primary font-bold hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-1 text-xs disabled:opacity-50"
                             >
                                 {isAddingNode ? <span className="material-symbols-outlined animate-spin text-[16px]">progress_activity</span> : <span className="material-symbols-outlined text-[16px]">add_circle</span>}
                                 Inject Child Node
@@ -421,26 +421,26 @@ const HierarchicalExplorer = ({ cluster }) => {
             </div>
 
             {/* PANE 3: Advanced Node Editor (1/3 Width) */}
-            <div className="flex-1 bg-surface-container-lowest flex flex-col relative overflow-hidden">
+            <div className="flex-1 bg-surface-container flex flex-col relative overflow-hidden">
                 {selectedNodeId ? (
                     <>
                         {/* Editor Header */}
-                        <div className="p-3 border-b border-outline-variant/30 flex items-center justify-between sticky top-0 bg-surface-container-lowest/80 backdrop-blur-md z-10">
+                        <div className="p-3 border-b border-black/5 dark:border-white/5 flex items-center justify-between sticky top-0 bg-surface-container backdrop-blur-md z-10">
                             <div className="flex items-center gap-2">
                                 <span className="material-symbols-outlined text-primary text-[18px]">data_object</span>
                                 <h3 className="font-bold text-xs tracking-widest uppercase">Payload Editor</h3>
                             </div>
                             
                             <div className="flex items-center gap-3">
-                                <div className="bg-surface-container p-1 rounded-lg flex text-xs font-bold shadow-inner border border-outline-variant/20">
+                                <div className="bg-surface-container border border-black/5 dark:border-white/5 p-1 rounded-lg flex text-xs font-bold shadow-inner border border-black/5 dark:border-white/5">
                                     <button 
-                                        className={`px-2 py-1 rounded-md transition-all ${viewMode === 'visual' ? 'bg-surface-container-lowest text-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+                                        className={`px-2 py-1 rounded-md transition-all ${viewMode === 'visual' ? 'bg-surface-container text-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
                                         onClick={() => setViewMode('visual')}
                                     >
                                         Visual
                                     </button>
                                     <button 
-                                        className={`px-2 py-1 rounded-md transition-all ${viewMode === 'json' ? 'bg-surface-container-lowest text-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+                                        className={`px-2 py-1 rounded-md transition-all ${viewMode === 'json' ? 'bg-surface-container text-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
                                         onClick={() => setViewMode('json')}
                                     >
                                         JSON
@@ -458,7 +458,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                         </div>
                         
                         {/* ID Ribbon */}
-                        <div className="px-4 py-1.5 bg-surface-container border-b border-outline-variant/20 flex justify-between items-center text-[10px] font-mono text-outline-variant">
+                        <div className="px-4 py-1.5 bg-surface-container border border-black/5 dark:border-white/5 border-b border-black/5 dark:border-white/5 flex justify-between items-center text-[10px] font-mono text-outline-variant">
                             <div className="flex items-center gap-1">
                                 <span className="material-symbols-outlined text-[12px]">fingerprint</span>
                                 {selectedNodeId}
@@ -467,9 +467,9 @@ const HierarchicalExplorer = ({ cluster }) => {
                         </div>
                         
                         {/* Editor Body */}
-                        <div className="flex-1 overflow-y-auto p-6 bg-surface-container-lowest">
+                        <div className="flex-1 overflow-y-auto p-6 bg-surface-container">
                             {viewMode === 'visual' ? (
-                                <div className="bg-surface-container rounded-2xl border border-outline-variant/20 p-1">
+                                <div className="bg-surface-container border border-black/5 dark:border-white/5 rounded-2xl border border-black/5 dark:border-white/5 p-1">
                                     <FieldEditor 
                                         value={nodeData?.data_payload || {}} 
                                         onChange={handleFieldEditorChange} 
@@ -477,7 +477,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                                 </div>
                             ) : (
                                 <div className={`transition-all duration-500 ${lastUpdated ? 'ring-2 ring-primary/50 shadow-[0_0_30px_rgba(var(--color-primary),0.15)]' : 'ring-1 ring-outline-variant/20'} rounded-2xl bg-[#0d1117] overflow-hidden h-full flex flex-col`}>
-                                    <div className="px-4 py-2 bg-white/5 border-b border-white/5 flex justify-between items-center text-xs font-mono text-white/40">
+                                    <div className="px-4 py-2 bg-surface-container-highest/5 border-b border-black/5 dark:border-white/5 flex justify-between items-center text-xs font-mono text-white/40">
                                         <span>Raw JSON String</span>
                                     </div>
                                     <textarea
@@ -492,7 +492,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                     </>
                 ) : (
                     <div className="flex-1 flex flex-col items-center justify-center text-on-surface-variant p-8">
-                        <div className="w-24 h-24 rounded-3xl bg-surface-container flex items-center justify-center mb-6 shadow-inner">
+                        <div className="w-24 h-24 rounded-3xl bg-surface-container border border-black/5 dark:border-white/5 flex items-center justify-center mb-6 shadow-inner">
                             <span className="material-symbols-outlined text-[48px] text-outline-variant opacity-50">account_tree</span>
                         </div>
                         <p className="text-lg font-bold mb-2">Editor Standby</p>
@@ -504,9 +504,9 @@ const HierarchicalExplorer = ({ cluster }) => {
             {/* Move Node Modal */}
             {moveModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-                    <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden">
-                        <div className="p-6 border-b border-outline-variant/20 flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <div className="bg-surface-container border border-black/5 dark:border-white/5 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden">
+                        <div className="p-6 border-b border-black/5 dark:border-white/5 flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
                                 <span className="material-symbols-outlined">drive_file_move</span>
                             </div>
                             <div>
@@ -523,10 +523,10 @@ const HierarchicalExplorer = ({ cluster }) => {
                                     onChange={(e) => setNewParentId(e.target.value)}
                                     placeholder="Paste Parent ID here..."
                                     disabled={moveToRoot}
-                                    className="w-full bg-surface-container border border-outline-variant/30 p-3 rounded-xl focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
+                                    className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 p-3 rounded-xl focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
                                 />
                             </div>
-                            <div className="flex items-center gap-3 bg-surface-container p-4 rounded-xl border border-outline-variant/10">
+                            <div className="flex items-center gap-3 bg-surface-container border border-black/5 dark:border-white/5 p-4 rounded-xl border border-black/5 dark:border-white/5">
                                 <input 
                                     type="checkbox" 
                                     id="root-check"
@@ -539,7 +539,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                                 </label>
                             </div>
                         </div>
-                        <div className="p-4 bg-surface-container flex gap-3 justify-end border-t border-outline-variant/20">
+                        <div className="p-4 bg-surface-container border border-black/5 dark:border-white/5 flex gap-3 justify-end border-t border-black/5 dark:border-white/5">
                             <button 
                                 onClick={() => setMoveModalOpen(false)}
                                 className="px-6 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors font-bold"

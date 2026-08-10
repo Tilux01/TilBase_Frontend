@@ -11,7 +11,7 @@ const DocsHeader = () => {
     };
 
     return (
-        <header className="fixed top-0 w-full h-16 z-50 bg-surface-container-lowest border-b border-outline-variant/30 flex justify-between items-center px-6 transition-colors duration-300">
+        <header className="fixed top-0 w-full h-16 z-50 bg-surface-container border-b border-black/5 dark:border-black/5 dark:border-white/5 flex justify-between items-center px-6 transition-colors duration-300">
             <div className="flex items-center gap-4">
                 <Link to="/docs" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                     <span className="text-xl font-bold tracking-tighter text-primary">TIlBase</span>
@@ -42,7 +42,7 @@ const DocsHeader = () => {
                 <div className="h-6 w-px bg-outline-variant/30 mx-2 hidden md:block"></div>
 
                 <Link to="/dashboard">
-                    <button className="hidden md:flex items-center gap-2 px-4 py-2 bg-surface-container hover:bg-surface-container-high text-on-surface text-sm font-bold rounded-lg border border-outline-variant/30 transition-all hover:border-primary/50">
+                    <button className="hidden md:flex items-center gap-2 px-4 py-2 bg-surface-container hover:bg-surface-container-high text-on-surface text-sm font-bold rounded-lg border border-black/5 dark:border-black/5 dark:border-white/5 transition-all hover:border-primary">
                         Go to Dashboard
                         <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                     </button>

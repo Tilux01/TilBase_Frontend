@@ -61,25 +61,25 @@ const Monitoring = () => {
 
                 <div className="flex flex-col gap-6 w-full">
                     {}
-                    <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                    <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                         <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
                             <span className="material-symbols-outlined text-primary">health_and_safety</span>
                             Live System Health
                         </h2>
                         
                         {loading ? (
-                            <div className="animate-pulse h-20 bg-surface-container rounded-lg"></div>
+                            <div className="animate-pulse h-20 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg"></div>
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
                                 {monitoringData?.clusters?.length > 0 ? (
                                     monitoringData.clusters.map((cluster) => (
-                                        <div key={cluster.id} className="flex items-center justify-between p-4 bg-surface-container rounded-lg border border-outline-variant/20">
+                                        <div key={cluster.id} className="flex items-center justify-between p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg border border-black/5 dark:border-white/5">
                                             <div>
                                                 <h3 className="font-bold text-sm text-on-surface">{cluster.Cluster_Name}</h3>
                                                 <p className="text-xs text-on-surface-variant mt-0.5">{cluster.Cluster_Type}</p>
                                             </div>
                                             <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest ${
-                                                cluster.Current_State?.toLowerCase() === 'active' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'
+                                                cluster.Current_State?.toLowerCase() === 'active' ? 'bg-surface-container-highest text-primary' : 'bg-secondary/10 text-secondary'
                                             }`}>
                                                 <span className={`w-1.5 h-1.5 rounded-full ${
                                                     cluster.Current_State?.toLowerCase() === 'active' ? 'bg-primary' : 'bg-secondary'
@@ -89,7 +89,7 @@ const Monitoring = () => {
                                         </div>
                                     ))
                                 ) : (
-                                    <div className="col-span-full p-6 text-center bg-surface-container rounded-lg text-sm text-on-surface-variant">
+                                    <div className="col-span-full p-6 text-center bg-surface-container border border-black/5 dark:border-white/5 rounded-lg text-sm text-on-surface-variant">
                                         No clusters deployed yet.
                                     </div>
                                 )}
@@ -98,7 +98,7 @@ const Monitoring = () => {
                     </div>
 
                     {}
-                    <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                    <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                         <div className="flex items-center justify-between mb-6">
                             <h2 className="text-xl font-bold text-on-surface flex items-center gap-2">
                                 <span className="material-symbols-outlined text-primary">bar_chart</span>
@@ -111,9 +111,9 @@ const Monitoring = () => {
                         </div>
 
                         {loading ? (
-                            <div className="animate-pulse h-48 bg-surface-container rounded-lg"></div>
+                            <div className="animate-pulse h-48 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg"></div>
                         ) : (
-                            <div className="w-full h-64 flex items-end justify-between gap-2 md:gap-6 px-4 pb-8 pt-4 relative bg-surface-container/20 rounded-lg border border-outline-variant/10">
+                            <div className="w-full h-64 flex items-end justify-between gap-2 md:gap-6 px-4 pb-8 pt-4 relative bg-surface-container border border-black/5 dark:border-white/5 rounded-lg border border-black/5 dark:border-white/5">
                                 {}
                                 <div className="absolute inset-0 flex flex-col justify-between px-4 pb-8 pt-4 pointer-events-none">
                                     {[1, 2, 3, 4].map((i) => (
@@ -165,7 +165,7 @@ const Monitoring = () => {
                     </div>
 
                     {}
-                    <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 w-full overflow-hidden">
+                    <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5 w-full overflow-hidden">
                         <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
                             <span className="material-symbols-outlined text-error">notification_important</span>
                             Active Alerts
@@ -173,14 +173,14 @@ const Monitoring = () => {
                         {loading ? (
                             <div className="space-y-2">
                                 {[1, 2].map((n) => (
-                                    <div key={n} className="animate-pulse h-12 bg-surface-container rounded-md w-full"></div>
+                                    <div key={n} className="animate-pulse h-12 bg-surface-container border border-black/5 dark:border-white/5 rounded-md w-full"></div>
                                 ))}
                             </div>
                         ) : (
                             <div className="overflow-x-auto w-full">
                                 <table className="w-full text-left border-collapse">
                                     <thead>
-                                        <tr className="border-b border-outline-variant/20">
+                                        <tr className="border-b border-black/5 dark:border-white/5">
                                             <th className="pb-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Alert</th>
                                             <th className="pb-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Description</th>
                                             <th className="pb-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Timestamp</th>
@@ -200,7 +200,7 @@ const Monitoring = () => {
                                                         <span className="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">{alert.History_Description}</span>
                                                     </td>
                                                     <td className="py-4 pr-4">
-                                                        <span className="text-xs font-medium text-on-surface-variant bg-surface-container px-2 py-1 rounded">
+                                                        <span className="text-xs font-medium text-on-surface-variant bg-surface-container border border-black/5 dark:border-white/5 px-2 py-1 rounded">
                                                             {new Date(alert.Time_Stamp).toLocaleString()}
                                                         </span>
                                                     </td>

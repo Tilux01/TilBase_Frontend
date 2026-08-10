@@ -54,7 +54,7 @@ const DocsDocumentDB = () => {
                     onClick={() => scrollTo(section.id)}
                     className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${
                         activeSection === section.id 
-                            ? 'bg-primary/10 text-primary font-bold' 
+                            ? 'bg-surface-container-highest text-primary font-bold' 
                             : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
                     }`}
                 >
@@ -66,7 +66,7 @@ const DocsDocumentDB = () => {
 
     return (
         <DocsLayout toc={toc}>
-            <div className="mb-12 border-b border-outline-variant/20 pb-8">
+            <div className="mb-12 border-b border-black/5 dark:border-black/5 dark:border-white/5 pb-8">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-primary font-bold tracking-widest uppercase text-sm">Database SDKs</span>
                     <span className="material-symbols-outlined text-outline-variant/50 text-[16px]">chevron_right</span>
@@ -89,7 +89,7 @@ const DocsDocumentDB = () => {
                 <p className="text-on-surface-variant leading-relaxed">
                     Data in TilBase Document DB is stored inside <b>Collections</b>, which act as containers for <b>Documents</b>. We use a standard forward-slash notation to represent the path to a document:
                 </p>
-                <div className="bg-surface-container rounded-xl p-4 border border-outline-variant/20 text-center font-mono text-primary text-base">
+                <div className="bg-surface-container rounded-xl p-4 border border-black/5 dark:border-black/5 dark:border-white/5 text-center font-mono text-primary text-base">
                     <code>"collection_name/document_id"</code>
                 </div>
             </section>
@@ -283,7 +283,7 @@ await db.bulkUpdate(updateQuery, { verified: true });`}
                 <p className="text-on-surface-variant leading-relaxed">
                     The TilBase Document engine is inherently real-time. You can listen for live changes to any document using <code>watchDoc</code>. Under the hood, this uses WebSockets, meaning your UI can instantly react to data updates without page refreshes.
                 </p>
-                <div className="bg-surface-container border border-outline-variant/30 rounded-xl p-4 mb-4">
+                <div className="bg-surface-container border border-black/5 dark:border-black/5 dark:border-white/5 rounded-xl p-4 mb-4">
                     <p className="text-sm text-on-surface-variant"><b>Note:</b> WebSockets are automatically established under the hood when you call <code>Auth()</code>. No extra setup required!</p>
                 </div>
                 <CodeWindow 

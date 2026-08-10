@@ -12,7 +12,7 @@ const CodeWindow = ({ title = "Terminal", code, language = "javascript" }) => {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto my-6 rounded-xl overflow-hidden border border-outline-variant/30 shadow-2xl bg-[#1e1e1e] group transition-all duration-300 hover:shadow-primary/10 hover:border-primary/30">
+        <div className="w-full max-w-4xl mx-auto my-6 rounded-xl overflow-hidden border border-outline-variant shadow-2xl bg-[#1e1e1e] group transition-all duration-300 hover:shadow-primary/10 hover:border-primary">
             {}
             <div className="flex items-center justify-between px-4 py-3 bg-[#2d2d2d] border-b border-white/5">
                 <div className="flex items-center gap-2">

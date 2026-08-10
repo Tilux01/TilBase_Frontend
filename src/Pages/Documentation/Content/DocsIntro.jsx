@@ -5,7 +5,7 @@ import CodeWindow from '../../../Components/CodeWindow';
 const DocsIntro = () => {
     return (
         <DocsLayout>
-            <div className="mb-12 border-b border-outline-variant/20 pb-8">
+            <div className="mb-12 border-b border-black/5 dark:border-black/5 dark:border-white/5 pb-8">
                 <h1 className="text-4xl font-extrabold text-on-surface tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
                     Introduction to TilBase
                 </h1>
@@ -34,7 +34,7 @@ const DocsIntro = () => {
                     <span className="material-symbols-outlined text-primary">lan</span>
                     Network Setup
                 </h2>
-                <div className="bg-surface-container p-6 rounded-xl border border-outline-variant/20 shadow-sm">
+                <div className="bg-surface-container p-6 rounded-xl border border-black/5 dark:border-black/5 dark:border-white/5 shadow-sm">
                     <p className="text-on-surface-variant leading-relaxed mb-4">
                         Before you can authenticate and read data from your application, you <b>must</b> whitelist your server's IP address.
                     </p>

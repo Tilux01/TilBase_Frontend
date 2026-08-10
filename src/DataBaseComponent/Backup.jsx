@@ -112,7 +112,7 @@ const Backups = () => {
 
                 <div className="flex flex-col gap-6 w-full">
                     {}
-                    <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                    <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                         <h2 className="text-xl font-bold text-on-surface mb-2 flex items-center gap-2">
                             <span className="material-symbols-outlined text-primary">add_circle</span>
                             Create Manual Backup
@@ -121,7 +121,7 @@ const Backups = () => {
                         
                         <div className="flex items-center gap-4">
                             <select 
-                                className="bg-surface-container border border-outline-variant/30 text-on-surface text-sm rounded-lg focus:ring-primary focus:border-primary block w-64 p-2.5 outline-none font-medium"
+                                className="bg-surface-container-highest border border-black/5 dark:border-white/5 text-on-surface text-sm rounded-lg focus:ring-primary focus:border-primary block w-64 p-2.5 outline-none font-medium"
                                 value={selectedCluster}
                                 onChange={(e) => setSelectedCluster(e.target.value)}
                             >
@@ -150,7 +150,7 @@ const Backups = () => {
                     </div>
 
                     {}
-                    <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 w-full overflow-hidden">
+                    <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5 w-full overflow-hidden">
                         <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
                             <span className="material-symbols-outlined text-secondary">inventory_2</span>
                             Snapshot Vault
@@ -159,14 +159,14 @@ const Backups = () => {
                         {loading ? (
                             <div className="space-y-2">
                                 {[1, 2].map((n) => (
-                                    <div key={n} className="animate-pulse h-12 bg-surface-container rounded-md w-full"></div>
+                                    <div key={n} className="animate-pulse h-12 bg-surface-container border border-black/5 dark:border-white/5 rounded-md w-full"></div>
                                 ))}
                             </div>
                         ) : (
                             <div className="overflow-x-auto w-full">
                                 <table className="w-full text-left border-collapse">
                                     <thead>
-                                        <tr className="border-b border-outline-variant/20">
+                                        <tr className="border-b border-black/5 dark:border-white/5">
                                             <th className="pb-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Backup Name</th>
                                             <th className="pb-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Cluster</th>
                                             <th className="pb-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Size</th>
@@ -196,7 +196,7 @@ const Backups = () => {
                                                             <span className="text-sm text-on-surface-variant">{formatBytes(backup.size_bytes)}</span>
                                                         </td>
                                                         <td className="py-4 pr-4">
-                                                            <span className="text-xs font-medium text-on-surface-variant bg-surface-container px-2 py-1 rounded">
+                                                            <span className="text-xs font-medium text-on-surface-variant bg-surface-container border border-black/5 dark:border-white/5 px-2 py-1 rounded">
                                                                 {new Date(backup.created_at).toLocaleString()}
                                                             </span>
                                                         </td>
@@ -205,7 +205,7 @@ const Backups = () => {
                                                                 <a 
                                                                     href={downloadUrl}
                                                                     download
-                                                                    className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+                                                                    className="flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-highest hover:bg-surface-container-highest text-primary transition-colors"
                                                                     title="Download Backup"
                                                                 >
                                                                     <span className="material-symbols-outlined text-[18px]">download</span>

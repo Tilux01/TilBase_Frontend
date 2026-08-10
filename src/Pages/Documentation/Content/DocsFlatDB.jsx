@@ -53,7 +53,7 @@ const DocsFlatDB = () => {
                     onClick={() => scrollTo(section.id)}
                     className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${
                         activeSection === section.id 
-                            ? 'bg-primary/10 text-primary font-bold' 
+                            ? 'bg-surface-container-highest text-primary font-bold' 
                             : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
                     }`}
                 >
@@ -65,7 +65,7 @@ const DocsFlatDB = () => {
 
     return (
         <DocsLayout toc={toc}>
-            <div className="mb-12 border-b border-outline-variant/20 pb-8">
+            <div className="mb-12 border-b border-black/5 dark:border-black/5 dark:border-white/5 pb-8">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-primary font-bold tracking-widest uppercase text-sm">Database SDKs</span>
                     <span className="material-symbols-outlined text-outline-variant/50 text-[16px]">chevron_right</span>
@@ -88,7 +88,7 @@ const DocsFlatDB = () => {
                 <p className="text-on-surface-variant leading-relaxed">
                     Data in Flat DB is stored via a simple <code>Bucket</code> and <code>Key</code> architecture. A Bucket is analogous to a folder, and Keys are the unique identifiers for your string or JSON payloads.
                 </p>
-                <div className="bg-surface-container rounded-xl p-4 border border-outline-variant/20 text-center font-mono text-primary text-base">
+                <div className="bg-surface-container rounded-xl p-4 border border-black/5 dark:border-black/5 dark:border-white/5 text-center font-mono text-primary text-base">
                     <code>bucketName / keyName = Value Payload</code>
                 </div>
                 <CodeWindow 

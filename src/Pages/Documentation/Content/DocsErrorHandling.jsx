@@ -50,7 +50,7 @@ const DocsErrorHandling = () => {
                     onClick={() => scrollTo(section.id)}
                     className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${
                         activeSection === section.id 
-                            ? 'bg-primary/10 text-primary font-bold' 
+                            ? 'bg-surface-container-highest text-primary font-bold' 
                             : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
                     }`}
                 >
@@ -62,7 +62,7 @@ const DocsErrorHandling = () => {
 
     return (
         <DocsLayout toc={toc}>
-            <div className="mb-12 border-b border-outline-variant/20 pb-8">
+            <div className="mb-12 border-b border-black/5 dark:border-black/5 dark:border-white/5 pb-8">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-primary font-bold tracking-widest uppercase text-sm">Getting Started</span>
                     <span className="material-symbols-outlined text-outline-variant/50 text-[16px]">chevron_right</span>
@@ -91,32 +91,32 @@ const DocsErrorHandling = () => {
                     <span className="material-symbols-outlined text-primary">list_alt</span>
                     Common HTTP Status Codes
                 </h2>
-                <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden">
+                <div className="bg-surface-container border border-black/5 dark:border-black/5 dark:border-white/5 rounded-xl overflow-hidden">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="bg-surface-container text-on-surface-variant text-sm border-b border-outline-variant/30">
+                            <tr className="bg-surface-container text-on-surface-variant text-sm border-b border-black/5 dark:border-black/5 dark:border-white/5">
                                 <th className="p-4 font-bold">Code</th>
                                 <th className="p-4 font-bold">Meaning</th>
                                 <th className="p-4 font-bold">Common Cause</th>
                             </tr>
                         </thead>
                         <tbody className="text-sm">
-                            <tr className="border-b border-outline-variant/20">
+                            <tr className="border-b border-black/5 dark:border-black/5 dark:border-white/5">
                                 <td className="p-4 font-mono text-primary font-bold">400</td>
                                 <td className="p-4 font-medium">Bad Request</td>
                                 <td className="p-4 text-on-surface-variant">Missing required fields (e.g., missing <code>clusterKey</code>).</td>
                             </tr>
-                            <tr className="border-b border-outline-variant/20">
+                            <tr className="border-b border-black/5 dark:border-black/5 dark:border-white/5">
                                 <td className="p-4 font-mono text-primary font-bold">401</td>
                                 <td className="p-4 font-medium">Unauthorized</td>
                                 <td className="p-4 text-on-surface-variant">Invalid credentials or mismatched API keys.</td>
                             </tr>
-                            <tr className="border-b border-outline-variant/20">
+                            <tr className="border-b border-black/5 dark:border-black/5 dark:border-white/5">
                                 <td className="p-4 font-mono text-primary font-bold">403</td>
                                 <td className="p-4 font-medium">Forbidden</td>
                                 <td className="p-4 text-on-surface-variant">Role-Based Access Control (RBAC) rejection or Paused Cluster.</td>
                             </tr>
-                            <tr className="border-b border-outline-variant/20">
+                            <tr className="border-b border-black/5 dark:border-black/5 dark:border-white/5">
                                 <td className="p-4 font-mono text-primary font-bold">404</td>
                                 <td className="p-4 font-medium">Not Found</td>
                                 <td className="p-4 text-on-surface-variant">Cluster does not exist or was deleted.</td>
@@ -139,7 +139,7 @@ const DocsErrorHandling = () => {
                 <p className="text-on-surface-variant leading-relaxed">
                     Before any data is written (Document, Vector, Chatbase, etc.), the backend proactively checks the cluster's <code>space_used</code> against the plan's storage limit. If the limit is reached, the transaction is immediately blocked.
                 </p>
-                <div className="bg-surface-container rounded-xl p-4 border border-outline-variant/20 font-mono text-sm mb-4">
+                <div className="bg-surface-container rounded-xl p-4 border border-black/5 dark:border-black/5 dark:border-white/5 font-mono text-sm mb-4">
                     <span className="text-error">HTTP 429 Too Many Requests</span>
                     <pre className="text-on-surface mt-2">
 {`{
@@ -169,7 +169,7 @@ const DocsErrorHandling = () => {
                 <p className="text-on-surface-variant leading-relaxed">
                     If a cluster's <code>Current_State</code> is set to <code>paused</code> (e.g., due to an admin action or billing lapse), the backend authentication completely rejects all connections until the state returns to <code>active</code>.
                 </p>
-                <div className="bg-surface-container rounded-xl p-4 border border-outline-variant/20 font-mono text-sm mb-4">
+                <div className="bg-surface-container rounded-xl p-4 border border-black/5 dark:border-black/5 dark:border-white/5 font-mono text-sm mb-4">
                     <span className="text-error">HTTP 403 Forbidden</span>
                     <pre className="text-on-surface mt-2">
 {`{
@@ -187,7 +187,7 @@ const DocsErrorHandling = () => {
                 <p className="text-on-surface-variant leading-relaxed">
                     TilBase enforces Role-Based Access Control on the client side. If your API key is assigned a <strong>Read Only</strong> role, any attempt to execute write operations (like <code>addDoc</code>, <code>setValue</code>, or <code>deleteBucket</code>) will be actively blocked.
                 </p>
-                <div className="bg-surface-container rounded-xl p-4 border border-outline-variant/20 font-mono text-sm mb-4">
+                <div className="bg-surface-container rounded-xl p-4 border border-black/5 dark:border-black/5 dark:border-white/5 font-mono text-sm mb-4">
                     <span className="text-error">HTTP 403 Forbidden</span>
                     <pre className="text-on-surface mt-2">
 {`{

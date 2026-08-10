@@ -75,7 +75,7 @@ const FieldEditor = ({ data, onChange }) => {
     return (
         <div className="w-full h-full overflow-y-auto p-4 custom-scrollbar">
             {nodes.length === 0 && !isArray && (
-                <div className="mb-4 text-xs text-on-surface-variant bg-surface-container-low p-3 rounded border border-outline-variant/20 flex items-center gap-2">
+                <div className="mb-4 text-xs text-on-surface-variant bg-surface-container-highest p-3 rounded border border-black/5 dark:border-white/5 flex items-center gap-2">
                     <span className="material-symbols-outlined text-[16px] text-primary">info</span>
                     This document is currently empty. Add fields below to start building its structure.
                 </div>
@@ -128,7 +128,7 @@ const FieldNodeList = ({ nodes, isArray, onChangeNodes }) => {
             <div className="pt-2">
                 <button 
                     onClick={handleAddNode}
-                    className="flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-primary bg-primary/10 hover:bg-primary/20 rounded-md transition-colors"
+                    className="flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-primary bg-surface-container-highest hover:bg-surface-container-highest rounded-md transition-colors"
                 >
                     <span className="material-symbols-outlined text-[14px]">add</span>
                     Add Field
@@ -152,7 +152,7 @@ const FieldNode = ({ node, isArray, index, onUpdate, onDelete }) => {
     };
 
     return (
-        <div className="flex flex-col gap-2 p-3 bg-surface-container-lowest border border-outline-variant/30 rounded-lg group hover:border-outline-variant/60 transition-colors">
+        <div className="flex flex-col gap-2 p-3 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg group hover:border-black/5 dark:border-white/5 transition-colors">
             <div className="flex items-center gap-3">
                 {}
                 {!isArray && (
@@ -161,11 +161,11 @@ const FieldNode = ({ node, isArray, index, onUpdate, onDelete }) => {
                         value={node.key}
                         onChange={(e) => onUpdate({ ...node, key: e.target.value })}
                         placeholder="Field Name"
-                        className="flex-1 bg-transparent border-b border-outline-variant/30 focus:border-primary focus:outline-none text-sm px-1 py-1 text-on-surface placeholder:text-on-surface-variant/40"
+                        className="flex-1 bg-transparent border-b border-black/5 dark:border-white/5 focus:border-primary focus:outline-none text-sm px-1 py-1 text-on-surface placeholder:text-on-surface-variant/40"
                     />
                 )}
                 {isArray && (
-                    <span className="text-xs font-mono text-on-surface-variant bg-surface-container px-2 py-1 rounded">
+                    <span className="text-xs font-mono text-on-surface-variant bg-surface-container border border-black/5 dark:border-white/5 px-2 py-1 rounded">
                         [{index}]
                     </span>
                 )}
@@ -174,7 +174,7 @@ const FieldNode = ({ node, isArray, index, onUpdate, onDelete }) => {
                 <select 
                     value={node.type} 
                     onChange={handleTypeChange}
-                    className="bg-surface-container text-on-surface text-xs px-2 py-1.5 rounded-md border border-outline-variant/20 focus:outline-none focus:border-primary cursor-pointer"
+                    className="bg-surface-container-highest-highest border border-black/5 dark:border-white/5 text-on-surface text-xs px-2 py-1.5 rounded-md border border-black/5 dark:border-white/5 focus:outline-none focus:border-primary cursor-pointer"
                 >
                     {typeOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
@@ -186,7 +186,7 @@ const FieldNode = ({ node, isArray, index, onUpdate, onDelete }) => {
                         value={node.value || ''}
                         onChange={(e) => onUpdate({ ...node, value: e.target.value })}
                         placeholder="Value"
-                        className="flex-[2] bg-surface-container border border-outline-variant/30 rounded focus:border-primary focus:outline-none text-sm px-3 py-1 text-on-surface"
+                        className="flex-[2] bg-surface-container-highest border border-black/5 dark:border-white/5 rounded focus:border-primary focus:outline-none text-sm px-3 py-1 text-on-surface"
                     />
                 )}
                 {node.type === 'Number' && (
@@ -195,14 +195,14 @@ const FieldNode = ({ node, isArray, index, onUpdate, onDelete }) => {
                         value={node.value !== undefined ? node.value : ''}
                         onChange={(e) => onUpdate({ ...node, value: Number(e.target.value) })}
                         placeholder="0"
-                        className="flex-[2] bg-surface-container border border-outline-variant/30 rounded focus:border-primary focus:outline-none text-sm px-3 py-1 text-on-surface"
+                        className="flex-[2] bg-surface-container-highest border border-black/5 dark:border-white/5 rounded focus:border-primary focus:outline-none text-sm px-3 py-1 text-on-surface"
                     />
                 )}
                 {node.type === 'Boolean' && (
                     <div className="flex-[2] flex items-center">
                         <label className="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" checked={!!node.value} onChange={(e) => onUpdate({ ...node, value: e.target.checked })} className="sr-only peer" />
-                            <div className="w-9 h-5 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+                            <div className="w-9 h-5 bg-surface-container-highest-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
                             <span className="ml-3 text-xs font-medium text-on-surface-variant">{node.value ? 'true' : 'false'}</span>
                         </label>
                     </div>
@@ -227,7 +227,7 @@ const FieldNode = ({ node, isArray, index, onUpdate, onDelete }) => {
 
             {}
             {(node.type === 'Map' || node.type === 'Array') && (
-                <div className="pl-6 mt-2 border-l-2 border-outline-variant/20 ml-2">
+                <div className="pl-6 mt-2 border-l-2 border-black/5 dark:border-white/5 ml-2">
                     <FieldNodeList 
                         nodes={Array.isArray(node.value) ? node.value : []}
                         isArray={node.type === 'Array'}

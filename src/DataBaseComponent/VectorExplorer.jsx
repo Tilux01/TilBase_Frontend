@@ -188,9 +188,9 @@ const VectorExplorer = ({ cluster }) => {
     return (
         <div className="w-full flex flex-col h-[calc(100vh-64px)] bg-background font-sans overflow-hidden">
             {}
-            <header className="px-6 py-3 border-b border-outline-variant/20 bg-surface flex justify-between items-center shrink-0 shadow-sm z-10">
+            <header className="px-6 py-3 border-b border-black/5 dark:border-white/5 bg-surface flex justify-between items-center shrink-0 shadow-sm z-10">
                 <div className="flex items-center gap-4">
-                    <Link to="/clusters" className="text-on-surface-variant hover:text-on-surface transition-colors p-1.5 rounded-md hover:bg-surface-container flex items-center justify-center">
+                    <Link to="/clusters" className="text-on-surface-variant hover:text-on-surface transition-colors p-1.5 rounded-md hover:bg-surface-container border border-black/5 dark:border-white/5 flex items-center justify-center">
                         <span className="material-symbols-outlined text-[20px]">arrow_back</span>
                     </Link>
                     <div className="flex items-center text-sm">
@@ -201,13 +201,13 @@ const VectorExplorer = ({ cluster }) => {
                         {activeVector && (
                             <>
                                 <span className="material-symbols-outlined text-outline-variant text-sm mx-2">chevron_right</span>
-                                <span className="text-on-surface font-bold bg-surface-container px-2 py-1 rounded border border-outline-variant/20">{activeVector.id}</span>
+                                <span className="text-on-surface font-bold bg-surface-container border border-black/5 dark:border-white/5 px-2 py-1 rounded border border-black/5 dark:border-white/5">{activeVector.id}</span>
                             </>
                         )}
                     </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                    <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/20 flex items-center gap-1.5 shadow-sm">
+                    <span className="bg-surface-container-highest text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary flex items-center gap-1.5 shadow-sm">
                         <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                         Vector Engine Live
                     </span>
@@ -218,8 +218,8 @@ const VectorExplorer = ({ cluster }) => {
             <div className="flex-1 flex overflow-hidden">
                 
                 {}
-                <div className="w-72 flex-none bg-surface-container-lowest border-r border-outline-variant/20 flex flex-col z-0">
-                    <div className="p-4 border-b border-outline-variant/10 flex items-center justify-between">
+                <div className="w-72 flex-none bg-surface-container border-r border-black/5 dark:border-white/5 flex flex-col z-0">
+                    <div className="p-4 border-b border-black/5 dark:border-white/5 flex items-center justify-between">
                         <h2 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
                             <span className="material-symbols-outlined text-sm">folder_data</span>
                             Namespaces
@@ -232,8 +232,8 @@ const VectorExplorer = ({ cluster }) => {
                                 onClick={() => { setActiveNamespace(ns); setActiveVector(null); setViewMode('sandbox'); }}
                                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                                     activeNamespace === ns
-                                        ? 'bg-primary/10 text-primary border border-primary/20 shadow-inner'
-                                        : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface border border-transparent'
+                                        ? 'bg-surface-container-highest text-primary border border-primary shadow-inner'
+                                        : 'text-on-surface-variant hover:bg-surface-container border border-black/5 dark:border-white/5 hover:text-on-surface border border-transparent'
                                 }`}
                             >
                                 {ns}
@@ -249,8 +249,8 @@ const VectorExplorer = ({ cluster }) => {
                 </div>
 
                 {}
-                <div className="w-80 flex-none bg-[#fdfdfd] border-r border-outline-variant/20 flex flex-col z-0 shadow-[inset_4px_0_12px_rgba(0,0,0,0.01)]">
-                    <div className="p-4 border-b border-outline-variant/10 flex items-center justify-between bg-surface-container-lowest">
+                <div className="w-80 flex-none bg-surface-container border-r border-black/5 dark:border-white/5 flex flex-col z-0 shadow-[inset_4px_0_12px_rgba(0,0,0,0.01)]">
+                    <div className="p-4 border-b border-black/5 dark:border-white/5 flex items-center justify-between bg-surface-container">
                         <h2 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
                             <span className="material-symbols-outlined text-sm">data_array</span>
                             Vectors
@@ -264,7 +264,7 @@ const VectorExplorer = ({ cluster }) => {
                                     setEditVectorMeta('{\n\n}');
                                     setIsAddModalOpen(true);
                                 }}
-                                className="text-primary hover:bg-primary/10 p-1.5 rounded-md transition-colors" title="Add Vector"
+                                className="text-primary hover:bg-surface-container-highest p-1.5 rounded-md transition-colors" title="Add Vector"
                             >
                                 <span className="material-symbols-outlined text-[16px]">add</span>
                             </button>
@@ -277,8 +277,8 @@ const VectorExplorer = ({ cluster }) => {
                                     onClick={() => loadEditor(vec)}
                                     className={`w-full flex flex-col items-start px-4 py-3 rounded-xl transition-all border ${
                                         activeVector?.id === vec.id
-                                            ? 'bg-white border-outline-variant/30 shadow-md shadow-black/5 scale-[1.02] my-1 z-10 relative'
-                                            : 'bg-transparent border-transparent text-on-surface-variant hover:bg-surface-container-lowest hover:border-outline-variant/20'
+                                            ? 'bg-surface-container-highest border-black/5 dark:border-white/5 shadow-md shadow-black/5 scale-[1.02] my-1 z-10 relative'
+                                            : 'bg-transparent border-transparent text-on-surface-variant hover:bg-surface-container hover:border-black/5 dark:border-white/5'
                                     }`}
                                 >
                                     <span className={`text-[13px] font-mono font-bold truncate w-[85%] text-left ${activeVector?.id === vec.id ? 'text-secondary' : 'text-on-surface'}`}>
@@ -300,11 +300,11 @@ const VectorExplorer = ({ cluster }) => {
                 </div>
 
                 {/* PANE 3: Sandbox / Editor */}
-                <div className="flex-1 flex flex-col bg-surface-container-lowest relative z-0">
+                <div className="flex-1 flex flex-col bg-surface-container relative z-0">
                     
                     {/* Pane 3 Header */}
-                    <div className="p-4 flex items-center justify-between border-b border-outline-variant/10 bg-surface">
-                        <div className="flex items-center bg-surface-container rounded p-0.5 border border-outline-variant/20">
+                    <div className="p-4 flex items-center justify-between border-b border-black/5 dark:border-white/5 bg-surface">
+                        <div className="flex items-center bg-surface-container border border-black/5 dark:border-white/5 rounded p-0.5 border border-black/5 dark:border-white/5">
                             <button 
                                 onClick={() => setViewMode('sandbox')}
                                 className={`px-4 py-1.5 rounded text-[11px] font-black uppercase tracking-widest transition-all flex items-center gap-1 ${viewMode === 'sandbox' ? 'bg-primary shadow-sm text-white' : 'text-on-surface-variant hover:text-on-surface'}`}
@@ -327,22 +327,22 @@ const VectorExplorer = ({ cluster }) => {
                         {viewMode === 'sandbox' ? (
                             <div className="absolute inset-0 flex flex-col bg-[#0A0F0D]">
                                 {/* Sandbox Decorative UI */}
-                                <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none opacity-50"></div>
-                                <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] pointer-events-none opacity-50"></div>
+                                <div className="absolute top-0 right-0 w-96 h-96 bg-surface-container-highest rounded-full blur-[100px] pointer-events-none opacity-50"></div>
+                                <div className="absolute bottom-0 left-0 w-96 h-96 bg-surface-container-highest rounded-full blur-[100px] pointer-events-none opacity-50"></div>
 
                                 {/* Sandbox Search Input */}
-                                <div className="p-8 border-b border-white/5 relative z-10 shrink-0">
+                                <div className="p-8 border-b border-black/5 dark:border-white/5 relative z-10 shrink-0">
                                     <div className="max-w-3xl mx-auto">
                                         <div className="flex justify-between mb-4">
                                             <div className="flex gap-2">
                                                 {['hybrid', 'dense', 'sparse'].map(type => (
-                                                    <button key={type} onClick={() => setSearchType(type)} className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all border ${searchType === type ? 'bg-primary/20 border-primary/50 text-primary shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)]' : 'border-white/10 text-white/50 hover:bg-white/5'}`}>
+                                                    <button key={type} onClick={() => setSearchType(type)} className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all border ${searchType === type ? 'bg-surface-container-highest border-primary text-primary shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)]' : 'border-white/10 text-white/50 hover:bg-surface-container-highest/5'}`}>
                                                         {type}
                                                     </button>
                                                 ))}
                                             </div>
                                             {(searchType === 'dense' || searchType === 'hybrid') && (
-                                                <select value={searchMetric} onChange={e => setSearchMetric(e.target.value)} className="bg-white/5 border border-white/10 text-white text-xs font-bold rounded-lg px-3 py-1 outline-none">
+                                                <select value={searchMetric} onChange={e => setSearchMetric(e.target.value)} className="bg-surface-container-highest/5 border border-white/10 text-white text-xs font-bold rounded-lg px-3 py-1 outline-none">
                                                     <option value="cosine">Cosine</option>
                                                     <option value="euclidean">Euclidean</option>
                                                     <option value="dotProduct">Dot Product</option>
@@ -373,7 +373,7 @@ const VectorExplorer = ({ cluster }) => {
                                                 placeholder='{"price": {"$lt": 200}}'
                                                 value={searchFilter}
                                                 onChange={e => setSearchFilter(e.target.value)}
-                                                className="bg-white/5 border border-white/10 text-white text-xs font-mono rounded px-3 py-1.5 outline-none flex-1 focus:border-primary/50"
+                                                className="bg-surface-container-highest/5 border border-white/10 text-white text-xs font-mono rounded px-3 py-1.5 outline-none flex-1 focus:border-primary"
                                             />
                                         </div>
                                     </div>
@@ -386,7 +386,7 @@ const VectorExplorer = ({ cluster }) => {
                                             <div className="space-y-4">
                                                 <h3 className="text-white/60 font-medium text-sm mb-4">Top matches in <span className="text-white font-bold">{activeNamespace}</span></h3>
                                                 {searchResults.map((res, i) => (
-                                                    <div key={i} onClick={() => loadEditor({id: res.id, ...res})} className="bg-white/5 border border-white/10 rounded-xl p-4 flex gap-5 hover:bg-white/10 hover:border-primary/30 transition-all cursor-pointer group">
+                                                    <div key={i} onClick={() => loadEditor({id: res.id, ...res})} className="bg-surface-container-highest/5 border border-white/10 rounded-xl p-4 flex gap-5 hover:bg-surface-container-highest/10 hover:border-primary transition-all cursor-pointer group">
                                                         <div className="w-16 h-16 shrink-0 relative flex items-center justify-center">
                                                             <svg className="absolute inset-0 w-full h-full transform -rotate-90">
                                                                 <circle cx="32" cy="32" r="28" fill="transparent" stroke="rgba(255,255,255,0.05)" strokeWidth="4" />
@@ -423,8 +423,8 @@ const VectorExplorer = ({ cluster }) => {
                                 {activeVector ? (
                                     <div className="max-w-3xl mx-auto w-full space-y-6 pb-20">
                                         {}
-                                        <div className="bg-surface border border-outline-variant/20 rounded-xl overflow-hidden shadow-sm">
-                                            <div className="px-5 py-3 border-b border-outline-variant/10 bg-surface-container-lowest flex justify-between items-center">
+                                        <div className="bg-surface border border-black/5 dark:border-white/5 rounded-xl overflow-hidden shadow-sm">
+                                            <div className="px-5 py-3 border-b border-black/5 dark:border-white/5 bg-surface-container flex justify-between items-center">
                                                 <h3 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
                                                     <span className="material-symbols-outlined text-[16px] text-primary">data_array</span>
                                                     Dense Embeddings
@@ -432,7 +432,7 @@ const VectorExplorer = ({ cluster }) => {
                                             </div>
                                             <div className="p-0">
                                                 <textarea 
-                                                    className="w-full bg-surface-container-lowest border-0 font-mono text-xs text-on-surface p-4 outline-none resize-none h-24 custom-scrollbar"
+                                                    className="w-full bg-surface-container-highest-highest border-0 font-mono text-xs text-on-surface p-4 outline-none resize-none h-24 custom-scrollbar"
                                                     value={editVectorDense}
                                                     onChange={e => setEditVectorDense(e.target.value)}
                                                     placeholder="[0.1, -0.2, 0.44...]"
@@ -441,8 +441,8 @@ const VectorExplorer = ({ cluster }) => {
                                         </div>
 
                                         {}
-                                        <div className="bg-surface border border-outline-variant/20 rounded-xl overflow-hidden shadow-sm">
-                                            <div className="px-5 py-3 border-b border-outline-variant/10 bg-surface-container-lowest">
+                                        <div className="bg-surface border border-black/5 dark:border-white/5 rounded-xl overflow-hidden shadow-sm">
+                                            <div className="px-5 py-3 border-b border-black/5 dark:border-white/5 bg-surface-container">
                                                 <h3 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
                                                     <span className="material-symbols-outlined text-[16px] text-secondary">notes</span>
                                                     Sparse Text (Searchable)
@@ -450,7 +450,7 @@ const VectorExplorer = ({ cluster }) => {
                                             </div>
                                             <div className="p-0">
                                                 <textarea 
-                                                    className="w-full bg-surface-container-lowest border-0 text-sm text-on-surface p-4 outline-none resize-none min-h-[80px]"
+                                                    className="w-full bg-surface-container-highest-highest border-0 text-sm text-on-surface p-4 outline-none resize-none min-h-[80px]"
                                                     value={editVectorSparse}
                                                     onChange={e => setEditVectorSparse(e.target.value)}
                                                     placeholder="Text payload for hybrid search..."
@@ -459,8 +459,8 @@ const VectorExplorer = ({ cluster }) => {
                                         </div>
 
                                         {}
-                                        <div className="bg-surface border border-outline-variant/20 rounded-xl overflow-hidden shadow-sm">
-                                            <div className="px-5 py-3 border-b border-outline-variant/10 bg-surface-container-lowest">
+                                        <div className="bg-surface border border-black/5 dark:border-white/5 rounded-xl overflow-hidden shadow-sm">
+                                            <div className="px-5 py-3 border-b border-black/5 dark:border-white/5 bg-surface-container">
                                                 <h3 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
                                                     <span className="material-symbols-outlined text-[16px] text-error">data_object</span>
                                                     Metadata (JSON)
@@ -498,8 +498,8 @@ const VectorExplorer = ({ cluster }) => {
             {}
             {isAddModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-                    <div className="bg-surface w-full max-w-xl rounded-2xl shadow-2xl border border-outline-variant/20 flex flex-col overflow-hidden animate-fade-in">
-                        <div className="p-5 border-b border-outline-variant/10 flex justify-between items-center bg-surface-container-lowest">
+                    <div className="bg-surface w-full max-w-xl rounded-2xl shadow-2xl border border-black/5 dark:border-white/5 flex flex-col overflow-hidden animate-fade-in">
+                        <div className="p-5 border-b border-black/5 dark:border-white/5 flex justify-between items-center bg-surface-container">
                             <h2 className="text-lg font-bold text-on-surface">Inject Vector Data</h2>
                             <button onClick={() => setIsAddModalOpen(false)} className="text-on-surface-variant hover:text-error transition-colors">
                                 <span className="material-symbols-outlined">close</span>
@@ -508,27 +508,27 @@ const VectorExplorer = ({ cluster }) => {
                         <div className="p-6 space-y-4 overflow-y-auto max-h-[60vh] custom-scrollbar">
                             <div>
                                 <label className="text-xs font-bold text-on-surface-variant uppercase tracking-wider block mb-1">Namespace</label>
-                                <input type="text" value={activeNamespace} onChange={e => setActiveNamespace(e.target.value)} className="w-full bg-surface-container border border-outline-variant/30 text-on-surface rounded-lg p-2.5 outline-none focus:border-primary/50" placeholder="e.g. products" />
+                                <input type="text" value={activeNamespace} onChange={e => setActiveNamespace(e.target.value)} className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 text-on-surface rounded-lg p-2.5 outline-none focus:border-primary" placeholder="e.g. products" />
                             </div>
                             <div>
                                 <label className="text-xs font-bold text-on-surface-variant uppercase tracking-wider block mb-1">Vector ID</label>
-                                <input type="text" value={editVectorId} onChange={e => setEditVectorId(e.target.value)} className="w-full bg-surface-container border border-outline-variant/30 text-on-surface rounded-lg p-2.5 outline-none focus:border-primary/50" placeholder="e.g. vec_123" />
+                                <input type="text" value={editVectorId} onChange={e => setEditVectorId(e.target.value)} className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 text-on-surface rounded-lg p-2.5 outline-none focus:border-primary" placeholder="e.g. vec_123" />
                             </div>
                             <div>
                                 <label className="text-xs font-bold text-on-surface-variant uppercase tracking-wider block mb-1">Dense Array [JSON]</label>
-                                <textarea value={editVectorDense} onChange={e => setEditVectorDense(e.target.value)} className="w-full bg-surface-container border border-outline-variant/30 text-on-surface font-mono text-sm rounded-lg p-2.5 outline-none focus:border-primary/50 h-20" placeholder="[0.1, 0.4...]"></textarea>
+                                <textarea value={editVectorDense} onChange={e => setEditVectorDense(e.target.value)} className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 text-on-surface font-mono text-sm rounded-lg p-2.5 outline-none focus:border-primary h-20" placeholder="[0.1, 0.4...]"></textarea>
                             </div>
                             <div>
                                 <label className="text-xs font-bold text-on-surface-variant uppercase tracking-wider block mb-1">Sparse Text</label>
-                                <textarea value={editVectorSparse} onChange={e => setEditVectorSparse(e.target.value)} className="w-full bg-surface-container border border-outline-variant/30 text-on-surface text-sm rounded-lg p-2.5 outline-none focus:border-primary/50 h-20" placeholder="Text for hybrid search"></textarea>
+                                <textarea value={editVectorSparse} onChange={e => setEditVectorSparse(e.target.value)} className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 text-on-surface text-sm rounded-lg p-2.5 outline-none focus:border-primary h-20" placeholder="Text for hybrid search"></textarea>
                             </div>
                             <div>
                                 <label className="text-xs font-bold text-on-surface-variant uppercase tracking-wider block mb-1">Metadata [JSON]</label>
-                                <textarea value={editVectorMeta} onChange={e => setEditVectorMeta(e.target.value)} className="w-full bg-surface-container border border-outline-variant/30 text-on-surface font-mono text-sm rounded-lg p-2.5 outline-none focus:border-primary/50 h-24" placeholder='{"key": "value"}'></textarea>
+                                <textarea value={editVectorMeta} onChange={e => setEditVectorMeta(e.target.value)} className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 text-on-surface font-mono text-sm rounded-lg p-2.5 outline-none focus:border-primary h-24" placeholder='{"key": "value"}'></textarea>
                             </div>
                         </div>
-                        <div className="p-5 border-t border-outline-variant/10 bg-surface-container-lowest flex justify-end gap-3">
-                            <button onClick={() => setIsAddModalOpen(false)} className="px-5 py-2 rounded-lg text-sm font-bold text-on-surface-variant hover:bg-surface-container transition-colors">Cancel</button>
+                        <div className="p-5 border-t border-black/5 dark:border-white/5 bg-surface-container flex justify-end gap-3">
+                            <button onClick={() => setIsAddModalOpen(false)} className="px-5 py-2 rounded-lg text-sm font-bold text-on-surface-variant hover:bg-surface-container border border-black/5 dark:border-white/5 transition-colors">Cancel</button>
                             <button onClick={() => handleSaveVector(true)} disabled={isSaving} className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-lg text-sm font-bold shadow-md transition-all flex items-center gap-2">
                                 {isSaving ? 'Injecting...' : 'Inject Vector'}
                             </button>

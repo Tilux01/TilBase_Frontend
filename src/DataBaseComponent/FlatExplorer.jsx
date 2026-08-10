@@ -226,9 +226,9 @@ const FlatExplorer = ({ cluster }) => {
     return (
         <div className="flex flex-col h-screen w-full bg-background text-on-surface font-sans overflow-hidden">
             {/* Top Navigation & Breadcrumbs (Standard TilBase Style) */}
-            <header className="flex-none bg-surface-container-lowest border-b border-outline-variant/30 px-6 py-4 flex items-center justify-between z-10 shadow-sm">
+            <header className="flex-none bg-surface-container border-b border-black/5 dark:border-white/5 px-6 py-4 flex items-center justify-between z-10 shadow-sm">
                 <div className="flex items-center gap-4">
-                    <Link to="/clusters" className="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors border border-outline-variant/20">
+                    <Link to="/clusters" className="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container border border-black/5 dark:border-white/5 hover:bg-surface-container-high text-on-surface-variant transition-colors border border-black/5 dark:border-white/5">
                         <span className="material-symbols-outlined text-sm">arrow_back</span>
                     </Link>
                     <div className="h-5 w-px bg-outline-variant/30"></div>
@@ -247,14 +247,14 @@ const FlatExplorer = ({ cluster }) => {
                         {selectedKey && (
                             <>
                                 <span className="material-symbols-outlined text-outline-variant text-sm mx-1">chevron_right</span>
-                                <span className="text-on-surface font-bold bg-surface-container px-2 py-1 rounded border border-outline-variant/20">{selectedKey}</span>
+                                <span className="text-on-surface font-bold bg-surface-container border border-black/5 dark:border-white/5 px-2 py-1 rounded border border-black/5 dark:border-white/5">{selectedKey}</span>
                             </>
                         )}
                     </div>
                 </div>
                 
                 <div className="flex items-center gap-3 shrink-0">
-                    <div className="bg-surface-container border border-outline-variant/20 px-3 py-1.5 rounded-lg flex items-center gap-2">
+                    <div className="bg-surface-container border border-black/5 dark:border-white/5 px-3 py-1.5 rounded-lg flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                         <span className="text-xs font-bold text-on-surface-variant tracking-widest uppercase">Flat Connected</span>
                     </div>
@@ -265,19 +265,19 @@ const FlatExplorer = ({ cluster }) => {
             <main className="flex-1 flex overflow-hidden">
                 
                 {}
-                <div className="w-64 flex-none border-r border-outline-variant/20 bg-surface-container-lowest flex flex-col z-10 shadow-lg">
-                    <div className="p-4 border-b border-outline-variant/10 flex justify-between items-center bg-surface-container/30">
+                <div className="w-64 flex-none border-r border-black/5 dark:border-white/5 bg-surface-container flex flex-col z-10 shadow-lg">
+                    <div className="p-4 border-b border-black/5 dark:border-white/5 flex justify-between items-center bg-surface-container">
                         <h2 className="text-xs font-black tracking-widest text-on-surface-variant uppercase flex items-center gap-2">
                             <span className="material-symbols-outlined text-[16px] text-primary">folder_data</span>
                             Buckets
                         </h2>
-                        <button onClick={() => setIsAddingBucket(true)} className="text-primary hover:bg-primary/10 w-7 h-7 rounded flex items-center justify-center transition-colors">
+                        <button onClick={() => setIsAddingBucket(true)} className="text-primary hover:bg-surface-container-highest w-7 h-7 rounded flex items-center justify-center transition-colors">
                             <span className="material-symbols-outlined text-[16px]">add</span>
                         </button>
                     </div>
                     <div className="flex-1 overflow-y-auto p-3 space-y-1 custom-scrollbar">
                         {isAddingBucket && (
-                            <div className="mb-2 bg-surface-container p-2 rounded-lg border border-primary/50 shadow-[0_0_10px_rgba(var(--color-primary),0.1)]">
+                            <div className="mb-2 bg-surface-container border border-black/5 dark:border-white/5 p-2 rounded-lg border border-primary shadow-[0_0_10px_rgba(var(--color-primary),0.1)]">
                                 <input 
                                     autoFocus
                                     value={newBucketName}
@@ -294,8 +294,8 @@ const FlatExplorer = ({ cluster }) => {
                                 onClick={() => setSelectedBucket(b.bucketName)}
                                 className={`group w-full text-left px-3 py-2.5 rounded-lg cursor-pointer transition-all flex items-center justify-between text-sm font-medium border ${
                                     selectedBucket === b.bucketName 
-                                        ? 'bg-primary text-on-primary border-primary/50 shadow-md translate-x-1' 
-                                        : 'text-on-surface hover:bg-surface-container border-transparent'
+                                        ? 'bg-primary text-on-primary border-primary shadow-md translate-x-1' 
+                                        : 'text-on-surface hover:bg-surface-container border border-black/5 dark:border-white/5 border-transparent'
                                 }`}
                             >
                                 <div className="flex items-center gap-3 overflow-hidden">
@@ -316,8 +316,8 @@ const FlatExplorer = ({ cluster }) => {
                 </div>
 
                 {}
-                <div className="w-80 flex-none border-r border-outline-variant/20 bg-surface-container-lowest flex flex-col z-10 shadow-md">
-                    <div className="p-4 border-b border-outline-variant/10 flex justify-between items-center bg-surface-container/20">
+                <div className="w-80 flex-none border-r border-black/5 dark:border-white/5 bg-surface-container flex flex-col z-10 shadow-md">
+                    <div className="p-4 border-b border-black/5 dark:border-white/5 flex justify-between items-center bg-surface-container">
                         <h2 className="text-xs font-black tracking-widest text-on-surface-variant uppercase flex items-center gap-2">
                             <span className="material-symbols-outlined text-[16px] text-secondary">key</span>
                             Keys
@@ -337,7 +337,7 @@ const FlatExplorer = ({ cluster }) => {
                         ) : (
                             <>
                                 {isAddingKey && (
-                                    <div className="mb-2 bg-surface-container p-2 rounded-lg border border-secondary/50 shadow-[0_0_10px_rgba(var(--color-secondary),0.1)]">
+                                    <div className="mb-2 bg-surface-container border border-black/5 dark:border-white/5 p-2 rounded-lg border border-secondary/50 shadow-[0_0_10px_rgba(var(--color-secondary),0.1)]">
                                         <input 
                                             autoFocus
                                             value={newKeyName}
@@ -355,7 +355,7 @@ const FlatExplorer = ({ cluster }) => {
                                         className={`group w-full text-left px-3 py-2.5 rounded-lg cursor-pointer transition-all flex items-center justify-between text-sm font-medium border ${
                                             selectedKey === k.keyName 
                                                 ? 'bg-secondary/10 text-secondary border-secondary/30 shadow-sm' 
-                                                : 'text-on-surface hover:bg-surface-container border-transparent'
+                                                : 'text-on-surface hover:bg-surface-container border border-black/5 dark:border-white/5 border-transparent'
                                         }`}
                                     >
                                         <div className="flex items-center gap-3 overflow-hidden">
@@ -376,9 +376,9 @@ const FlatExplorer = ({ cluster }) => {
                 </div>
 
                 {}
-                <div className="flex-1 flex flex-col bg-surface-container-lowest relative">
+                <div className="flex-1 flex flex-col bg-surface-container relative">
                     {}
-                    <div className="p-4 border-b border-outline-variant/20 bg-surface-container/40 flex justify-between items-center h-[60px]">
+                    <div className="p-4 border-b border-black/5 dark:border-white/5 bg-surface-container border border-black/5 dark:border-white/5 flex justify-between items-center h-[60px]">
                         <div className="flex items-center gap-3">
                             <span className="material-symbols-outlined text-outline-variant text-[20px]">edit_document</span>
                             <span className="font-mono text-sm text-on-surface font-bold">
@@ -392,7 +392,7 @@ const FlatExplorer = ({ cluster }) => {
                                     onClick={handleIncrement}
                                     disabled={isSaving}
                                     className={`px-4 py-1.5 rounded-lg text-sm font-bold shadow-sm transition-all flex items-center gap-2 ${
-                                        isSaving ? 'bg-secondary/50 text-on-secondary cursor-not-allowed' : 'bg-secondary text-on-secondary hover:bg-secondary/90 hover:shadow-md hover:-translate-y-[1px]'
+                                        isSaving ? 'bg-surface-container-highest0 text-on-secondary cursor-not-allowed' : 'bg-secondary text-on-secondary hover:bg-secondary/90 hover:shadow-md hover:-translate-y-[1px]'
                                     }`}
                                 >
                                     <span className="material-symbols-outlined text-[16px]">add_circle</span>
@@ -402,7 +402,7 @@ const FlatExplorer = ({ cluster }) => {
                                     onClick={handleSaveValue}
                                     disabled={isSaving}
                                     className={`px-5 py-1.5 rounded-lg text-sm font-bold shadow-sm transition-all flex items-center gap-2 ${
-                                        isSaving ? 'bg-primary/50 text-on-primary cursor-not-allowed' : 'bg-primary text-on-primary hover:bg-primary/90 hover:shadow-md hover:-translate-y-[1px]'
+                                        isSaving ? 'bg-surface-container-highest0 text-on-primary cursor-not-allowed' : 'bg-primary text-on-primary hover:bg-primary/90 hover:shadow-md hover:-translate-y-[1px]'
                                     }`}
                                 >
                                     {isSaving ? (
@@ -417,7 +417,7 @@ const FlatExplorer = ({ cluster }) => {
                     </div>
 
                     {}
-                    <div className="flex-1 relative bg-surface-container-lowest">
+                    <div className="flex-1 relative bg-surface-container">
                         {!selectedKey ? (
                             <div className="h-full flex flex-col items-center justify-center text-center p-8 opacity-40">
                                 <span className="material-symbols-outlined text-6xl mb-4">memory</span>
@@ -425,7 +425,7 @@ const FlatExplorer = ({ cluster }) => {
                                 <p className="text-on-surface-variant text-sm max-w-sm">Select a Key to view or edit its value. Flat DB supports both raw strings and valid JSON structures.</p>
                             </div>
                         ) : (
-                            <div className={`w-full h-full p-2 transition-all duration-500 ease-in-out ${lastUpdated ? 'bg-primary/10 rounded-lg shadow-[inset_0_0_20px_rgba(var(--color-primary),0.5)]' : ''}`}>
+                            <div className={`w-full h-full p-2 transition-all duration-500 ease-in-out ${lastUpdated ? 'bg-surface-container-highest rounded-lg shadow-[inset_0_0_20px_rgba(var(--color-primary),0.5)]' : ''}`}>
                                 <textarea 
                                     value={keyValue}
                                     onChange={(e) => setKeyValue(e.target.value)}

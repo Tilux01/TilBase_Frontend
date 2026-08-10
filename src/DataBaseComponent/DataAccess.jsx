@@ -99,27 +99,27 @@ const DataAccess = () => {
 
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-                    <div className="bg-surface-container-lowest p-6 rounded-xl w-[450px] shadow-2xl border border-outline-variant/20">
+                    <div className="bg-surface-container p-6 rounded-xl w-[450px] shadow-2xl border border-black/5 dark:border-white/5">
                         <h3 className="text-xl font-bold mb-4 text-on-surface">Create Database User</h3>
                         <form onSubmit={addDbUser}>
                             <div className="mb-4">
                                 <label className="block text-xs font-bold text-on-surface-variant mb-2 ml-1">Username</label>
-                                <input className="w-full px-4 py-2.5 bg-surface-container rounded-lg outline-none focus:ring-2 focus:ring-primary text-sm text-on-surface technical-mono" placeholder="e.g. app-user" value={newUsername} onChange={e=>setNewUsername(e.target.value)} required />
+                                <input className="w-full px-4 py-2.5 bg-surface-container-highest border border-black/5 dark:border-white/5 rounded-lg outline-none focus:ring-2 focus:ring-primary text-sm text-on-surface technical-mono" placeholder="e.g. app-user" value={newUsername} onChange={e=>setNewUsername(e.target.value)} required />
                             </div>
                             <div className="mb-4">
                                 <label className="block text-xs font-bold text-on-surface-variant mb-2 ml-1">Password</label>
-                                <input className="w-full px-4 py-2.5 bg-surface-container rounded-lg outline-none focus:ring-2 focus:ring-primary text-sm text-on-surface technical-mono" placeholder="Secure Password" type="password" value={newPassword} onChange={e=>setNewPassword(e.target.value)} required />
+                                <input className="w-full px-4 py-2.5 bg-surface-container-highest border border-black/5 dark:border-white/5 rounded-lg outline-none focus:ring-2 focus:ring-primary text-sm text-on-surface technical-mono" placeholder="Secure Password" type="password" value={newPassword} onChange={e=>setNewPassword(e.target.value)} required />
                             </div>
                             <div className="mb-6">
                                 <label className="block text-xs font-bold text-on-surface-variant mb-2 ml-1">Role / Privilege</label>
-                                <select className="w-full bg-surface-container rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary outline-none appearance-none font-medium" value={newRole} onChange={e=>setNewRole(e.target.value)}>
+                                <select className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary outline-none appearance-none font-medium" value={newRole} onChange={e=>setNewRole(e.target.value)}>
                                     <option value="Read/Write">Read and write to any database</option>
                                     <option value="Read Only">Read only access to any database</option>
                                     <option value="Admin">Atlas admin (Full administrative access)</option>
                                 </select>
                             </div>
                             <div className="flex justify-end gap-2">
-                                <button type="button" onClick={()=>setIsModalOpen(false)} className="px-4 py-2.5 rounded-lg text-sm text-on-surface-variant hover:bg-surface-container transition-all font-semibold">Cancel</button>
+                                <button type="button" onClick={()=>setIsModalOpen(false)} className="px-4 py-2.5 rounded-lg text-sm text-on-surface-variant hover:bg-surface-container border border-black/5 dark:border-white/5 transition-all font-semibold">Cancel</button>
                                 <button type="submit" className="px-4 py-2.5 rounded-lg text-sm bg-primary text-white font-bold hover:opacity-90 transition-all shadow-md shadow-primary/20">Create User</button>
                             </div>
                         </form>
@@ -127,13 +127,13 @@ const DataAccess = () => {
                 </div>
             )}
 
-            <div className="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 overflow-hidden">
+            <div className="bg-surface-container rounded-xl shadow-sm border border-black/5 dark:border-white/5 overflow-hidden">
                 <div className="px-6 py-5 border-b border-surface-container-high flex justify-between items-center">
                     <h2 className="text-lg font-bold text-on-surface">Database Users</h2>
                     <div className="relative">
                         <span className="material-symbols-outlined absolute left-3 top-2 text-slate-400 text-sm">search</span>
                         <input 
-                            className="pl-9 pr-4 py-2 bg-surface-container rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none border-none" 
+                            className="pl-9 pr-4 py-2 bg-surface-container-highest border border-black/5 dark:border-white/5 rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none border-none" 
                             placeholder="Filter by username..." 
                             type="text" 
                             value={searchQuery}
@@ -144,7 +144,7 @@ const DataAccess = () => {
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="bg-surface-container-low text-on-surface-variant uppercase text-[10px] font-bold tracking-widest">
+                            <tr className="bg-surface-container-highest text-on-surface-variant uppercase text-[10px] font-bold tracking-widest">
                                 <th className="px-6 py-4">Username</th>
                                 <th className="px-6 py-4">Role</th>
                                 <th className="px-6 py-4">Authentication</th>
@@ -160,9 +160,9 @@ const DataAccess = () => {
                                 </tr>
                             ) : (
                                 filteredDbUsers?.slice(0, 15).map((user) => (
-                                    <tr key={user.id} className="hover:bg-surface-container/30 transition-colors group">
+                                    <tr key={user.id} className="hover:bg-surface-container border border-black/5 dark:border-white/5 transition-colors group">
                                         <td className="px-6 py-5 font-mono text-sm font-medium text-primary flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+                                            <div className="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-primary">
                                                 <span className="material-symbols-outlined text-sm">person</span>
                                             </div>
                                             {user.DB_Username}
@@ -171,7 +171,7 @@ const DataAccess = () => {
                                             {user.Role}
                                         </td>
                                         <td className="px-6 py-5">
-                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container text-on-surface-variant text-xs font-bold">
+                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container border border-black/5 dark:border-white/5 text-on-surface-variant text-xs font-bold">
                                                 <span className="material-symbols-outlined text-[10px]">password</span>
                                                 SCRAM-SHA-1
                                             </span>
@@ -198,9 +198,9 @@ const DataAccess = () => {
             </div>
             
             <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-surface-container-high/40 p-6 rounded-xl border border-outline-variant/10">
+                <div className="bg-surface-container-high p-6 rounded-xl border border-black/5 dark:border-white/5">
                     <div className="flex gap-4">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                        <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary shrink-0">
                             <span className="material-symbols-outlined">security</span>
                         </div>
                         <div>
@@ -211,9 +211,9 @@ const DataAccess = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-surface-container-high/40 p-6 rounded-xl border border-outline-variant/10">
+                <div className="bg-surface-container-high p-6 rounded-xl border border-black/5 dark:border-white/5">
                     <div className="flex gap-4">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                        <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary shrink-0">
                             <span className="material-symbols-outlined">vpn_key</span>
                         </div>
                         <div>

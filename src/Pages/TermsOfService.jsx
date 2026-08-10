@@ -36,9 +36,9 @@ const TermsOfService = () => {
     };
 
     return (
-        <div className="min-h-screen bg-surface-container-lowest text-on-surface font-sans">
+        <div className="min-h-screen bg-background text-on-surface font-sans">
             {}
-            <header className="sticky top-0 z-50 w-full bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/30 px-6 sm:px-12 py-4 flex justify-between items-center">
+            <header className="sticky top-0 z-50 w-full bg-surface-container backdrop-blur-xl border-b border-black/5 dark:border-black/5 dark:border-white/5 px-6 sm:px-12 py-4 flex justify-between items-center">
                 <Link to="/" className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shadow-sm">
                         <span className="material-symbols-outlined text-primary text-2xl" data-icon="database">database</span>
@@ -46,14 +46,14 @@ const TermsOfService = () => {
                     <span className="text-xl font-extrabold tracking-tighter text-primary">TIlBase</span>
                 </Link>
                 <Link to="/signup">
-                    <button className="flex items-center gap-2 text-sm font-bold text-on-surface-variant hover:text-primary bg-surface-container hover:bg-primary-container/20 px-5 py-2 rounded-lg transition-colors border border-outline-variant/20">
+                    <button className="flex items-center gap-2 text-sm font-bold text-on-surface-variant hover:text-primary bg-surface-container hover:bg-primary-container/20 px-5 py-2 rounded-lg transition-colors border border-black/5 dark:border-black/5 dark:border-white/5">
                         <ArrowLeft size={16} /> Back to Sign Up
                     </button>
                 </Link>
             </header>
 
             {}
-            <div className="w-full bg-surface-container border-b border-outline-variant/20 px-6 sm:px-12 py-16">
+            <div className="w-full bg-surface-container border-b border-black/5 dark:border-black/5 dark:border-white/5 px-6 sm:px-12 py-16">
                 <div className="w-full max-w-7xl mx-auto">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container text-primary text-xs font-bold mb-6 uppercase tracking-widest">
                         <Scale size={14} /> Legal Documentation
@@ -68,7 +68,7 @@ const TermsOfService = () => {
                 
                 {}
                 <aside className="w-full md:w-64 shrink-0">
-                    <div className="sticky top-32 bg-surface-container border border-outline-variant/20 rounded-2xl p-6">
+                    <div className="sticky top-32 bg-surface-container border border-black/5 dark:border-black/5 dark:border-white/5 rounded-2xl p-6">
                         <h3 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-4">Contents</h3>
                         <nav className="flex flex-col gap-2">
                             {sections.map(section => (
@@ -114,7 +114,7 @@ const TermsOfService = () => {
                             <p>
                                 TilBase provides managed cloud database infrastructure, including but not limited to Document, Vector DB, RealTime, Flat, and Graph databases. The Services are provided "as is" and "as available". We reserve the right to modify, suspend, or discontinue the Services at any time.
                             </p>
-                            <div className="bg-primary-container/30 border border-primary/20 rounded-xl p-6 flex items-start gap-4">
+                            <div className="bg-primary-container/30 border border-primary rounded-xl p-6 flex items-start gap-4">
                                 <Cloud className="text-primary shrink-0 mt-1" />
                                 <div>
                                     <strong className="text-primary block mb-2">Infrastructure Lifecycle</strong>
@@ -133,11 +133,11 @@ const TermsOfService = () => {
                         </h2>
                         <div className="text-on-surface-variant leading-relaxed">
                             <ul className="space-y-4">
-                                <li className="flex items-start gap-4 p-4 bg-surface-container rounded-xl border border-outline-variant/10">
+                                <li className="flex items-start gap-4 p-4 bg-surface-container rounded-xl border border-black/5 dark:border-black/5 dark:border-white/5">
                                     <AlertTriangle size={20} className="text-amber-500 shrink-0 mt-0.5" />
                                     <div>You are responsible for maintaining the security of your account, database clusters, and API keys.</div>
                                 </li>
-                                <li className="flex items-start gap-4 p-4 bg-surface-container rounded-xl border border-outline-variant/10">
+                                <li className="flex items-start gap-4 p-4 bg-surface-container rounded-xl border border-black/5 dark:border-black/5 dark:border-white/5">
                                     <AlertTriangle size={20} className="text-amber-500 shrink-0 mt-0.5" />
                                     <div>You must immediately notify TilBase of any unauthorized uses of your database or breaches of security.</div>
                                 </li>
@@ -200,7 +200,7 @@ const TermsOfService = () => {
                     </section>
 
                     {}
-                    <div className="mt-12 p-8 bg-surface-container border border-outline-variant/20 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div className="mt-12 p-8 bg-surface-container border border-black/5 dark:border-black/5 dark:border-white/5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
                         <div className="text-center sm:text-left">
                             <h4 className="font-bold text-on-surface mb-1">Legal Inquiries</h4>
                             <p className="text-sm text-on-surface-variant">Contact our legal department regarding these terms.</p>
@@ -213,7 +213,7 @@ const TermsOfService = () => {
                 </main>
             </div>
             
-            <footer className="w-full bg-surface-container-lowest border-t border-outline-variant/20 py-8 text-center text-sm font-semibold text-on-surface-variant/60">
+            <footer className="w-full bg-surface-container border-t border-black/5 dark:border-black/5 dark:border-white/5 py-8 text-center text-sm font-semibold text-on-surface-variant/60">
                 &copy; {new Date().getFullYear()} TIlBase Inc. All rights reserved.
             </footer>
         </div>

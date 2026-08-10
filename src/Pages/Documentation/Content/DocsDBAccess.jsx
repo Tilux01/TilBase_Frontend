@@ -4,7 +4,7 @@ import DocsLayout from '../DocsLayout';
 const DocsDBAccess = () => {
     return (
         <DocsLayout>
-            <div className="mb-12 border-b border-outline-variant/20 pb-8">
+            <div className="mb-12 border-b border-black/5 dark:border-black/5 dark:border-white/5 pb-8">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-primary font-bold tracking-widest uppercase text-sm">Getting Started</span>
                     <span className="material-symbols-outlined text-outline-variant/50 text-[16px]">chevron_right</span>
@@ -26,7 +26,7 @@ const DocsDBAccess = () => {
                 <p className="text-on-surface-variant leading-relaxed text-base">
                     Before your Node.js application can authenticate and interact with TilBase, you must create a dedicated Database User. This user acts as the service account connecting to your cluster.
                 </p>
-                <div className="bg-surface-container p-6 rounded-xl border border-outline-variant/20 shadow-sm">
+                <div className="bg-surface-container p-6 rounded-xl border border-black/5 dark:border-black/5 dark:border-white/5 shadow-sm">
                     <ol className="list-decimal pl-5 space-y-3 text-on-surface font-medium">
                         <li>Log in to your TilBase Dashboard.</li>
                         <li>Select your active Project from the dropdown menu.</li>
@@ -47,9 +47,9 @@ const DocsDBAccess = () => {
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                    <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-6 shadow-sm hover:border-primary/50 transition-colors">
+                    <div className="bg-surface-container border border-black/5 dark:border-black/5 dark:border-white/5 rounded-xl p-6 shadow-sm hover:border-primary transition-colors">
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                            <div className="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
                                 <span className="material-symbols-outlined">security</span>
                             </div>
                             <h3 className="text-lg font-bold text-on-surface">Admin Role</h3>
@@ -59,7 +59,7 @@ const DocsDBAccess = () => {
                         </p>
                     </div>
 
-                    <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-6 shadow-sm hover:border-primary/50 transition-colors">
+                    <div className="bg-surface-container border border-black/5 dark:border-black/5 dark:border-white/5 rounded-xl p-6 shadow-sm hover:border-primary transition-colors">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
                                 <span className="material-symbols-outlined">visibility</span>
@@ -93,7 +93,7 @@ const DocsDBAccess = () => {
                 <p className="text-on-surface-variant leading-relaxed text-base">
                     Every database operation (across Document DB, Vector DB, and Flat DB) is universally monitored by TilBase's storage gateway. Your account has a global storage limit based on your active billing plan.
                 </p>
-                <div className="bg-surface-container p-6 rounded-xl border border-outline-variant/20 shadow-sm">
+                <div className="bg-surface-container p-6 rounded-xl border border-black/5 dark:border-black/5 dark:border-white/5 shadow-sm">
                     <p className="text-on-surface-variant leading-relaxed">
                         If an insert or update causes your account to exceed its global storage quota, the transaction will be pre-emptively blocked at the gateway level. Your SDK will receive a <code>403 Forbidden: Storage limit exceeded</code> error. To prevent disruptions, monitor your storage usage via the Dashboard Analytics or upgrade your plan.
                     </p>

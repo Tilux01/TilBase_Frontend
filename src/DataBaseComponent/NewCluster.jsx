@@ -74,42 +74,42 @@ const NewCluster = () => {
                             <h2 className="text-xl font-bold tracking-tight">Cluster Selection</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div onClick={() => { setClusterType("document") }} className={`p-5 bg-surface-container-lowest ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "document" ? "border-2 border-secondary rounded-xl" : null}`}>
+                            <div onClick={() => { setClusterType("document") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "document" ? "border-2 border-secondary rounded-xl" : null}`}>
                                 <div className="flex justify-between items-start mb-4">
                                     <span class=" material-symbols-outlined text-secondary text-3xl icon icon-filled">database</span>
                                 </div>
                                 <h3 className="font-bold text-lg mb-1">Document DB</h3>
                                 <p className="text-sm text-on-surface-variant leading-relaxed">Flexible JSON‑like storage. Perfect for catalogs, content management, or apps with changing data structures.</p>
                             </div>
-                            <div onClick={() => { setClusterType("vector") }} className={`p-5 bg-surface-container-lowest ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "vector" ? "border-2 border-teal-400 rounded-xl" : null}`}>
+                            <div onClick={() => { setClusterType("vector") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "vector" ? "border-2 border-teal-400 rounded-xl" : null}`}>
                                 <div className="flex justify-between items-start mb-4">
                                     <span className="material-symbols-outlined text-teal-400 text-3xl">data_array</span>
                                 </div>
                                 <h3 className="font-bold text-lg mb-1">Vector DB</h3>
                                 <p className="text-sm text-on-surface-variant leading-relaxed">High-dimensional embedding storage. Native Cosine Similarity for fast AI semantic search.</p>
                             </div>
-                            <div onClick={() => { setClusterType("realtime") }} className={`p-5 bg-surface-container-lowest ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "realtime" ? "border-2 border-tertiary rounded-xl" : null}`}>
+                            <div onClick={() => { setClusterType("realtime") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "realtime" ? "border-2 border-tertiary rounded-xl" : null}`}>
                                 <div className="flex justify-between items-start mb-4">
                                     <span className="material-symbols-outlined text-tertiary text-3xl">sync</span>
                                 </div>
                                 <h3 className="font-bold text-lg mb-1">RealTime DB</h3>
                                 <p className="text-sm text-on-surface-variant leading-relaxed">Low‑latency, live‑sync database. Ideal for chat apps, collaborative tools, or live dashboards.</p>
                             </div>
-                            <div onClick={() => { setClusterType("flat") }} className={`p-5 bg-surface-container-lowest ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "flat" ? "border-2 border-orange-400 rounded-xl" : null}`}>
+                            <div onClick={() => { setClusterType("flat") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "flat" ? "border-2 border-orange-400 rounded-xl" : null}`}>
                                 <div className="flex justify-between items-start mb-4">
                                     <span class=" material-symbols-outlined text-orange-400 text-3xl icon icon-filled">cloud</span>
                                 </div>
                                 <h3 className="font-bold text-lg mb-1">Flat DB</h3>
                                 <p className="text-sm text-on-surface-variant leading-relaxed">Simple file‑based database storage. Best for small apps, contact lists, or configuration data. No complex setup.</p>
                             </div>
-                            <div onClick={() => { setClusterType("graph") }} className={`p-5 bg-surface-container-lowest ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "graph" ? "border-2 border-primary rounded-xl" : null}`}>
+                            <div onClick={() => { setClusterType("graph") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "graph" ? "border-2 border-primary rounded-xl" : null}`}>
                                 <div className="flex justify-between items-start mb-4">
                                     <span className="material-symbols-outlined text-primary text-3xl">bar_chart</span>
                                 </div>
                                 <h3 className="font-bold text-lg mb-1">Graph DB</h3>
                                 <p className="text-sm text-on-surface-variant leading-relaxed">Store and query connected data. Best for social networks, recommendation engines, or fraud detection.</p>
                             </div>
-                            <div onClick={() => { setClusterType("hierarchical") }} className={`p-5 bg-surface-container-lowest ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "hierarchical" ? "border-2 border-emerald-400 rounded-xl" : null}`}>
+                            <div onClick={() => { setClusterType("hierarchical") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "hierarchical" ? "border-2 border-emerald-400 rounded-xl" : null}`}>
                                 <div className="flex justify-between items-start mb-4">
                                     <span className="material-symbols-outlined text-emerald-400 text-3xl">folder</span>
                                 </div>
@@ -123,11 +123,11 @@ const NewCluster = () => {
                             <span className="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-primary">2</span>
                             <h2 className="text-xl font-bold tracking-tight">Cloud Provider &amp; Region</h2>
                         </div>
-                        <div className="bg-surface-container-low rounded-xl p-8 space-y-8">
+                        <div className="bg-surface-container-highest rounded-xl p-8 space-y-8">
                             {}
                             <div className="space-y-4">
                                 <label className="block text-sm font-bold text-on-surface-variant uppercase tracking-wider">Select Region</label>
-                                <select className="w-full bg-surface-container-lowest border-outline-variant/30 rounded-lg py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                                <select className="w-full bg-surface-container-highest border-black/5 dark:border-white/5 rounded-lg py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all">
                                     <option>TiluxM001 (Nigeria)</option>
                                 </select>
                                 <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-sm bg-surface-container-highest">
@@ -146,25 +146,25 @@ const NewCluster = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-2">
                                 <label className="block text-sm font-bold text-on-surface-variant uppercase tracking-wider">Cluster Name</label>
-                                <input className="w-full font-mono bg-surface-container-lowest border-outline-variant/30 rounded-lg py-3 px-4 focus:ring-2 focus:ring-primary transition-all" type="text" value={clusterName} onChange={(e) => { setClusterName(e.target.value) }} />
+                                <input className="w-full font-mono bg-surface-container-highest border-black/5 dark:border-white/5 rounded-lg py-3 px-4 focus:ring-2 focus:ring-primary transition-all" type="text" value={clusterName} onChange={(e) => { setClusterName(e.target.value) }} />
                             </div>
                             <div className="space-y-2">
                                 <label className="block text-sm font-semibold text-on-surface" for="project-id">Cluster ID</label>
-                                <div className="flex items-center px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-lg select-none">
+                                <div className="flex items-center px-4 py-3 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg select-none">
                                     <span className="text-sm font-mono text-on-surface-variant">{ClusterKey}</span>
                                     <CopyButton textToCopy={ClusterKey} className="ml-auto text-on-surface-variant text-sm flex items-center" />
                                 </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="block text-sm font-semibold text-on-surface" for="project-id">Cluster Password</label>
-                                <div className="flex items-center px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-lg select-none">
+                                <div className="flex items-center px-4 py-3 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg select-none">
                                     <span className="text-sm font-mono text-on-surface-variant">{clusterPassword}</span>
                                     <CopyButton textToCopy={clusterPassword} className="ml-auto text-on-surface-variant text-sm flex items-center" />
                                 </div>
                             </div>
                         </div>
                         <div className="space-y-4 pt-4">
-                            <div className="flex items-center justify-between p-4 bg-surface-container rounded-lg">
+                            <div className="flex items-center justify-between p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg">
                                 <div className="flex items-center gap-4">
                                     <div className="p-2 bg-white rounded shadow-sm">
                                         <span className="material-symbols-outlined text-primary">history</span>
@@ -179,7 +179,7 @@ const NewCluster = () => {
                                     <div className="w-11 h-6 bg-zinc-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                                 </label>
                             </div>
-                            <div className="flex items-center justify-between p-4 bg-surface-container rounded-lg">
+                            <div className="flex items-center justify-between p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg">
                                 <div className="flex items-center gap-4">
                                     <div className="p-2 bg-white rounded shadow-sm">
                                         <span className="material-symbols-outlined text-secondary">security</span>
@@ -199,7 +199,7 @@ const NewCluster = () => {
                     </div>
                     <aside className="lg:col-span-4 xl:col-span-3 space-y-6">
                     <div className="sticky top-24">
-                        <div className="bg-surface-container-lowest ghost-border rounded-2xl shadow-sm p-6 space-y-8">
+                        <div className="bg-surface-container ghost-border rounded-2xl shadow-sm p-6 space-y-8">
                             <div>
                                 <h3 className="text-lg font-extrabold tracking-tight mb-6">Current Plan</h3>
                                 <div className="space-y-4">
@@ -245,7 +245,7 @@ const NewCluster = () => {
                                 <a className="text-secondary underline underline-offset-2" href="/terms">Terms of Service</a>.
                             </p>
                         </div>
-                        <div className="mt-6 p-4 bg-surface-container rounded-xl flex gap-3">
+                        <div className="mt-6 p-4 bg-surface-container border border-black/5 dark:border-white/5 rounded-xl flex gap-3">
                             <span className="material-symbols-outlined text-primary text-xl">info</span>
                             <p className="text-xs text-on-surface-variant leading-tight">Visit Network access to set security rules and add IP address</p>
                         </div>

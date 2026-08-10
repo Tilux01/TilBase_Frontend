@@ -256,9 +256,9 @@ const DocumentExplorer = ({ cluster }) => {
         <div className="flex flex-col h-screen w-full bg-background text-on-surface font-sans overflow-hidden">
             
             {/* Top Navigation & Breadcrumbs */}
-            <header className="flex-none bg-surface-container-lowest border-b border-outline-variant/30 px-6 py-4 flex items-center justify-between z-10 shadow-sm">
+            <header className="flex-none bg-surface-container border-b border-black/5 dark:border-white/5 px-6 py-4 flex items-center justify-between z-10 shadow-sm">
                 <div className="flex items-center gap-4">
-                    <Link to="/clusters" className="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors border border-outline-variant/20">
+                    <Link to="/clusters" className="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container border border-black/5 dark:border-white/5 hover:bg-surface-container-high text-on-surface-variant transition-colors border border-black/5 dark:border-white/5">
                         <span className="material-symbols-outlined text-sm">arrow_back</span>
                     </Link>
                     <div className="h-5 w-px bg-outline-variant/30"></div>
@@ -273,7 +273,7 @@ const DocumentExplorer = ({ cluster }) => {
                             <React.Fragment key={idx}>
                                 <span className="material-symbols-outlined text-outline-variant text-sm mx-1">chevron_right</span>
                                 <span 
-                                    className={`cursor-pointer hover:text-primary transition-colors px-2 py-1 rounded hover:bg-primary/5 ${idx % 2 === 0 ? 'text-on-surface-variant font-medium' : 'text-on-surface font-bold bg-surface-container border border-outline-variant/20'}`}
+                                    className={`cursor-pointer hover:text-primary transition-colors px-2 py-1 rounded hover:bg-surface-container-highest ${idx % 2 === 0 ? 'text-on-surface-variant font-medium' : 'text-on-surface font-bold bg-surface-container border border-black/5 dark:border-white/5'}`}
                                     onClick={() => handleBreadcrumbClick(idx)}
                                 >
                                     {crumb}
@@ -291,7 +291,7 @@ const DocumentExplorer = ({ cluster }) => {
                         {selectedDocument && (
                             <>
                                 <span className="material-symbols-outlined text-outline-variant text-sm mx-1">chevron_right</span>
-                                <span className="text-on-surface font-bold bg-surface-container px-2 py-1 rounded border border-outline-variant/20">{selectedDocument.docId}</span>
+                                <span className="text-on-surface font-bold bg-surface-container border border-black/5 dark:border-white/5 px-2 py-1 rounded border border-black/5 dark:border-white/5">{selectedDocument.docId}</span>
                             </>
                         )}
                     </div>
@@ -309,13 +309,13 @@ const DocumentExplorer = ({ cluster }) => {
             <div className="flex-1 flex overflow-hidden">
                 
                 {}
-                <div className="w-72 flex-none bg-surface-container-lowest border-r border-outline-variant/20 flex flex-col z-0">
-                    <div className="p-4 border-b border-outline-variant/10 flex items-center justify-between">
+                <div className="w-72 flex-none bg-surface-container border-r border-black/5 dark:border-white/5 flex flex-col z-0">
+                    <div className="p-4 border-b border-black/5 dark:border-white/5 flex items-center justify-between">
                         <h2 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
                             <span className="material-symbols-outlined text-sm">folder_open</span>
                             Collections
                         </h2>
-                        <button onClick={handleAddCollection} className="text-primary hover:bg-primary/10 p-1.5 rounded-md transition-colors" title="Add Collection">
+                        <button onClick={handleAddCollection} className="text-primary hover:bg-surface-container-highest p-1.5 rounded-md transition-colors" title="Add Collection">
                             <span className="material-symbols-outlined text-[16px]">add</span>
                         </button>
                     </div>
@@ -326,8 +326,8 @@ const DocumentExplorer = ({ cluster }) => {
                                 onClick={() => handleCollectionClick(col)}
                                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                                     selectedCollection === col
-                                        ? 'bg-primary/10 text-primary border border-primary/20'
-                                        : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface border border-transparent'
+                                        ? 'bg-surface-container-highest text-primary border border-primary'
+                                        : 'text-on-surface-variant hover:bg-surface-container border border-black/5 dark:border-white/5 hover:text-on-surface border border-transparent'
                                 }`}
                             >
                                 {col}
@@ -343,14 +343,14 @@ const DocumentExplorer = ({ cluster }) => {
                 </div>
 
                 {}
-                <div className="w-80 flex-none bg-[#fdfdfd] border-r border-outline-variant/20 flex flex-col z-0 shadow-[inset_4px_0_12px_rgba(0,0,0,0.01)]">
-                    <div className="p-4 border-b border-outline-variant/10 flex items-center justify-between bg-surface-container-lowest">
+                <div className="w-80 flex-none bg-surface-container border-r border-black/5 dark:border-white/5 flex flex-col z-0 shadow-[inset_4px_0_12px_rgba(0,0,0,0.01)]">
+                    <div className="p-4 border-b border-black/5 dark:border-white/5 flex items-center justify-between bg-surface-container">
                         <h2 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
                             <span className="material-symbols-outlined text-sm">description</span>
                             Documents
                         </h2>
                         <div className="flex gap-1">
-                            <button onClick={() => { setSelectedDocument(null); setDocumentData({}); setJsonContent('{\n  \n}'); }} className="text-primary hover:bg-primary/10 p-1.5 rounded-md transition-colors" title="Add Document" disabled={!selectedCollection}>
+                            <button onClick={() => { setSelectedDocument(null); setDocumentData({}); setJsonContent('{\n  \n}'); }} className="text-primary hover:bg-surface-container-highest p-1.5 rounded-md transition-colors" title="Add Document" disabled={!selectedCollection}>
                                 <span className="material-symbols-outlined text-[16px]">add</span>
                             </button>
                         </div>
@@ -362,8 +362,8 @@ const DocumentExplorer = ({ cluster }) => {
                                 onClick={() => handleDocumentClick(doc)}
                                 className={`w-full flex flex-col items-start px-4 py-3 rounded-xl transition-all border ${
                                     selectedDocument?.id === doc.id
-                                        ? 'bg-white border-outline-variant/30 shadow-md shadow-black/5 scale-[1.02] my-1 z-10 relative'
-                                        : 'bg-transparent border-transparent text-on-surface-variant hover:bg-surface-container-lowest hover:border-outline-variant/20'
+                                        ? 'bg-surface-container-highest border-black/5 dark:border-white/5 shadow-md shadow-black/5 scale-[1.02] my-1 z-10 relative'
+                                        : 'bg-transparent border-transparent text-on-surface-variant hover:bg-surface-container hover:border-black/5 dark:border-white/5'
                                 }`}
                             >
                                 <span className={`text-[13px] font-mono font-medium truncate w-full text-left ${selectedDocument?.id === doc.id ? 'text-secondary' : ''}`}>
@@ -391,12 +391,12 @@ const DocumentExplorer = ({ cluster }) => {
                 </div>
 
                 {}
-                <div className="flex-1 flex flex-col bg-surface-container-lowest relative z-0">
+                <div className="flex-1 flex flex-col bg-surface-container relative z-0">
                     
                     {}
-                    <div className="p-4 flex items-center justify-between border-b border-outline-variant/10">
+                    <div className="p-4 flex items-center justify-between border-b border-black/5 dark:border-white/5">
                         <div className="flex items-center gap-3">
-                            <div className="flex items-center bg-surface-container rounded p-0.5 border border-outline-variant/20">
+                            <div className="flex items-center bg-surface-container border border-black/5 dark:border-white/5 rounded p-0.5 border border-black/5 dark:border-white/5">
                                 <button 
                                     onClick={() => {
                                         if (viewMode === 'json') {
@@ -432,12 +432,12 @@ const DocumentExplorer = ({ cluster }) => {
                                         const parsed = new Function("return " + jsonContent)();
                                         setJsonContent(JSON.stringify(parsed, null, 2));
                                     } catch(e) { alert("Invalid data format. Fix errors before formatting.")}
-                                }} className="text-xs font-bold px-3 py-1.5 bg-surface-container hover:bg-surface-container-high rounded text-on-surface-variant transition-colors flex items-center gap-2">
+                                }} className="text-xs font-bold px-3 py-1.5 bg-surface-container border border-black/5 dark:border-white/5 hover:bg-surface-container-high rounded text-on-surface-variant transition-colors flex items-center gap-2">
                                     <span className="material-symbols-outlined text-[14px]">format_align_left</span>
                                     Format
                                 </button>
                             )}
-                            <button onClick={handleDeleteDocument} disabled={!selectedDocument} className="text-xs font-bold px-3 py-1.5 bg-surface-container hover:bg-surface-container-high rounded text-error transition-colors flex items-center gap-2 disabled:opacity-50 disabled:pointer-events-none">
+                            <button onClick={handleDeleteDocument} disabled={!selectedDocument} className="text-xs font-bold px-3 py-1.5 bg-surface-container border border-black/5 dark:border-white/5 hover:bg-surface-container-high rounded text-error transition-colors flex items-center gap-2 disabled:opacity-50 disabled:pointer-events-none">
                                 <span className="material-symbols-outlined text-[14px]">delete</span>
                                 Delete
                             </button>
@@ -446,7 +446,7 @@ const DocumentExplorer = ({ cluster }) => {
 
                     {}
                     {viewMode === 'visual' ? (
-                        <div className="flex-1 relative bg-surface-container-lowest">
+                        <div className="flex-1 relative bg-surface-container">
                             {activeCollectionPath ? (
                                 <FieldEditor 
                                     key={selectedDocument ? selectedDocument.fullPath : activeCollectionPath}
@@ -461,7 +461,7 @@ const DocumentExplorer = ({ cluster }) => {
                         </div>
                     ) : (
                         <div className="flex-1 relative font-mono text-sm group">
-                            <div className="absolute left-0 top-0 bottom-0 w-12 bg-surface-container border-r border-outline-variant/10 text-on-surface-variant/40 text-right pr-3 pt-4 select-none flex flex-col text-[13px] leading-relaxed z-0 overflow-hidden">
+                            <div className="absolute left-0 top-0 bottom-0 w-12 bg-surface-container border border-black/5 dark:border-white/5 border-r border-black/5 dark:border-white/5 text-on-surface-variant/40 text-right pr-3 pt-4 select-none flex flex-col text-[13px] leading-relaxed z-0 overflow-hidden">
                                 {jsonContent.split('\n').map((_, i) => (
                                     <span key={i}>{i + 1}</span>
                                 ))}
@@ -477,20 +477,20 @@ const DocumentExplorer = ({ cluster }) => {
                     )}
 
                     {}
-                    <div className="h-1/3 min-h-[250px] border-t-2 border-outline-variant/20 bg-surface-container-lowest flex flex-col shadow-[0_-4px_12px_rgba(0,0,0,0.02)] z-10 relative">
-                        <div className="p-3 border-b border-outline-variant/10 bg-surface-container-low flex items-center justify-between">
+                    <div className="h-1/3 min-h-[250px] border-t-2 border-black/5 dark:border-white/5 bg-surface-container flex flex-col shadow-[0_-4px_12px_rgba(0,0,0,0.02)] z-10 relative">
+                        <div className="p-3 border-b border-black/5 dark:border-white/5 bg-surface-container-highest flex items-center justify-between">
                             <h2 className="text-[11px] font-black text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
                                 <span className="material-symbols-outlined text-[14px]">account_tree</span>
                                 Sub-Collections {selectedDocument ? `for ${selectedDocument.docId}` : ''}
                             </h2>
-                            <button onClick={handleAddCollection} disabled={!selectedDocument} className="text-primary hover:bg-primary/10 px-2 py-1 rounded text-xs font-bold transition-colors flex items-center gap-1 disabled:opacity-50">
+                            <button onClick={handleAddCollection} disabled={!selectedDocument} className="text-primary hover:bg-surface-container-highest px-2 py-1 rounded text-xs font-bold transition-colors flex items-center gap-1 disabled:opacity-50">
                                 <span className="material-symbols-outlined text-[14px]">add</span>
                                 Start Sub-collection
                             </button>
                         </div>
                         <div className="flex-1 overflow-x-auto p-4 flex gap-4">
                             {subCollections.map(sub => (
-                                <div key={sub} onClick={() => handleSubCollectionClick(sub)} className="w-48 h-24 shrink-0 bg-surface-container border border-outline-variant/20 rounded-xl p-4 flex flex-col justify-between hover:border-primary/40 hover:shadow-md cursor-pointer transition-all group">
+                                <div key={sub} onClick={() => handleSubCollectionClick(sub)} className="w-48 h-24 shrink-0 bg-surface-container border border-black/5 dark:border-white/5 rounded-xl p-4 flex flex-col justify-between hover:border-primary hover:shadow-md cursor-pointer transition-all group">
                                     <div className="flex items-center gap-2 text-on-surface">
                                         <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">folder</span>
                                         <span className="font-bold text-sm truncate">{sub}</span>
@@ -509,7 +509,7 @@ const DocumentExplorer = ({ cluster }) => {
                             )}
                             
                             {selectedDocument && subCollections.length === 0 && (
-                                <div onClick={handleAddCollection} className="w-48 h-24 shrink-0 bg-surface-container-lowest border-2 border-dashed border-outline-variant/30 rounded-xl p-4 flex flex-col items-center justify-center hover:border-primary/50 cursor-pointer transition-all text-on-surface-variant hover:text-primary">
+                                <div onClick={handleAddCollection} className="w-48 h-24 shrink-0 bg-surface-container border-2 border-dashed border-black/5 dark:border-white/5 rounded-xl p-4 flex flex-col items-center justify-center hover:border-primary cursor-pointer transition-all text-on-surface-variant hover:text-primary">
                                     <span className="material-symbols-outlined text-2xl mb-1">add_circle</span>
                                     <span className="text-xs font-bold">New Sub-collection</span>
                                 </div>

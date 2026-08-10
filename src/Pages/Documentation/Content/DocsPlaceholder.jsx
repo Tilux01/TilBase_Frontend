@@ -33,13 +33,13 @@ const DocsPlaceholder = () => {
                     Check back soon for incredible features!
                 </p>
 
-                <div className="bg-surface-container/50 border border-outline-variant/30 px-6 py-4 rounded-xl max-w-md w-full">
+                <div className="bg-surface-container border border-black/5 dark:border-black/5 dark:border-white/5 px-6 py-4 rounded-xl max-w-md w-full">
                     <h3 className="text-sm font-bold text-on-surface mb-2 uppercase tracking-widest text-left">Stay Updated</h3>
                     <div className="flex gap-2">
                         <input 
                             type="email" 
                             placeholder="Enter your email" 
-                            className="flex-1 bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-2 text-sm text-on-surface focus:border-primary outline-none"
+                            className="flex-1 bg-surface-container-highest border border-black/5 dark:border-black/5 dark:border-white/5 rounded-lg px-4 py-2 text-sm text-on-surface focus:border-primary outline-none"
                         />
                         <button className="bg-primary text-on-primary px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors">
                             Notify Me

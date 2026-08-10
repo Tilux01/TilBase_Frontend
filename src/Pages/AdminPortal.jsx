@@ -62,7 +62,7 @@ const AdminPortal = () => {
     if (!isAuthenticated) {
         return (
             <div className="min-h-screen bg-surface flex items-center justify-center p-6">
-                <div className="w-full max-w-md bg-surface-container-lowest p-8 rounded-2xl shadow-xl border border-outline-variant/10">
+                <div className="w-full max-w-md bg-surface-container-highestest p-8 rounded-2xl shadow-xl border border-black/5 dark:border-white/5">
                     <div className="text-center mb-8">
                         <h1 className="text-3xl font-extrabold text-on-surface">Admin Portal</h1>
                         <p className="text-on-surface-variant text-sm mt-2">Sign in to manage support tickets</p>
@@ -75,7 +75,7 @@ const AdminPortal = () => {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full bg-surface-container p-3 rounded-lg border border-outline-variant/30 text-on-surface focus:outline-none focus:border-primary transition-colors" 
+                                className="w-full bg-surface-container p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface focus:outline-none focus:border-primary transition-colors" 
                             />
                         </div>
                         <div className="space-y-2">
@@ -85,7 +85,7 @@ const AdminPortal = () => {
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full bg-surface-container p-3 rounded-lg border border-outline-variant/30 text-on-surface focus:outline-none focus:border-primary transition-colors" 
+                                className="w-full bg-surface-container p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface focus:outline-none focus:border-primary transition-colors" 
                             />
                         </div>
                         <button type="submit" disabled={isLoggingIn} className="w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors mt-6 disabled:opacity-50">
@@ -105,16 +105,16 @@ const AdminPortal = () => {
                         <h1 className="text-4xl font-extrabold text-on-surface">Support Admin Dashboard</h1>
                         <p className="text-on-surface-variant text-sm mt-2">Manage all incoming support requests.</p>
                     </div>
-                    <button onClick={fetchTickets} className="px-4 py-2 bg-surface-container border border-outline-variant/20 rounded-lg text-sm font-bold hover:bg-surface-container-high transition-colors">
+                    <button onClick={fetchTickets} className="px-4 py-2 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg text-sm font-bold hover:bg-surface-container-high transition-colors">
                         {isFetching ? 'Refreshing...' : 'Refresh Data'}
                     </button>
                 </div>
 
-                <div className="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant/10 overflow-hidden">
+                <div className="bg-surface-container-highestest rounded-2xl shadow-sm border border-black/5 dark:border-white/5 overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="border-b border-outline-variant/10 bg-surface-container/30">
+                                <tr className="border-b border-black/5 dark:border-white/5 bg-surface-container">
                                     <th className="p-4 text-sm font-bold text-on-surface-variant">Ticket ID</th>
                                     <th className="p-4 text-sm font-bold text-on-surface-variant">User ID</th>
                                     <th className="p-4 text-sm font-bold text-on-surface-variant">Category</th>
@@ -130,7 +130,7 @@ const AdminPortal = () => {
                                         <td colSpan="7" className="p-8 text-center text-on-surface-variant">No support tickets found.</td>
                                     </tr>
                                 ) : tickets.slice(0, 15).map((ticket) => (
-                                    <tr key={ticket.id} className="hover:bg-surface-container/20 transition-colors">
+                                    <tr key={ticket.id} className="hover:bg-surface-container transition-colors">
                                         <td className="p-4 font-mono text-sm">#{ticket.id}</td>
                                         <td className="p-4 text-sm">{ticket.user_id}</td>
                                         <td className="p-4 text-sm"><span className="bg-surface-container px-2 py-1 rounded text-xs">{ticket.category}</span></td>
@@ -158,7 +158,7 @@ const AdminPortal = () => {
                         </table>
                     </div>
                     {tickets?.length > 0 && (
-                        <div className="p-4 border-t border-outline-variant/10">
+                        <div className="p-4 border-t border-black/5 dark:border-white/5">
                             <PaginationControls 
                                 currentPage={page} 
                                 hasMore={tickets?.length === 16} 

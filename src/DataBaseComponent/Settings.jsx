@@ -174,19 +174,19 @@ const Settings = () => {
                 <div className="col-span-1 flex flex-col gap-2">
                     <button 
                         onClick={() => setActiveTab('profile')}
-                        className={`flex items-center gap-3 p-4 rounded-lg font-bold transition-all border-l-4 ${activeTab === 'profile' ? 'bg-surface-container-high text-primary border-primary' : 'hover:bg-surface-container text-on-surface-variant border-transparent'}`}>
+                        className={`flex items-center gap-3 p-4 rounded-lg font-bold transition-all border-l-4 ${activeTab === 'profile' ? 'bg-surface-container-high text-primary border-primary' : 'hover:bg-surface-container border border-black/5 dark:border-white/5 text-on-surface-variant border-transparent'}`}>
                         <span className="material-symbols-outlined">person</span>
                         Profile
                     </button>
                     <button 
                         onClick={() => setActiveTab('workspace')}
-                        className={`flex items-center gap-3 p-4 rounded-lg font-bold transition-all border-l-4 ${activeTab === 'workspace' ? 'bg-surface-container-high text-primary border-primary' : 'hover:bg-surface-container text-on-surface-variant border-transparent'}`}>
+                        className={`flex items-center gap-3 p-4 rounded-lg font-bold transition-all border-l-4 ${activeTab === 'workspace' ? 'bg-surface-container-high text-primary border-primary' : 'hover:bg-surface-container border border-black/5 dark:border-white/5 text-on-surface-variant border-transparent'}`}>
                         <span className="material-symbols-outlined">work</span>
                         Workspace
                     </button>
                     <button 
                         onClick={() => setActiveTab('apikeys')}
-                        className={`flex items-center gap-3 p-4 rounded-lg font-bold transition-all border-l-4 ${activeTab === 'apikeys' ? 'bg-surface-container-high text-primary border-primary' : 'hover:bg-surface-container text-on-surface-variant border-transparent'}`}>
+                        className={`flex items-center gap-3 p-4 rounded-lg font-bold transition-all border-l-4 ${activeTab === 'apikeys' ? 'bg-surface-container-high text-primary border-primary' : 'hover:bg-surface-container border border-black/5 dark:border-white/5 text-on-surface-variant border-transparent'}`}>
                         <span className="material-symbols-outlined">api</span>
                         API Keys
                     </button>
@@ -196,11 +196,11 @@ const Settings = () => {
                     {}
                     {activeTab === 'profile' && (
                         <>
-                            <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                            <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                                 <h3 className="text-xl font-bold text-on-surface mb-6">Profile Information</h3>
                                 
                                 <div className="flex items-center gap-6 mb-8">
-                                    <div className="w-24 h-24 rounded-full bg-surface-container overflow-hidden border-2 border-outline-variant/30 flex-shrink-0 relative group">
+                                    <div className="w-24 h-24 rounded-full bg-surface-container border border-black/5 dark:border-white/5 overflow-hidden border-2 border-black/5 dark:border-white/5 flex-shrink-0 relative group">
                                         <img src={avatarPreview || "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"} alt="Profile" className="w-full h-full object-cover transition-opacity group-hover:opacity-50" onError={(e) => { e.target.src = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"; }} />
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                                             <span className="material-symbols-outlined text-white">upload</span>
@@ -212,7 +212,7 @@ const Settings = () => {
                                             type="file" 
                                             accept="image/*"
                                             onChange={handleAvatarChange}
-                                            className="w-full bg-surface-container p-2 rounded-lg border border-outline-variant/30 text-on-surface focus:outline-none focus:border-primary transition-colors text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer" 
+                                            className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 p-2 rounded-lg border border-black/5 dark:border-white/5 text-on-surface focus:outline-none focus:border-primary transition-colors text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-surface-container-highest-highest file:text-primary hover:file:bg-surface-container-highest-highest cursor-pointer" 
                                         />
                                     </div>
                                 </div>
@@ -224,7 +224,7 @@ const Settings = () => {
                                             type="text" 
                                             value={userName} 
                                             onChange={(e) => setUserName(e.target.value)}
-                                            className="w-full bg-surface-container p-3 rounded-lg border border-outline-variant/30 text-on-surface focus:outline-none focus:border-primary transition-colors" 
+                                            className="w-full bg-surface-container border border-black/5 dark:border-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface focus:outline-none focus:border-primary transition-colors" 
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -233,7 +233,7 @@ const Settings = () => {
                                             type="email" 
                                             value={userCred?.Email || ''} 
                                             disabled 
-                                            className="w-full bg-surface-container/50 p-3 rounded-lg border border-outline-variant/30 text-on-surface-variant opacity-70 cursor-not-allowed" 
+                                            className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface-variant opacity-70 cursor-not-allowed" 
                                         />
                                     </div>
                                 </div>
@@ -249,7 +249,7 @@ const Settings = () => {
                                 </div>
                             </div>
 
-                            <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                            <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                                 <h3 className="text-xl font-bold text-on-surface mb-6">Danger Zone</h3>
                                 <div className="p-4 border border-error/30 bg-error-container/20 rounded-lg flex justify-between items-center">
                                     <div>
@@ -266,7 +266,7 @@ const Settings = () => {
 
                     {/* WORKSPACE TAB */}
                     {activeTab === 'workspace' && (
-                        <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                        <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                             <h3 className="text-xl font-bold text-on-surface mb-6">Workspace Configuration</h3>
                             {currentProjectCred ? (
                                 <>
@@ -277,7 +277,7 @@ const Settings = () => {
                                                 type="text" 
                                                 value={projectName} 
                                                 onChange={(e) => setProjectName(e.target.value)}
-                                                className="w-full bg-surface-container p-3 rounded-lg border border-outline-variant/30 text-on-surface focus:outline-none focus:border-primary transition-colors" 
+                                                className="w-full bg-surface-container border border-black/5 dark:border-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface focus:outline-none focus:border-primary transition-colors" 
                                             />
                                         </div>
                                         <div className="space-y-2">
@@ -286,7 +286,7 @@ const Settings = () => {
                                                 value={projectDesc} 
                                                 onChange={(e) => setProjectDesc(e.target.value)}
                                                 rows="3"
-                                                className="w-full bg-surface-container p-3 rounded-lg border border-outline-variant/30 text-on-surface focus:outline-none focus:border-primary transition-colors" 
+                                                className="w-full bg-surface-container border border-black/5 dark:border-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface focus:outline-none focus:border-primary transition-colors" 
                                             ></textarea>
                                         </div>
                                         <div className="space-y-2">
@@ -295,7 +295,7 @@ const Settings = () => {
                                                 type="text" 
                                                 value={currentProjectCred?.Environment || ''} 
                                                 disabled 
-                                                className="w-full bg-surface-container/50 p-3 rounded-lg border border-outline-variant/30 text-on-surface-variant opacity-70 cursor-not-allowed uppercase" 
+                                                className="w-full bg-surface-container-highest border border-black/5 dark:border-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5 text-on-surface-variant opacity-70 cursor-not-allowed uppercase" 
                                             />
                                         </div>
                                     </div>
@@ -318,35 +318,35 @@ const Settings = () => {
                     {/* API KEYS TAB */}
                     {activeTab === 'apikeys' && (
                         <div className="space-y-6">
-                            <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                            <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                                 <h3 className="text-xl font-bold text-on-surface mb-2">Profile Key</h3>
                                 <p className="text-sm text-on-surface-variant mb-6">Your master profile key used for global authentication.</p>
                                 
                                 <div className="flex items-center gap-4">
-                                    <div className="flex-1 bg-surface-container p-4 rounded-lg border border-outline-variant/30 font-mono text-sm overflow-x-auto text-on-surface whitespace-nowrap">
+                                    <div className="flex-1 bg-surface-container border border-black/5 dark:border-white/5 p-4 rounded-lg border border-black/5 dark:border-white/5 font-mono text-sm overflow-x-auto text-on-surface whitespace-nowrap">
                                         {userCred?.profile_key || 'No Key Found'}
                                     </div>
                                     <button 
                                         onClick={handleRegenerateProfileKey}
-                                        className="px-4 py-3 bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/30 rounded-lg text-primary font-bold text-sm transition-colors flex items-center gap-2">
+                                        className="px-4 py-3 bg-surface-container-high hover:bg-surface-container-highest border border-black/5 dark:border-white/5 rounded-lg text-primary font-bold text-sm transition-colors flex items-center gap-2">
                                         <span className="material-symbols-outlined text-[18px]">autorenew</span>
                                         Regenerate
                                     </button>
                                 </div>
                             </div>
 
-                            <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                            <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                                 <h3 className="text-xl font-bold text-on-surface mb-2">Project Key</h3>
                                 <p className="text-sm text-on-surface-variant mb-6">The access key for the currently active workspace.</p>
                                 
                                 {currentProjectCred ? (
                                     <div className="flex items-center gap-4">
-                                        <div className="flex-1 bg-surface-container p-4 rounded-lg border border-outline-variant/30 font-mono text-sm overflow-x-auto text-on-surface whitespace-nowrap">
+                                        <div className="flex-1 bg-surface-container border border-black/5 dark:border-white/5 p-4 rounded-lg border border-black/5 dark:border-white/5 font-mono text-sm overflow-x-auto text-on-surface whitespace-nowrap">
                                             {currentProjectCred?.Project_Key || 'No Key Found'}
                                         </div>
                                         <button 
                                             onClick={handleRegenerateProjectKey}
-                                            className="px-4 py-3 bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/30 rounded-lg text-primary font-bold text-sm transition-colors flex items-center gap-2">
+                                            className="px-4 py-3 bg-surface-container-high hover:bg-surface-container-highest border border-black/5 dark:border-white/5 rounded-lg text-primary font-bold text-sm transition-colors flex items-center gap-2">
                                             <span className="material-symbols-outlined text-[18px]">autorenew</span>
                                             Regenerate
                                         </button>

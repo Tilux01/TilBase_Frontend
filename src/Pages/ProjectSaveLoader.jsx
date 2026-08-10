@@ -62,7 +62,7 @@ const ProjectSaveLoader = () => {
         <div>
             <main className="relative flex flex-col items-center justify-center w-full h-full p-6">
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute top-0 left-0 w-full h-full bg-surface-container-low opacity-40"></div>
+                    <div className="absolute top-0 left-0 w-full h-full bg-surface-container-highest opacity-40"></div>
                     <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: "radial-gradient(#004e36 0.5px, transparent 0.5px)", backgroundSize: "32px 32px"}}></div>
                 </div>
                 <div className="relative z-10 flex flex-col items-center text-center space-y-6">

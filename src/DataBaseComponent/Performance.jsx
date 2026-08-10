@@ -87,7 +87,7 @@ const Performance = () => {
 
                 <div className="flex flex-col lg:flex-row gap-6 w-full mb-6">
                     {}
-                    <div className="flex-1 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                    <div className="flex-1 bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
                         <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
                             <span className="material-symbols-outlined text-primary animate-pulse">radar</span>
                             Live Cluster Latency
@@ -95,8 +95,8 @@ const Performance = () => {
                         
                         {loading ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="animate-pulse h-24 bg-surface-container rounded-lg"></div>
-                                <div className="animate-pulse h-24 bg-surface-container rounded-lg"></div>
+                                <div className="animate-pulse h-24 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg"></div>
+                                <div className="animate-pulse h-24 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg"></div>
                             </div>
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -107,7 +107,7 @@ const Performance = () => {
                                         return (
                                             <div 
                                                 key={cluster.id} 
-                                                className={`relative overflow-hidden flex flex-col justify-center p-6 bg-surface-container rounded-lg border border-outline-variant/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${isHighLatency ? 'animate-hologram' : ''}`}
+                                                className={`relative overflow-hidden flex flex-col justify-center p-6 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg border border-black/5 dark:border-white/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${isHighLatency ? 'animate-hologram' : ''}`}
                                             >
                                                 {}
                                                 {isHighLatency && (
@@ -124,7 +124,7 @@ const Performance = () => {
                                         );
                                     })
                                 ) : (
-                                    <div className="col-span-full p-6 text-center bg-surface-container rounded-lg text-sm text-on-surface-variant">
+                                    <div className="col-span-full p-6 text-center bg-surface-container border border-black/5 dark:border-white/5 rounded-lg text-sm text-on-surface-variant">
                                         No clusters deployed yet.
                                     </div>
                                 )}
@@ -133,14 +133,14 @@ const Performance = () => {
                     </div>
 
                     {}
-                    <div className="w-full lg:w-1/3 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 flex flex-col items-center justify-center relative overflow-hidden">
+                    <div className="w-full lg:w-1/3 bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5 flex flex-col items-center justify-center relative overflow-hidden">
                         <h2 className="text-xl font-bold text-on-surface mb-8 self-start w-full flex items-center gap-2">
                             <span className="material-symbols-outlined text-secondary">speed</span>
                             Throughput Load
                         </h2>
                         
                         {loading ? (
-                            <div className="animate-pulse w-48 h-24 bg-surface-container rounded-t-full"></div>
+                            <div className="animate-pulse w-48 h-24 bg-surface-container border border-black/5 dark:border-white/5 rounded-t-full"></div>
                         ) : (
                             <div className="relative flex flex-col items-center w-full max-w-[250px]">
                                 {}
@@ -162,7 +162,7 @@ const Performance = () => {
                                         style={{ transform: `rotate(${-90 + (readPercentage / 100) * 180}deg)` }}
                                     ></div>
                                     
-                                    <div className="absolute bottom-[-10px] w-6 h-6 bg-surface-container-lowest rounded-full border-4 border-on-surface z-10"></div>
+                                    <div className="absolute bottom-[-10px] w-6 h-6 bg-surface-container rounded-full border-4 border-on-surface z-10"></div>
                                 </div>
                                 
                                 <div className="flex justify-between w-full mt-6 text-sm font-bold text-on-surface">
@@ -177,16 +177,16 @@ const Performance = () => {
                 </div>
 
                 {}
-                <div className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 w-full overflow-hidden">
+                <div className="bg-surface-container p-8 rounded-xl shadow-sm border border-black/5 dark:border-white/5 w-full overflow-hidden">
                     <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
                         <span className="material-symbols-outlined text-primary">waterfall_chart</span>
                         7-Day Latency Trend
                     </h2>
                     
                     {loading ? (
-                        <div className="animate-pulse h-48 bg-surface-container rounded-lg w-full"></div>
+                        <div className="animate-pulse h-48 bg-surface-container border border-black/5 dark:border-white/5 rounded-lg w-full"></div>
                     ) : (
-                        <div className="w-full h-64 flex items-end justify-around gap-2 px-4 pb-8 pt-12 relative bg-surface-container/20 rounded-lg border border-outline-variant/10">
+                        <div className="w-full h-64 flex items-end justify-around gap-2 px-4 pb-8 pt-12 relative bg-surface-container border border-black/5 dark:border-white/5 rounded-lg border border-black/5 dark:border-white/5">
                             {}
                             <div className="absolute inset-0 flex flex-col justify-between px-4 pb-8 pt-12 pointer-events-none">
                                 {[1, 2, 3, 4].map((i) => (
