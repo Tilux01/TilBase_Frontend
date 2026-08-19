@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Box, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import { Mail, CheckCircle2, Loader2, Database, KeyRound } from 'lucide-react';
+import TilBaseLogo from "../Components/TilBaseLogo";
 
 const FloatingNodes = () => {
   const groupRef = useRef();
@@ -95,7 +96,7 @@ const EmailVerification = () => {
                     <div className="w-10 h-10 bg-gradient-to-tr from-[#3eb4ff] to-[#84d7b2] rounded-xl flex items-center justify-center shadow-lg">
                         <Database size={20} color="white" />
                     </div>
-                    <span className="text-2xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#84d7b2] to-[#3eb4ff]">TilBase</span>
+                    <div className="flex items-center gap-2"><TilBaseLogo className="w-8 h-8" /><span className="text-2xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#84d7b2] to-[#3eb4ff]">TilBase</span></div>
                 </div>
 
                 <div className="absolute inset-0 z-0">
@@ -128,7 +129,7 @@ const EmailVerification = () => {
                         <div className="w-10 h-10 bg-gradient-to-tr from-[#3eb4ff] to-[#84d7b2] rounded-xl flex items-center justify-center shadow-lg">
                             <Database size={20} color="white" />
                         </div>
-                        <span className="text-2xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#84d7b2] to-[#3eb4ff]">TilBase</span>
+                        <div className="flex items-center gap-2"><TilBaseLogo className="w-8 h-8" /><span className="text-2xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#84d7b2] to-[#3eb4ff]">TilBase</span></div>
                     </div>
 
                     <div className="mb-8 text-center lg:text-left">

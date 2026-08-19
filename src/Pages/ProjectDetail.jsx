@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { generateRandom } from '../BasicFx'
@@ -5,6 +6,8 @@ import { objContext } from '../App'
 import CopyButton from '../DataBaseComponent/CopyButton'
 
 const ProjectDetail = () => {
+  const { showModal } = useGlobalModal();
+
     const { userCred } = useContext(objContext)
     const navigate = useNavigate()
     const location = useLocation()
@@ -23,25 +26,25 @@ const ProjectDetail = () => {
         const random = generateRandom()
         setProjectKey(random)
     }, [])
-    const proceed = () => {
+    const proceed = async () => {
         if (ProjectName.trim() == "") {
-            alert("Please input project title to continue")
+            await showModal({ type: "alert", message: "Please input project title to continue" })
             return
         }
         if (ProjectName?.length > 15) {
-            alert("Please use shoter name for the project")
+            await showModal({ type: "alert", message: "Please use shoter name for the project" })
             return
         }
         if (projectDescription?.trim() == "") {
-            alert("Please input project description to continue")
+            await showModal({ type: "alert", message: "Please input project description to continue" })
             return
         }
         if (projectDescription?.length > 255) {
-            alert("please provide shorter description")
+            await showModal({ type: "alert", message: "please provide shorter description" })
             return
         }
         if (!Environment) {
-            alert("Please select an environment")
+            await showModal({ type: "alert", message: "Please select an environment" })
             return
         }
         navigate("/PlanSeclection", {

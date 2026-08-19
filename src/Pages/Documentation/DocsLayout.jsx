@@ -9,7 +9,7 @@ const DocsLayout = ({ children, toc }) => {
             <DocsSidebar />
             
             <div className="flex pt-16 md:pl-72 w-full max-w-full">
-                <main className="flex-1 w-full max-w-5xl mx-auto px-6 py-12 lg:px-12">
+                <main className="flex-1 min-w-0 max-w-5xl mx-auto px-6 py-12 lg:px-12">
                     {children}
                 </main>
                 

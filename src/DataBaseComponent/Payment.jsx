@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -5,6 +6,8 @@ import { objContext } from '../App';
 import DashboardLayout from './DashboardLayout';
 
 const Payment = () => {
+  const { showModal } = useGlobalModal();
+
     const { userCred, serverRoute, setUserPlan } = useContext(objContext);
 
     const navigate = useNavigate();
@@ -32,7 +35,7 @@ const Payment = () => {
     const handlePayment = async (e) => {
         e.preventDefault();
         if (!nameOnCard || !cardNumber || !expiry || !cvc) {
-            alert("Please fill in all card details to proceed.");
+            await showModal({ type: "alert", message: "Please fill in all card details to proceed." });
             return;
         }
 
@@ -59,12 +62,12 @@ const Payment = () => {
                     Highest_CLusters: selectedPlan === 'premium' ? 9999 : 20
                 }));
                 
-                alert(`Success! Upgraded to ${planDetails[selectedPlan].name} Tier.`);
+                await showModal({ type: "alert", message: `Success! Upgraded to ${planDetails[selectedPlan].name} Tier.` });
                 navigate('/billing');
             }
         } catch (error) {
             console.error(error);
-            alert("Payment failed. Please try again.");
+            await showModal({ type: "alert", message: "Payment failed. Please try again." });
         } finally {
             setIsProcessing(false);
         }

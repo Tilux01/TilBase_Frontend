@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { objContext } from '../../App';
+import TilBaseLogo from "../../Components/TilBaseLogo";
 
 const DocsHeader = () => {
     const { theme, setTheme } = useContext(objContext);
@@ -14,7 +15,7 @@ const DocsHeader = () => {
         <header className="fixed top-0 w-full h-16 z-50 bg-surface-container border-b border-black/5 dark:border-black/5 dark:border-white/5 flex justify-between items-center px-6 transition-colors duration-300">
             <div className="flex items-center gap-4">
                 <Link to="/docs" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                    <span className="text-xl font-bold tracking-tighter text-primary">TIlBase</span>
+                    <div className="flex items-center gap-2"><TilBaseLogo className="w-6 h-6" /><span className="text-xl font-bold tracking-tighter text-primary">TilBase</span></div>
                     <span className="text-xl font-medium text-on-surface-variant">Docs</span>
                 </Link>
                 

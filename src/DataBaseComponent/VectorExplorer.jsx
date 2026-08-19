@@ -1,9 +1,12 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { objContext } from '../App';
 
 const VectorExplorer = ({ cluster }) => {
+  const { showModal } = useGlobalModal();
+
     const { serverRoute } = useContext(objContext);
 
     
@@ -85,12 +88,12 @@ const VectorExplorer = ({ cluster }) => {
             if (!Array.isArray(denseArray)) throw new Error("Dense vector must be an array");
             metaObj = editVectorMeta ? JSON.parse(editVectorMeta) : {};
         } catch (e) {
-            alert("Invalid JSON in array or metadata");
+            await showModal({ type: "alert", message: "Invalid JSON in array or metadata" });
             return;
         }
 
         if (!activeNamespace && isNew) {
-            alert("Please provide or select a namespace");
+            await showModal({ type: "alert", message: "Please provide or select a namespace" });
             return;
         }
 
@@ -114,13 +117,13 @@ const VectorExplorer = ({ cluster }) => {
             }
         } catch (error) {
             console.error(error);
-            alert("Failed to save vector");
+            await showModal({ type: "alert", message: "Failed to save vector" });
         }
         setIsSaving(false);
     };
 
     const handleDeleteVector = async (vectorId) => {
-        if (!window.confirm(`Delete vector ${vectorId}?`)) return;
+        if (!await showModal({ type: "confirm", message: `Delete vector ${vectorId}?`, isDestructive: true })) return;
         try {
             await axios.post(`${serverRoute}/api/vectorExplorer/deleteVector`, {
                 clusterId: cluster.id,
@@ -148,7 +151,7 @@ const VectorExplorer = ({ cluster }) => {
             try {
                 queryVector = JSON.parse(searchQuery);
             } catch (e) {
-                alert("Invalid vector array syntax for query");
+                await showModal({ type: "alert", message: "Invalid vector array syntax for query" });
                 return;
             }
         }
@@ -158,7 +161,7 @@ const VectorExplorer = ({ cluster }) => {
             try {
                 parsedFilter = JSON.parse(searchFilter);
             } catch (e) {
-                alert("Invalid JSON in Pre-Filter");
+                await showModal({ type: "alert", message: "Invalid JSON in Pre-Filter" });
                 return;
             }
         }
@@ -180,7 +183,7 @@ const VectorExplorer = ({ cluster }) => {
             }
         } catch (error) {
             console.error(error);
-            alert("Search failed");
+            await showModal({ type: "alert", message: "Search failed" });
         }
         setIsSearching(false);
     };

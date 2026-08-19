@@ -31,197 +31,85 @@ const PlanSelect = () => {
                     <p className="text-on-surface-variant max-w-lg">Select a plan that grows with your application, from local development to global production.</p>
                 </div>
                 <div className="w-full px-6 md:px-12 mx-auto">
-                    <div className="flex gap-8 items-stretch justify-center items-center">
-                        {
-                            userPlanGet?.Plan_Name == "free" ?
-                                (<div style={{ maxWidth: "400px" }} className="bg-surface rounded-2xl p-10 border border-black/5 dark:border-white/5 flex flex-col relative transition-all duration-300 hover:border-primary">
-                                    {userPlanGet?.Plan_Name == "free" ?
-                                        (<div className="absolute top-8 right-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch justify-center">
+                        {[
+                            { 
+                                id: "free", name: "Free Tier", price: "$0", 
+                                desc: "Perfect for prototyping and personal side projects.", 
+                                features: { projects: "1 Project", clusters: "2 Clusters", storage: "1GB Storage", compute: "500MB RAM" },
+                                bullets: ["Shared cloud nodes", "Community forum support"]
+                            },
+                            { 
+                                id: "standard", name: "Standard Tier", price: "$49", 
+                                desc: "Perfect for growing startups and production apps.", 
+                                features: { projects: "10 Projects", clusters: "20 Clusters", storage: "10GB Storage", compute: "8GB RAM" },
+                                bullets: ["Dedicated resources", "Priority email support", "Advanced Analytics"]
+                            },
+                            { 
+                                id: "premium", name: "Premium Tier", price: "$199", 
+                                desc: "Enterprise-grade performance with dedicated global resources.", 
+                                features: { projects: "Unlimited", clusters: "Unlimited", storage: "100GB NVMe", compute: "32GB RAM" },
+                                bullets: ["24/7 Phone & Chat Support", "Multi-region sharding", "Custom SSO & RBAC", "Point-in-time recovery"]
+                            }
+                        ].map((tier) => {
+                            const isCurrent = (userPlanGet?.Plan_Name || 'free') === tier.id;
+                            
+                            return (
+                                <div key={tier.id} className={`bg-surface rounded-2xl p-8 border ${isCurrent ? 'border-primary shadow-lg shadow-primary/10' : 'border-black/5 dark:border-white/5 opacity-60 grayscale-[0.2]'} flex flex-col relative transition-all duration-300`}>
+                                    {isCurrent && (
+                                        <div className="absolute top-6 right-6">
                                             <span className="bg-surface-container-highest text-primary text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest border border-primary">Current Plan</span>
-                                        </div>)
-                                        : null
-                                    }
-                                    <div className="mb-10">
-                                        <h3 className="text-2xl font-bold text-on-surface mb-2">Free Tier</h3>
-                                        <div className="flex items-baseline gap-1">
-                                            <span className="text-5xl font-black text-on-surface">$0</span>
-                                            <span className="text-on-surface-variant text-lg">/mo</span>
                                         </div>
-                                        <p className="text-on-surface-variant mt-4 text-sm leading-relaxed">Perfect for prototyping and personal side projects.</p>
+                                    )}
+                                    <div className="mb-8">
+                                        <h3 className="text-xl font-bold text-on-surface mb-2">{tier.name}</h3>
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-4xl font-black text-on-surface">{tier.price}</span>
+                                            <span className="text-on-surface-variant text-sm">/mo</span>
+                                        </div>
+                                        <p className="text-on-surface-variant mt-3 text-xs leading-relaxed min-h-[40px]">{tier.desc}</p>
                                     </div>
-                                    <div className="space-y-8 flex-1">
-                                        <div className="space-y-4">
-                                            <p className="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Included Resources</p>
-                                            <div className="grid grid-cols-2 gap-3">
-                                                <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                                    <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Projects</p>
-                                                    <p className="font-mono text-sm font-semibold">1 Project</p>
+                                    <div className="space-y-6 flex-1">
+                                        <div className="space-y-3">
+                                            <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Included Resources</p>
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <div className="bg-surface-container-highest p-3 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
+                                                    <p className="text-[9px] text-on-surface-variant uppercase font-bold mb-1">Projects</p>
+                                                    <p className={`font-mono text-xs font-bold ${tier.id !== 'free' ? 'text-primary' : ''}`}>{tier.features.projects}</p>
                                                 </div>
-                                                <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                                    <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Clusters</p>
-                                                    <p className="font-mono text-sm font-semibold">2 Clusters</p>
+                                                <div className="bg-surface-container-highest p-3 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
+                                                    <p className="text-[9px] text-on-surface-variant uppercase font-bold mb-1">Clusters</p>
+                                                    <p className={`font-mono text-xs font-bold ${tier.id !== 'free' ? 'text-primary' : ''}`}>{tier.features.clusters}</p>
                                                 </div>
-                                                <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                                    <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Storage</p>
-                                                    <p className="font-mono text-sm font-semibold">1GB Storage</p>
+                                                <div className="bg-surface-container-highest p-3 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
+                                                    <p className="text-[9px] text-on-surface-variant uppercase font-bold mb-1">Storage</p>
+                                                    <p className={`font-mono text-xs font-bold ${tier.id !== 'free' ? 'text-primary' : ''}`}>{tier.features.storage}</p>
                                                 </div>
-                                                <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                                    <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Compute</p>
-                                                    <p className="font-mono text-sm font-semibold">500MB RAM</p>
+                                                <div className="bg-surface-container-highest p-3 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
+                                                    <p className="text-[9px] text-on-surface-variant uppercase font-bold mb-1">Compute</p>
+                                                    <p className={`font-mono text-xs font-bold ${tier.id !== 'free' ? 'text-primary' : ''}`}>{tier.features.compute}</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <ul className="space-y-4 border-t border-black/5 dark:border-white/5 pt-8">
-                                            <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                                                <span className="material-symbols-outlined text-primary font-bold">check</span>
-                                                <span>Shared cloud nodes</span>
-                                            </li>
-                                            <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                                                <span className="material-symbols-outlined text-primary font-bold">check</span>
-                                                <span>Community forum support</span>
-                                            </li>
+                                        <ul className="space-y-3 border-t border-black/5 dark:border-white/5 pt-6">
+                                            {tier.bullets.map((bullet, idx) => (
+                                                <li key={idx} className="flex items-start gap-2 text-xs text-on-surface-variant">
+                                                    <span className="material-symbols-outlined text-primary text-[14px]">check</span>
+                                                    <span>{bullet}</span>
+                                                </li>
+                                            ))}
                                         </ul>
                                     </div>
-                                    <button onClick={() => { selectPlan("free") }} className="mt-12 w-full py-4 px-4 bg-surface-container-highest text-primary font-bold rounded-xl border-2 border-primary hover:bg-surface-container-highest transition-colors">
-                                        Select Plan
+                                    <button 
+                                        onClick={() => isCurrent ? selectPlan(tier.id) : null} 
+                                        disabled={!isCurrent}
+                                        className={`mt-8 w-full py-3 px-4 font-bold rounded-xl border-2 transition-colors ${isCurrent ? 'bg-primary text-on-primary border-primary shadow-md hover:bg-primary/90' : 'bg-surface-container text-on-surface-variant/50 border-black/5 cursor-not-allowed'}`}
+                                    >
+                                        {isCurrent ? 'Select Plan' : 'Not Available'}
                                     </button>
-                                </div>)
-                                : null
-                        }
-                        {
-                            userPlanGet?.Plan_Name != "premium" ?
-                                (<div style={{ maxWidth: "400px" }} className="relative bg-surface rounded-2xl p-10 border border-black/5 dark:border-white/5 flex flex-col transition-all duration-300 hover:border-primary cursor-pointer">
-                                    {userPlanGet?.Plan_Name == "standard" ?
-                                        (<div className="absolute top-8 right-8">
-                                            <span className="bg-surface-container-highest text-primary text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest border border-primary">Current Plan</span>
-                                        </div>)
-                                        : null
-                                    }
-                                    <div className="mb-10">
-                                        <h3 className="text-2xl font-bold text-on-surface mb-2">Premium</h3>
-                                        <div className="flex items-baseline gap-1">
-                                            <span className="text-5xl font-black text-on-surface">$199</span>
-                                            <span className="text-on-surface-variant text-lg">/mo</span>
-                                        </div>
-                                        <p className="text-on-surface-variant mt-4 text-sm leading-relaxed">Enterprise-grade performance with dedicated global resources.</p>
-                                    </div>
-                                    <div className="space-y-8 flex-1">
-                                        <div className="space-y-4">
-                                            <p className="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Enterprise Resources</p>
-                                            <div className="grid grid-cols-2 gap-3">
-                                                <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                                    <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Projects</p>
-                                                    <p className="font-mono text-sm font-bold text-primary">Unlimited</p>
-                                                </div>
-                                                <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                                    <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Clusters</p>
-                                                    <p className="font-mono text-sm font-bold text-primary">Unlimited</p>
-                                                </div>
-                                                <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                                    <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Storage</p>
-                                                    <p className="font-mono text-sm font-bold text-primary">100GB NVMe</p>
-                                                </div>
-                                                <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                                    <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Compute</p>
-                                                    <p className="font-mono text-sm font-bold text-primary">32GB RAM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <ul className="space-y-4 border-t border-black/5 dark:border-white/5 pt-8">
-                                            <li className="flex items-center gap-3 text-sm font-bold text-on-surface">
-                                                <span className="material-symbols-outlined text-primary">verified</span>
-                                                <span>24/7 Phone &amp; Chat Support</span>
-                                            </li>
-                                            <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                                                <span className="material-symbols-outlined text-primary/60">verified</span>
-                                                <span>Multi-region sharding</span>
-                                            </li>
-                                            <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                                                <span className="material-symbols-outlined text-primary/60">verified</span>
-                                                <span>Custom SSO &amp; RBAC</span>
-                                            </li>
-                                            <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                                                <span className="material-symbols-outlined text-primary/60">verified</span>
-                                                <span>Point-in-time recovery</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {userPlanGet?.Plan_Name == "standard" ?
-                                        (<button onClick={() => { selectPlan("standard") }} className="mt-12 w-full py-4 px-4 bg-surface-container-highest text-primary font-bold rounded-xl border-2 border-primary hover:bg-surface-container-highest transition-colors">
-                                            Select Plan
-                                        </button>)
-                                        : <button onClick={()=>{purchasePlan("standard")}} className="mt-12 w-full py-4 px-4 bg-surface-container-highest text-primary font-bold rounded-xl border-2 border-primary hover:bg-surface-container-highest transition-colors">
-                                            Purchase Plan
-                                        </button>
-                                    }
-                                </div>)
-                                : null
-                        }
-                        <div style={{ maxWidth: "400px" }} className="relative bg-surface rounded-2xl p-10 border border-black/5 dark:border-white/5 flex flex-col transition-all duration-300 hover:border-primary cursor-pointer">
-                            {userPlanGet?.Plan_Name == "premium" ?
-                                (<div className="absolute top-8 right-8">
-                                    <span className="bg-surface-container-highest text-primary text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest border border-primary">Current Plan</span>
-                                </div>)
-                                : null
-                            }
-                            <div className="mb-10">
-                                <h3 className="text-2xl font-bold text-on-surface mb-2">Premium</h3>
-                                <div className="flex items-baseline gap-1">
-                                    <span className="text-5xl font-black text-on-surface">$199</span>
-                                    <span className="text-on-surface-variant text-lg">/mo</span>
                                 </div>
-                                <p className="text-on-surface-variant mt-4 text-sm leading-relaxed">Enterprise-grade performance with dedicated global resources.</p>
-                            </div>
-                            <div className="space-y-8 flex-1">
-                                <div className="space-y-4">
-                                    <p className="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Enterprise Resources</p>
-                                    <div className="grid grid-cols-2 gap-3">
-                                        <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                            <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Projects</p>
-                                            <p className="font-mono text-sm font-bold text-primary">Unlimited</p>
-                                        </div>
-                                        <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                            <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Clusters</p>
-                                            <p className="font-mono text-sm font-bold text-primary">Unlimited</p>
-                                        </div>
-                                        <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                            <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Storage</p>
-                                            <p className="font-mono text-sm font-bold text-primary">100GB NVMe</p>
-                                        </div>
-                                        <div className="bg-surface-container-highest p-4 rounded-xl shadow-sm border border-black/5 dark:border-white/5">
-                                            <p className="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Compute</p>
-                                            <p className="font-mono text-sm font-bold text-primary">32GB RAM</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="space-y-4 border-t border-black/5 dark:border-white/5 pt-8">
-                                    <li className="flex items-center gap-3 text-sm font-bold text-on-surface">
-                                        <span className="material-symbols-outlined text-primary">verified</span>
-                                        <span>24/7 Phone &amp; Chat Support</span>
-                                    </li>
-                                    <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                                        <span className="material-symbols-outlined text-primary/60">verified</span>
-                                        <span>Multi-region sharding</span>
-                                    </li>
-                                    <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                                        <span className="material-symbols-outlined text-primary/60">verified</span>
-                                        <span>Custom SSO &amp; RBAC</span>
-                                    </li>
-                                    <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                                        <span className="material-symbols-outlined text-primary/60">verified</span>
-                                        <span>Point-in-time recovery</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            {userPlanGet?.Plan_Name == "premium" ?
-                                (<button onClick={() => { selectPlan("premium") }} className="mt-12 w-full py-4 px-4 bg-surface-container-highest text-primary font-bold rounded-xl border-2 border-primary hover:bg-surface-container-highest transition-colors">
-                                    Select Plan
-                                </button>)
-                                : <button onClick={()=>{purchasePlan("premium")}} className="mt-12 w-full py-4 px-4 bg-surface-container-highest text-primary font-bold rounded-xl border-2 border-primary hover:bg-surface-container-highest transition-colors">
-                                    Purchase Plan
-                                </button>
-                            }
-                        </div>
+                            );
+                        })}
                     </div>
                     <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                         <a className="group p-6 bg-surface rounded-2xl flex items-center justify-between hover:bg-surface-container-highest transition-all border border-black/5 dark:border-white/5 hover:border-primary" href="#">

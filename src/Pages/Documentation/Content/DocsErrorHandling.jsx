@@ -82,7 +82,7 @@ const DocsErrorHandling = () => {
                     Overview
                 </h2>
                 <p className="text-on-surface-variant leading-relaxed">
-                    Whenever an operation fails—whether due to incorrect credentials, hitting a billing limit, or attempting an unauthorized action—TilBase always returns a standardized JSON payload. If you are using the Node.js SDK, these errors are thrown as standard exceptions that you should catch using <code>try/catch</code> blocks.
+                    Whenever an operation fails - whether due to incorrect credentials, hitting a billing limit, or attempting an unauthorized action - TilBase always returns a standardized JSON payload. If you are using the Node.js SDK, these errors are thrown as standard exceptions that you should catch using <code>try/catch</code> blocks.
                 </p>
             </section>
 

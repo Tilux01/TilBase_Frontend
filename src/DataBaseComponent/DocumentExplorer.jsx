@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -6,6 +7,8 @@ import FieldEditor from './FieldEditor';
 import { io } from 'socket.io-client';
 
 const DocumentExplorer = ({ cluster }) => {
+  const { showModal } = useGlobalModal();
+
     const { serverRoute } = useContext(objContext);
     
     const [breadcrumbs, setBreadcrumbs] = useState([]); 
@@ -171,7 +174,7 @@ const DocumentExplorer = ({ cluster }) => {
     };
 
     const handleSaveDocument = async () => {
-        if (!selectedDocument && !activeCollectionPath) return alert("Select a collection to add a document");
+        if (!selectedDocument && !activeCollectionPath) return await showModal({ type: "alert", message: "Select a collection to add a document" });
         
         let payload = documentData;
         if (viewMode === 'json') {
@@ -182,7 +185,7 @@ const DocumentExplorer = ({ cluster }) => {
                 payload = parsed;
                 setDocumentData(payload); 
             } catch (e) {
-                return alert("Invalid data format. Ensure it is a valid object.");
+                return await showModal({ type: "alert", message: "Invalid data format. Ensure it is a valid object." });
             }
         }
 
@@ -204,7 +207,7 @@ const DocumentExplorer = ({ cluster }) => {
                 documentData: payload
             });
             if (res.data.success) {
-                alert("Document saved!");
+                await showModal({ type: "alert", message: "Document saved!" });
                 fetchDocuments(activeCollectionPath);
                 if (!selectedDocument) {
                     // Set the newly created document as active
@@ -213,14 +216,14 @@ const DocumentExplorer = ({ cluster }) => {
             }
         } catch (error) {
             console.error(error);
-            alert("Error saving document");
+            await showModal({ type: "alert", message: "Error saving document" });
         }
         setIsSaving(false);
     };
 
     const handleDeleteDocument = async () => {
         if (!selectedDocument) return;
-        const confirmDel = window.confirm(`Delete document ${selectedDocument.docId} and ALL its subcollections?`);
+        const confirmDel = await showModal({ type: "confirm", message: `Delete document ${selectedDocument.docId} and ALL its subcollections?`, isDestructive: true });
         if (!confirmDel) return;
 
         try {
@@ -229,7 +232,7 @@ const DocumentExplorer = ({ cluster }) => {
                 path: selectedDocument.fullPath
             });
             if (res.data.success) {
-                alert("Deleted!");
+                await showModal({ type: "alert", message: "Deleted!" });
                 setSelectedDocument(null);
                 setDocumentData({});
                 setJsonContent('{\n  \n}');
@@ -237,12 +240,12 @@ const DocumentExplorer = ({ cluster }) => {
             }
         } catch (error) {
             console.error(error);
-            alert("Error deleting document");
+            await showModal({ type: "alert", message: "Error deleting document" });
         }
     };
 
-    const handleAddCollection = () => {
-        const name = prompt("Enter new collection name:");
+    const handleAddCollection = async () => {
+        const name = await showModal({ type: "prompt", message: "Enter new collection name:" });
         if (name && name.trim() !== '') {
             if (currentRootPath === '') {
                 setCollections([...collections, name.trim()]);
@@ -427,11 +430,11 @@ const DocumentExplorer = ({ cluster }) => {
                         </div>
                         <div className="flex gap-2">
                             {viewMode === 'json' && (
-                                <button onClick={() => {
+                                <button onClick={async () => {
                                     try {
                                         const parsed = new Function("return " + jsonContent)();
                                         setJsonContent(JSON.stringify(parsed, null, 2));
-                                    } catch(e) { alert("Invalid data format. Fix errors before formatting.")}
+                                    } catch(e) { await showModal({ type: "alert", message: "Invalid data format. Fix errors before formatting." })}
                                 }} className="text-xs font-bold px-3 py-1.5 bg-surface-container border border-black/5 dark:border-white/5 hover:bg-surface-container-high rounded text-on-surface-variant transition-colors flex items-center gap-2">
                                     <span className="material-symbols-outlined text-[14px]">format_align_left</span>
                                     Format

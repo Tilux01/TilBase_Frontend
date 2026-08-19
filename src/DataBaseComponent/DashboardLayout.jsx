@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import userIcon from "../Images/user.png";
 import { objContext } from '../App';
+import TilBaseLogo from '../Components/TilBaseLogo';
 
 const DashboardLayout = ({ children }) => {
   const { userCred, setUserCred, currentProjectCred, setCurrentProjectCred, AllProject, theme, setTheme, setProjectHistory, serverRoute, projectHistory, globalSearch, setGlobalSearch } = useContext(objContext);
@@ -78,7 +79,7 @@ const DashboardLayout = ({ children }) => {
     <div style={{width: "100%", backgroundColor: "var(--color-background)"}}>
       <aside className="fixed left-0 top-0 w-64 h-screen z-50 bg-background border-r border-black/5 dark:border-white/5 flex flex-col py-6 overflow-y-auto transition-colors duration-300" style={{ scrollbarWidth: 'none' }}>
         <div className="flex items-center gap-3 px-6 mb-6 cursor-pointer" onClick={() => navigate('/dashboard')}>
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-background font-bold text-xs">Tb</div>
+          <TilBaseLogo />
           <span className="font-bold text-base text-on-surface tracking-wide">TilBase Analytics</span>
         </div>
 

@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useContext, useEffect, useState } from 'react'
 import DashboardLayout from './DashboardLayout'
 import userIcon from "../Images/user.png"
@@ -9,6 +10,8 @@ import CopyButton from './CopyButton'
 
 
 const NewCluster = () => {
+  const { showModal } = useGlobalModal();
+
     const navigate = useNavigate()
     const { userCred, currentProjectCred, userPlan, serverRoute, setProjectHistory } = useContext(objContext)
     const [processing, setProcessing] = useState(false)
@@ -28,12 +31,12 @@ const NewCluster = () => {
             return
         }
     }, [])
-    const createCluster = () => {
+    const createCluster = async () => {
         if (!clusterType) {
-            return alert("please selct cluster type")
+            return await showModal({ type: "alert", message: "please selct cluster type" })
         }
         if (!clusterName || clusterName.trim() == "") {
-            return alert("Please write cluster name")
+            return await showModal({ type: "alert", message: "Please write cluster name" })
         }
         setProcessing(true)
         axios.post(`${serverRoute}/createCluster`, {
@@ -46,17 +49,17 @@ const NewCluster = () => {
             Cluster_Type: clusterType,
             Cluster_Key: ClusterKey
         })
-            .then((result) => {
+            .then(async (result) => {
                 setProcessing(false)
                 console.log(result.data?.message)
                 setProjectHistory(prev=> [...prev, result.data?.message?.history])
-                alert("cluster created successfully")
+                await showModal({ type: "alert", message: "cluster created successfully" })
                 navigate("/clusters")
             })
-            .catch((error) => {
+            .catch(async (error) => {
                 setProcessing(false)
                 console.log(error?.response?.data);
-                alert(error?.response?.data?.message)
+                await showModal({ type: "alert", message: error?.response?.data?.message })
             })
     }
     return (
@@ -74,48 +77,83 @@ const NewCluster = () => {
                             <h2 className="text-xl font-bold tracking-tight">Cluster Selection</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div onClick={() => { setClusterType("document") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "document" ? "border-2 border-secondary rounded-xl" : null}`}>
-                                <div className="flex justify-between items-start mb-4">
-                                    <span class=" material-symbols-outlined text-secondary text-3xl icon icon-filled">database</span>
-                                </div>
-                                <h3 className="font-bold text-lg mb-1">Document DB</h3>
-                                <p className="text-sm text-on-surface-variant leading-relaxed">Flexible JSON‑like storage. Perfect for catalogs, content management, or apps with changing data structures.</p>
-                            </div>
-                            <div onClick={() => { setClusterType("vector") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "vector" ? "border-2 border-teal-400 rounded-xl" : null}`}>
-                                <div className="flex justify-between items-start mb-4">
-                                    <span className="material-symbols-outlined text-teal-400 text-3xl">data_array</span>
-                                </div>
-                                <h3 className="font-bold text-lg mb-1">Vector DB</h3>
-                                <p className="text-sm text-on-surface-variant leading-relaxed">High-dimensional embedding storage. Native Cosine Similarity for fast AI semantic search.</p>
-                            </div>
-                            <div onClick={() => { setClusterType("realtime") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "realtime" ? "border-2 border-tertiary rounded-xl" : null}`}>
-                                <div className="flex justify-between items-start mb-4">
-                                    <span className="material-symbols-outlined text-tertiary text-3xl">sync</span>
-                                </div>
-                                <h3 className="font-bold text-lg mb-1">RealTime DB</h3>
-                                <p className="text-sm text-on-surface-variant leading-relaxed">Low‑latency, live‑sync database. Ideal for chat apps, collaborative tools, or live dashboards.</p>
-                            </div>
-                            <div onClick={() => { setClusterType("flat") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "flat" ? "border-2 border-orange-400 rounded-xl" : null}`}>
-                                <div className="flex justify-between items-start mb-4">
-                                    <span class=" material-symbols-outlined text-orange-400 text-3xl icon icon-filled">cloud</span>
-                                </div>
-                                <h3 className="font-bold text-lg mb-1">Flat DB</h3>
-                                <p className="text-sm text-on-surface-variant leading-relaxed">Simple file‑based database storage. Best for small apps, contact lists, or configuration data. No complex setup.</p>
-                            </div>
-                            <div onClick={() => { setClusterType("graph") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "graph" ? "border-2 border-primary rounded-xl" : null}`}>
-                                <div className="flex justify-between items-start mb-4">
-                                    <span className="material-symbols-outlined text-primary text-3xl">bar_chart</span>
-                                </div>
-                                <h3 className="font-bold text-lg mb-1">Graph DB</h3>
-                                <p className="text-sm text-on-surface-variant leading-relaxed">Store and query connected data. Best for social networks, recommendation engines, or fraud detection.</p>
-                            </div>
-                            <div onClick={() => { setClusterType("hierarchical") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "hierarchical" ? "border-2 border-emerald-400 rounded-xl" : null}`}>
-                                <div className="flex justify-between items-start mb-4">
-                                    <span className="material-symbols-outlined text-emerald-400 text-3xl">folder</span>
-                                </div>
-                                <h3 className="font-bold text-lg mb-1">Hierarchical DB</h3>
-                                <p className="text-sm text-on-surface-variant leading-relaxed">Tree‑structured data storage. Good for organizational charts, file systems, or XML/JSON nested data.</p>
-                            </div>
+                            {currentProjectCred?.Project_Type === 'ChatBase' ? (
+                                <>
+                                    <div onClick={() => { setClusterType("chatbase") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "chatbase" ? "border-2 border-purple-400 rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-purple-400 text-3xl">forum</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">Core Chat Engine</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">Standard real-time messaging, group chats, typing indicators, and presence tracking.</p>
+                                    </div>
+                                    <div onClick={() => { setClusterType("chatbase_broadcast") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "chatbase_broadcast" ? "border-2 border-pink-400 rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-pink-400 text-3xl">podcasts</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">Broadcast Chat</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">High-concurrency cluster optimized for live streams, one-to-many announcements, and massive open audiences.</p>
+                                    </div>
+                                    <div onClick={() => { setClusterType("chatbase_ai") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "chatbase_ai" ? "border-2 border-indigo-400 rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-indigo-400 text-3xl">robot_2</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">AI Moderation Engine</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">Built-in sentiment analysis and auto-moderation. Automatically filters toxic messages and warns users.</p>
+                                    </div>
+                                    <div onClick={() => { setClusterType("chatbase_secure") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "chatbase_secure" ? "border-2 border-amber-400 rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-amber-400 text-3xl">enhanced_encryption</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">Encrypted Vault</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">End-to-end encrypted messaging setup. Keys are never stored on the server. Compliance ready.</p>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div onClick={() => { setClusterType("document") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "document" ? "border-2 border-secondary rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-secondary text-3xl icon icon-filled">database</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">Document DB</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">Flexible JSON‑like storage. Perfect for catalogs, content management, or apps with changing data structures.</p>
+                                    </div>
+                                    <div onClick={() => { setClusterType("vector") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "vector" ? "border-2 border-teal-400 rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-teal-400 text-3xl">data_array</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">Vector DB</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">High-dimensional embedding storage. Native Cosine Similarity for fast AI semantic search.</p>
+                                    </div>
+                                    <div onClick={() => { setClusterType("realtime") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "realtime" ? "border-2 border-tertiary rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-tertiary text-3xl">sync</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">RealTime DB</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">Low‑latency, live‑sync database. Ideal for chat apps, collaborative tools, or live dashboards.</p>
+                                    </div>
+                                    <div onClick={() => { setClusterType("flat") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "flat" ? "border-2 border-orange-400 rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-orange-400 text-3xl icon icon-filled">cloud</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">Flat DB</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">Simple file‑based database storage. Best for small apps, contact lists, or configuration data. No complex setup.</p>
+                                    </div>
+                                    <div onClick={() => { setClusterType("graph") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "graph" ? "border-2 border-primary rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-primary text-3xl">bar_chart</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">Graph DB</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">Store and query connected data. Best for social networks, recommendation engines, or fraud detection.</p>
+                                    </div>
+                                    <div onClick={() => { setClusterType("hierarchical") }} className={`p-5 bg-surface-container ghost-border rounded-xl hover:border-primary transition-all cursor-pointer group ${clusterType == "hierarchical" ? "border-2 border-emerald-400 rounded-xl" : null}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className="material-symbols-outlined text-emerald-400 text-3xl">folder</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">Hierarchical DB</h3>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">Tree‑structured data storage. Good for organizational charts, file systems, or XML/JSON nested data.</p>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </section>
                     <section className="space-y-6">

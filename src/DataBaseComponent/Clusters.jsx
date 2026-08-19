@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useContext, useEffect, useState } from 'react'
 import DashboardLayout from './DashboardLayout'
 import userIcon from "../Images/user.png"
@@ -9,6 +10,8 @@ import CopyButton from './CopyButton'
 
 
 const Clusters = () => {
+  const { showModal } = useGlobalModal();
+
  const navigate = useNavigate()
  const [clusters, setClusters] = useState([])
  const [page, setPage] = useState(1)
@@ -37,9 +40,9 @@ const Clusters = () => {
  console.log(output?.data?.message);
  setClusters(output?.data?.message || [])
  })
- .catch((error) => {
+ .catch(async (error) => {
  if (error?.response?.data?.message) {
- alert(error?.response?.data?.message)
+ await showModal({ type: "alert", message: error?.response?.data?.message })
  }
  navigate("/signin")
  })
@@ -67,9 +70,9 @@ const Clusters = () => {
  return cluster
  }))
  })
- .catch((error) => {
+ .catch(async (error) => {
  console.log(error?.response);
- alert("Error updating cluster")
+ await showModal({ type: "alert", message: "Error updating cluster" })
  navigate("/signin")
  })
  }
@@ -95,16 +98,16 @@ const Clusters = () => {
  return cluster
  }))
  })
- .catch((error) => {
+ .catch(async (error) => {
  console.log(error?.response);
- alert("Error updating cluster")
+ await showModal({ type: "alert", message: "Error updating cluster" })
  navigate("/signin")
  })
  }
 
- const deleteCluster = (obj) => {
+ const deleteCluster = async (obj) => {
  console.log(obj);
- const confirmDelete = confirm(`Do you want to delete cluster ${obj?.Cluster_Name}`)
+ const confirmDelete = await showModal({ type: "confirm", message: `Do you want to delete cluster ${obj?.Cluster_Name}`, isDestructive: true })
  if (!confirmDelete) return
  axios.post(`${serverRoute}/deleteCluster`, {
  user_Id: userCred?.id,
@@ -120,9 +123,9 @@ const Clusters = () => {
  console.log(result);
  setClusters(prev => prev.filter(cluster => cluster?.id != result))
  })
- .catch((error) => {
+ .catch(async (error) => {
  console.log(error?.response);
- alert("Error updating cluster")
+ await showModal({ type: "alert", message: "Error updating cluster" })
  navigate("/signin")
  })
  }

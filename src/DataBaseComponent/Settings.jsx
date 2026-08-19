@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useContext, useState, useEffect } from 'react';
 import DashboardLayout from './DashboardLayout';
 import { objContext } from '../App';
@@ -5,6 +6,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Settings = () => {
+  const { showModal } = useGlobalModal();
+
     const { userCred, setUserCred, currentProjectCred, serverRoute } = useContext(objContext);
     const [activeTab, setActiveTab] = useState('profile'); 
     const navigate = useNavigate();
@@ -83,10 +86,10 @@ const Settings = () => {
                 Profile_Img: finalAvatarUrl 
             }));
             setAvatarFile(null);
-            alert("Profile updated successfully!");
+            await showModal({ type: "alert", message: "Profile updated successfully!" });
         } catch (error) {
             console.error(error);
-            alert("Failed to update profile.");
+            await showModal({ type: "alert", message: "Failed to update profile." });
         } finally {
             setIsSavingProfile(false);
         }
@@ -106,30 +109,30 @@ const Settings = () => {
             
             currentProjectCred.Project_Name = projectName;
             currentProjectCred.Project_Description = projectDesc;
-            alert("Workspace updated successfully!");
+            await showModal({ type: "alert", message: "Workspace updated successfully!" });
         } catch (error) {
             console.error(error);
-            alert("Failed to update workspace.");
+            await showModal({ type: "alert", message: "Failed to update workspace." });
         } finally {
             setIsSavingWorkspace(false);
         }
     };
 
     const handleRegenerateProfileKey = async () => {
-        if (!window.confirm("Are you sure you want to regenerate your Profile Key? Any external apps using the old key will be broken.")) return;
+        if (!await showModal({ type: "confirm", message: "Are you sure you want to regenerate your Profile Key? Any external apps using the old key will be broken.", isDestructive: true })) return;
         try {
             const response = await axios.post(`${serverRoute}/regenerateProfileKey`, { userId: userCred.id });
             setUserCred(prev => ({ ...prev, profile_key: response.data.message }));
-            alert("Profile Key regenerated successfully!");
+            await showModal({ type: "alert", message: "Profile Key regenerated successfully!" });
         } catch (error) {
             console.error(error);
-            alert("Failed to regenerate Profile Key.");
+            await showModal({ type: "alert", message: "Failed to regenerate Profile Key." });
         }
     };
 
     const handleRegenerateProjectKey = async () => {
         
-        if (!window.confirm("Are you sure you want to regenerate this Project Key?")) return;
+        if (!await showModal({ type: "confirm", message: "Are you sure you want to regenerate this Project Key?", isDestructive: true })) return;
         try {
             const response = await axios.post(`${serverRoute}/regenerateProjectKey`, { 
                 userId: userCred.id,
@@ -137,27 +140,27 @@ const Settings = () => {
                 projectName: currentProjectCred.Project_Name
             });
             currentProjectCred.Project_Key = response.data.message;
-            alert("Project Key regenerated successfully!");
+            await showModal({ type: "alert", message: "Project Key regenerated successfully!" });
         } catch (error) {
             console.error(error);
-            alert("Failed to regenerate Project Key.");
+            await showModal({ type: "alert", message: "Failed to regenerate Project Key." });
         }
     };
 
     const handleDeleteAccount = async () => {
-        const confirmName = prompt(`To delete your account, please type your username: ${userCred.UserName}`);
+        const confirmName = await showModal({ type: "prompt", message: `To delete your account, please type your username: ${userCred.UserName}` });
         if (confirmName !== userCred.UserName) {
-            alert("Username did not match. Account deletion cancelled.");
+            await showModal({ type: "alert", message: "Username did not match. Account deletion cancelled." });
             return;
         }
         
         try {
             await axios.post(`${serverRoute}/deleteAccount`, { user_id: userCred.id });
-            alert("Account deleted successfully.");
+            await showModal({ type: "alert", message: "Account deleted successfully." });
             navigate("/signin");
         } catch (error) {
             console.error(error);
-            alert("Failed to delete account.");
+            await showModal({ type: "alert", message: "Failed to delete account." });
         }
     };
 

@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useState, useEffect, useContext, useRef, useCallback } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
 import axios from 'axios';
@@ -6,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { Plus, Trash, Search, Zap, X } from 'lucide-react';
 
 const GraphExplorer = ({ cluster }) => {
+  const { showModal } = useGlobalModal();
+
     const { serverRoute } = useContext(objContext);
     const fgRef = useRef();
     const wrapperRef = useRef(null);
@@ -110,10 +113,10 @@ const GraphExplorer = ({ cluster }) => {
         try {
             props = JSON.parse(newNodeProps);
         } catch(e) {
-            alert("Invalid JSON properties");
+            await showModal({ type: "alert", message: "Invalid JSON properties" });
             return;
         }
-        if (!newNodeLabel) return alert("Node Label is required");
+        if (!newNodeLabel) return await showModal({ type: "alert", message: "Node Label is required" });
         
         try {
             await axios.post(`${serverRoute}/api/graphExplorer/addNode`, {
@@ -127,12 +130,12 @@ const GraphExplorer = ({ cluster }) => {
             fetchGraph();
         } catch(e) {
             console.error(e);
-            alert("Failed to add node");
+            await showModal({ type: "alert", message: "Failed to add node" });
         }
     };
 
     const handleAddEdge = async () => {
-        if (!edgeSource || !edgeTarget || !edgeLabel) return alert("Source, Target, and Label are required");
+        if (!edgeSource || !edgeTarget || !edgeLabel) return await showModal({ type: "alert", message: "Source, Target, and Label are required" });
         
         try {
             await axios.post(`${serverRoute}/api/graphExplorer/addEdge`, {
@@ -150,7 +153,7 @@ const GraphExplorer = ({ cluster }) => {
             fetchGraph();
         } catch(e) {
             console.error(e);
-            alert("Failed to add edge");
+            await showModal({ type: "alert", message: "Failed to add edge" });
         }
     };
 
@@ -168,7 +171,7 @@ const GraphExplorer = ({ cluster }) => {
             fetchGraph();
             setSelectedNode(prev => ({...prev, properties: JSON.stringify(propsObj)}));
         } catch(e) {
-            alert("Invalid JSON or Update Failed");
+            await showModal({ type: "alert", message: "Invalid JSON or Update Failed" });
         }
     };
 
@@ -186,7 +189,7 @@ const GraphExplorer = ({ cluster }) => {
             fetchGraph();
             setSelectedEdge(prev => ({...prev, properties: JSON.stringify(propsObj), weight: parseFloat(editEdgeWeight)}));
         } catch(e) {
-            alert("Invalid JSON or Update Failed");
+            await showModal({ type: "alert", message: "Invalid JSON or Update Failed" });
         }
     };
 
@@ -200,7 +203,7 @@ const GraphExplorer = ({ cluster }) => {
     }, [socket, fetchGraph]);
 
     const handleDeleteNode = async (nodeId) => {
-        if (!window.confirm("Delete this node and all connected edges?")) return;
+        if (!await showModal({ type: "confirm", message: "Delete this node and all connected edges?", isDestructive: true })) return;
         try {
             await axios.post(`${serverRoute}/api/graphExplorer/deleteNode`, {
                 clusterId: cluster.id,
@@ -214,7 +217,7 @@ const GraphExplorer = ({ cluster }) => {
     };
     
     const handleDeleteEdge = async (edgeId) => {
-        if (!window.confirm("Delete this edge?")) return;
+        if (!await showModal({ type: "confirm", message: "Delete this edge?", isDestructive: true })) return;
         try {
             await axios.post(`${serverRoute}/api/graphExplorer/deleteEdge`, {
                 clusterId: cluster.id,

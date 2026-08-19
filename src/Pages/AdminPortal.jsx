@@ -1,9 +1,12 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { objContext } from '../App';
 import PaginationControls from '../DataBaseComponent/PaginationControls';
 
 const AdminPortal = () => {
+  const { showModal } = useGlobalModal();
+
     const { serverRoute } = useContext(objContext);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [email, setEmail] = useState("");
@@ -25,7 +28,7 @@ const AdminPortal = () => {
             }
         } catch (error) {
             console.error("Login failed", error);
-            alert("Invalid admin credentials.");
+            await showModal({ type: "alert", message: "Invalid admin credentials." });
         } finally {
             setIsLoggingIn(false);
         }
@@ -55,7 +58,7 @@ const AdminPortal = () => {
             fetchTickets();
         } catch (error) {
             console.error("Error updating status", error);
-            alert("Failed to update status.");
+            await showModal({ type: "alert", message: "Failed to update status." });
         }
     };
 

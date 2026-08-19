@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -5,6 +6,8 @@ import { objContext } from '../App';
 import { io } from 'socket.io-client';
 
 const FlatExplorer = ({ cluster }) => {
+  const { showModal } = useGlobalModal();
+
     const { serverRoute } = useContext(objContext);
     
     const [buckets, setBuckets] = useState([]);
@@ -116,11 +119,11 @@ const FlatExplorer = ({ cluster }) => {
                 value: parsedValue
             });
             setIsSaving(false);
-            alert("Payload saved!");
+            await showModal({ type: "alert", message: "Payload saved!" });
         } catch (error) {
             console.error(error);
             setIsSaving(false);
-            alert("Error saving data or storage limit exceeded.");
+            await showModal({ type: "alert", message: "Error saving data or storage limit exceeded." });
         }
     };
 
@@ -141,13 +144,13 @@ const FlatExplorer = ({ cluster }) => {
             setIsSaving(false);
         } catch (error) {
             setIsSaving(false);
-            alert("Failed to add key.");
+            await showModal({ type: "alert", message: "Failed to add key." });
         }
     };
 
     const handleDeleteKey = async (keyToDelete, e) => {
         e.stopPropagation(); // prevent triggering setSelectedKey
-        const confirmDel = window.confirm(`Delete key '${keyToDelete}'?`);
+        const confirmDel = await showModal({ type: "confirm", message: `Delete key '${keyToDelete}'?`, isDestructive: true });
         if (!confirmDel) return;
         
         try {
@@ -163,15 +166,15 @@ const FlatExplorer = ({ cluster }) => {
             fetchKeys(selectedBucket);
         } catch (error) {
             console.error(error);
-            alert("Error deleting key");
+            await showModal({ type: "alert", message: "Error deleting key" });
         }
     };
 
     const handleDeleteBucket = async (bucketToDelete, e) => {
         e.stopPropagation();
-        const confirmName = window.prompt(`WARNING: This will permanently wipe all data in '${bucketToDelete}'.\nType '${bucketToDelete}' to confirm:`);
+        const confirmName = await showModal({ type: "prompt", message: `WARNING: This will permanently wipe all data in '${bucketToDelete}'.\nType '${bucketToDelete}' to confirm:` });
         if (confirmName !== bucketToDelete) {
-            if (confirmName !== null) alert("Bucket name did not match. Aborting deletion.");
+            if (confirmName !== null) await showModal({ type: "alert", message: "Bucket name did not match. Aborting deletion." });
             return;
         }
         
@@ -192,14 +195,14 @@ const FlatExplorer = ({ cluster }) => {
             }
         } catch (error) {
             console.error(error);
-            alert("Error deleting bucket");
+            await showModal({ type: "alert", message: "Error deleting bucket" });
         }
         setIsSaving(false);
     };
 
     const handleIncrement = async () => {
         if (!selectedKey || !selectedBucket) return;
-        const incAmount = window.prompt("Enter amount to increment by (e.g. 1 or -5):", "1");
+        const incAmount = await showModal({ type: "prompt", message: "Enter amount to increment by (e.g. 1 or -5):", defaultValue: "1" });
         if (!incAmount || isNaN(Number(incAmount))) return;
         
         setIsSaving(true);
@@ -218,7 +221,7 @@ const FlatExplorer = ({ cluster }) => {
             }
         } catch (error) {
             console.error(error);
-            alert("Error incrementing value");
+            await showModal({ type: "alert", message: "Error incrementing value" });
         }
         setIsSaving(false);
     };

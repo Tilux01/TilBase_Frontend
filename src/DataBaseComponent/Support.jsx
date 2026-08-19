@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -6,6 +7,8 @@ import DashboardLayout from './DashboardLayout';
 import PaginationControls from './PaginationControls';
 
 const Support = () => {
+  const { showModal } = useGlobalModal();
+
     const navigate = useNavigate();
     const { userCred, serverRoute } = useContext(objContext);
 
@@ -37,7 +40,7 @@ const Support = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!subject || !details) return alert("Please fill all fields");
+        if (!subject || !details) return await showModal({ type: "alert", message: "Please fill all fields" });
         setIsSubmitting(true);
         try {
             await axios.post(`${serverRoute}/createSupportTicket`, {
@@ -49,10 +52,10 @@ const Support = () => {
             setSubject("");
             setDetails("");
             fetchTickets();
-            alert("Ticket submitted successfully!");
+            await showModal({ type: "alert", message: "Ticket submitted successfully!" });
         } catch (error) {
             console.error("Error submitting ticket", error);
-            alert("Failed to submit ticket.");
+            await showModal({ type: "alert", message: "Failed to submit ticket." });
         } finally {
             setIsSubmitting(false);
         }

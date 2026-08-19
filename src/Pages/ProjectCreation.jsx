@@ -1,11 +1,12 @@
 import React from 'react'
 import CopyButton from '../DataBaseComponent/CopyButton'
+import TilBaseLogo from "../Components/TilBaseLogo";
 const ProjectCreation = () => {
     return (
         <>
             <header className="fixed top-0 w-full h-16 z-40 bg-surface-container-highest border-b border-gray-200 flex justify-between items-center px-6">
                 <div className="flex items-center gap-8">
-                    <span className="text-xl font-bold tracking-tighter text-emerald-900">TIlBase</span>
+                    <div className="flex items-center gap-2"><TilBaseLogo className="w-6 h-6" /><span className="text-xl font-bold tracking-tighter text-emerald-900">TilBase</span></div>
                     <nav className="hidden md:flex items-center gap-6">
                         <a className="text-slate-500 font-medium text-sm tracking-tight hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors" href="#">Dashboard</a>
                         <a className="text-emerald-800 font-bold text-sm tracking-tight border-b-2 border-emerald-800 px-3 py-2" href="#">Create Project</a>

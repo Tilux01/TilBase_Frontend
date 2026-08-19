@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue, animate, useInView } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import TilBaseLogo from '../Components/TilBaseLogo';
 const LeftBlade = () => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 200]);
@@ -135,7 +136,7 @@ const RoadmapSection = () => {
 
   return (
     <section className="py-24 md:py-32 px-6 w-full bg-[#F8FAFC] dark:bg-[#0B101A] relative overflow-hidden" ref={containerRef}>
-       <div className="max-w-[1300px] mx-auto flex flex-col xl:flex-row gap-16 relative z-10">
+       <div className="w-[92%] mx-auto flex flex-col xl:flex-row gap-16 relative z-10">
           
           {/* Side Panel */}
           <div className="xl:w-[280px] shrink-0">
@@ -162,7 +163,7 @@ const RoadmapSection = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={staggerContainer} className="flex-1 relative w-full pt-10">
              
              {/* SVG Path - Desktop Only */}
-             <div className="absolute inset-0 hidden md:block z-0 pointer-events-none">
+             <div className="absolute inset-0 hidden xl:block z-0 pointer-events-none">
                 <svg width="100%" height="100%" viewBox="0 0 1000 800" preserveAspectRatio="none" className="overflow-visible">
                    {/* Faded background path for track */}
                    <path 
@@ -196,7 +197,7 @@ const RoadmapSection = () => {
              </div>
 
              {/* Grid container for cards */}
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-y-24 gap-x-12 relative z-10">
+             <div className="grid grid-cols-1 xl:grid-cols-3 gap-y-24 gap-x-12 relative z-10">
                
                {/* Row 1: L -> R */}
                <RoadmapCard step={roadmapSteps[0]} index={1} className="order-1" />
@@ -230,7 +231,7 @@ const RoadmapSection = () => {
 const EditorialServicesSection = () => {
   return (
     <section className="py-24 md:py-40 w-full bg-[#F8FAFC] dark:bg-[#0B101A] relative">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div className="w-[92%] mx-auto px-6 md:px-12">
          
          {/* Main Section Headline */}
          <div className="mb-24 md:mb-32 max-w-3xl">
@@ -396,7 +397,7 @@ const ComparisonSection = () => {
 
   return (
     <section className="py-24 md:py-40 w-full bg-[#F8FAFC] dark:bg-[#0B101A] relative overflow-hidden border-t border-[#E2E8F0] dark:border-[#222834]">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10">
+      <div className="w-[92%] mx-auto px-6 md:px-12 relative z-10">
         
         {/* Header */}
         <div className="text-center mb-16 md:mb-24">
@@ -505,7 +506,7 @@ const PerformanceBenchmarksSection = () => {
 
   return (
     <section className="py-24 md:py-32 w-full bg-[#F8FAFC] dark:bg-[#0B101A] relative border-t border-[#E2E8F0] dark:border-[#222834] overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
+      <div className="w-[92%] mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
         
         <div className="text-center mb-16 md:mb-20">
           <motion.div variants={fadeUpVariant} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[10px] text-[#16A34A] dark:text-[#39e03d] font-bold tracking-[0.2em] uppercase mb-4 inline-block">
@@ -635,7 +636,7 @@ const CodeMeetsUISection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full max-w-[1100px] bg-[#F8FAFC] dark:bg-[#0A0F1C] border border-[#E2E8F0] dark:border-[#222834] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col relative z-10"
+        className="w-[90%] mx-auto bg-[#F8FAFC] dark:bg-[#0A0F1C] border border-[#E2E8F0] dark:border-[#222834] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col relative z-10"
       >
         {/* Mock Navbar */}
         <div className="w-full px-8 py-5 border-b border-[#E2E8F0] dark:border-[#222834]/50 flex items-center justify-between bg-white dark:bg-[#0A0F1C]">
@@ -810,10 +811,10 @@ const PlatformCapabilities = () => {
 
       {/* Desktop Sticky Scroll Area */}
       <div className="hidden md:block h-[400vh] w-full relative">
-        <div className="sticky top-0 h-screen w-full overflow-hidden max-w-[1400px] mx-auto flex items-center">
+        <div className="sticky top-0 h-screen w-[92%] overflow-hidden mx-auto flex items-center">
           
           {/* Left Text Block */}
-          <div className="w-1/2 pl-20 flex flex-col justify-center z-20 relative h-screen">
+          <div className="w-1/2 pl-0 lg:pl-4 flex flex-col justify-center z-20 relative h-screen">
             <div className="text-xs text-[#16A34A] dark:text-[#39e03d] font-black tracking-[0.2em] uppercase mb-16">
               Platform Capabilities
             </div>
@@ -950,18 +951,14 @@ const LandingPage = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full max-w-[1400px] mx-auto px-8 py-4 flex items-center justify-between z-50 relative"
+        className="w-full px-6 md:px-12 lg:px-16 mx-auto py-4 flex items-center justify-between z-50 relative"
       >
         
         {/* Left Side: Logo + Nav */}
         <div className="flex items-center gap-16">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white" />
-              <path d="M2 17L12 22L22 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <TilBaseLogo className="w-5 h-5" />
             <span className="font-bold text-sm tracking-wide text-[#0F172A] dark:text-white">TilBase</span>
           </div>
 
@@ -969,7 +966,7 @@ const LandingPage = () => {
           <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium text-[#334155] dark:text-[#e2e8f0]">
             <a href="#features" className="hover:text-[#0F172A] dark:text-white transition-colors">Platform</a>
             <a href="#chatbase" className="hover:text-[#0F172A] dark:text-white transition-colors">ChatBase</a>
-            <a href="/docs" className="flex items-center gap-1 hover:text-[#0F172A] dark:text-white transition-colors">Docs <span className="material-symbols-outlined text-[14px]">expand_more</span></a>
+            <Link to="/docs" className="flex items-center gap-1 hover:text-[#0F172A] dark:text-white transition-colors">Docs <span className="material-symbols-outlined text-[14px]">expand_more</span></Link>
             <a href="#pricing" className="hover:text-[#0F172A] dark:text-white transition-colors">Pricing</a>
             <a href="#" className="hover:text-[#0F172A] dark:text-white transition-colors">Company</a>
           </nav>
@@ -1038,7 +1035,7 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: 100, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 w-full max-w-[80%] lg:max-w-[1200px] mx-auto mt-12 px-4 pb-12"
+            className="relative z-10 w-full max-w-[80%] lg:w-[92%] mx-auto mt-12 px-4 pb-12"
           >
             <div className="w-full min-h-[550px] bg-white dark:bg-[#0d1117] rounded-2xl border border-[#E2E8F0] dark:border-[#222834] shadow-2xl p-6 md:p-8 relative overflow-hidden ring-1 ring-[#0F172A]/5 dark:ring-white/5 flex flex-col md:flex-row gap-8">
 
@@ -1046,7 +1043,7 @@ const LandingPage = () => {
               <div className="hidden md:flex flex-col gap-8 w-64 border-r border-[#E2E8F0] dark:border-[#222834] pr-6 relative z-10">
                  {/* Logo in Sidebar */}
                  <div className="flex items-center gap-3">
-                   <div className="w-8 h-8 bg-[#16A34A] dark:bg-[#39e03d] rounded-lg flex items-center justify-center text-white dark:text-black font-bold text-xs">Tb</div>
+                   <TilBaseLogo className="w-8 h-8" />
                    <span className="font-bold text-base text-[#0F172A] dark:text-white tracking-wide">TilBase Analytics</span>
                  </div>
                  
@@ -1234,7 +1231,7 @@ const LandingPage = () => {
           {/* Subtle background glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#16A34A] opacity-5 dark:opacity-10 blur-[120px] pointer-events-none rounded-full"></div>
 
-          <div className="max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10">
+          <div className="w-[92%] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10">
             {/* Left Side */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center">
                <motion.div variants={fadeUpVariant} className="text-xs text-[#16A34A] dark:text-[#39e03d] font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-2">
@@ -1314,7 +1311,7 @@ const LandingPage = () => {
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
           variants={staggerContainer}
-          className="py-24 px-6 w-full max-w-[1200px] mx-auto border-b border-[#E2E8F0] dark:border-[#222834]"
+          className="py-24 w-[92%] mx-auto border-b border-[#E2E8F0] dark:border-[#222834]"
         >
            <div className="text-center mb-16">
              <motion.h2 variants={fadeUpVariant} className="text-3xl font-bold text-[#0F172A] dark:text-white mb-4">Choose your best plan</motion.h2>
@@ -1322,9 +1319,9 @@ const LandingPage = () => {
            
            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
              {[
-               { name: "Small Plan", price: "$39", features: ["Free domain", "Monthly Bandwidth 1GB", "SSD Storage 1TB", "SSL Certificate", "Website SEO", "Google Analytics", "Messenger Live Chat", "Full Support"] },
-               { name: "Medium Plan", price: "$69", recommended: true, features: ["Free domain", "Monthly Bandwidth 1GB", "SSD Storage 1TB", "SSL Certificate", "Website SEO", "Google Analytics", "Messenger Live Chat", "Full Support"] },
-               { name: "Large Plan", price: "$99", features: ["Free domain", "Monthly Bandwidth 1GB", "SSD Storage 1TB", "SSL Certificate", "Website SEO", "Google Analytics", "Messenger Live Chat", "Full Support"] }
+               { name: "Free Tier", price: "$0", features: ["1 Project limit", "2 Database Clusters", "1GB Cloud Storage", "500MB Compute RAM", "Shared cloud nodes", "Community forum support"] },
+               { name: "Standard Tier", price: "$49", recommended: true, features: ["10 Projects limit", "20 Database Clusters", "10GB Cloud Storage", "8GB Compute RAM", "Dedicated resources", "Priority email support"] },
+               { name: "Premium Tier", price: "$199", features: ["Unlimited Projects", "Unlimited Clusters", "100GB NVMe Storage", "32GB Compute RAM", "Multi-region sharding", "24/7 Phone & Chat Support"] }
              ].map((tier, i) => (
                <motion.div 
                  variants={fadeUpVariant}
@@ -1377,7 +1374,7 @@ const LandingPage = () => {
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
           variants={staggerContainer}
-          className="py-24 md:py-32 px-6 w-full max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start"
+          className="py-24 md:py-32 w-[92%] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start"
         >
            <div className="md:col-span-5 flex flex-col text-left">
              <motion.div variants={fadeUpVariant} className="text-[#16A34A] dark:text-[#39e03d] text-sm font-bold mb-4">
@@ -1387,7 +1384,7 @@ const LandingPage = () => {
                Frequently asked <br className="hidden md:block"/><span className="text-[#16A34A] dark:text-[#39e03d]">questions</span>
              </motion.h2>
              <motion.p variants={fadeUpVariant} className="text-[#64748B] dark:text-[#8c93a1] text-sm md:text-[15px] leading-relaxed max-w-[90%]">
-               Choose a plan that fits your business needs and budget. No hidden fees, no surprises—just straightforward database pricing for powerful data management.
+               Choose a plan that fits your business needs and budget. No hidden fees, no surprises - just straightforward database pricing for powerful data management.
              </motion.p>
            </div>
            
@@ -1421,14 +1418,14 @@ const LandingPage = () => {
         variants={staggerContainer}
         className="w-full bg-white dark:bg-[#0d1117] border-t border-[#E2E8F0] dark:border-[#222834]"
       >
-        <div className="max-w-[1300px] mx-auto p-10 md:p-16 flex flex-col justify-between min-h-[450px]">
+        <div className="w-full px-6 md:px-12 lg:px-16 py-10 md:py-16 mx-auto flex flex-col justify-between min-h-[450px]">
           
           {/* Top Section */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
             {/* Logo */}
             <motion.div variants={fadeUpVariant} className="md:col-span-4 flex flex-col gap-2">
               <div className="flex items-center gap-3 mb-1">
-                 <div className="w-8 h-8 bg-[#16A34A] dark:bg-[#39e03d] rounded-md flex items-center justify-center font-bold text-white dark:text-black text-xs">Tb</div>
+                 <TilBaseLogo className="w-8 h-8" />
                  <span className="font-bold text-2xl text-[#0F172A] dark:text-white tracking-tight">tilbase</span>
               </div>
               <span className="text-[#64748b] dark:text-[#8c93a1] text-sm font-medium">A database platform that delivers</span>
@@ -1452,8 +1449,8 @@ const LandingPage = () => {
 
             {/* Links 3 */}
             <motion.div variants={fadeUpVariant} className="md:col-span-4 flex flex-col gap-4 text-left md:text-right">
-              <a href="#" className="text-[14px] text-[#64748b] dark:text-[#8c93a1] hover:text-[#16A34A] dark:hover:text-[#39e03d] transition-colors">Terms & Conditions</a>
-              <a href="#" className="text-[14px] text-[#64748b] dark:text-[#8c93a1] hover:text-[#16A34A] dark:hover:text-[#39e03d] transition-colors">Privacy Policy</a>
+              <Link to="/terms" className="text-[14px] text-[#64748b] dark:text-[#8c93a1] hover:text-[#16A34A] dark:hover:text-[#39e03d] transition-colors">Terms & Conditions</Link>
+              <Link to="/privacy" className="text-[14px] text-[#64748b] dark:text-[#8c93a1] hover:text-[#16A34A] dark:hover:text-[#39e03d] transition-colors">Privacy Policy</Link>
               <a href="#" className="text-[14px] text-[#64748b] dark:text-[#8c93a1] hover:text-[#16A34A] dark:hover:text-[#39e03d] transition-colors">Cookie Policy</a>
             </motion.div>
           </div>

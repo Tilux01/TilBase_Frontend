@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -6,6 +7,8 @@ import { io } from 'socket.io-client';
 import FieldEditor from './FieldEditor';
 
 const HierarchicalExplorer = ({ cluster }) => {
+  const { showModal } = useGlobalModal();
+
     const { serverRoute } = useContext(objContext);
     
     // Core State
@@ -132,7 +135,7 @@ const HierarchicalExplorer = ({ cluster }) => {
                 parsed = payloadOverride;
             } else {
                 try { parsed = JSON.parse(nodePayload); }
-                catch (e) { alert("Invalid JSON"); setIsSaving(false); return; }
+                catch (e) { await showModal({ type: "alert", message: "Invalid JSON" }); setIsSaving(false); return; }
             }
 
             await axios.post(`${serverRoute}/api/hierarchicalExplorer/updateNode`, {
@@ -143,8 +146,8 @@ const HierarchicalExplorer = ({ cluster }) => {
             setNodeData(prev => ({...prev, data_payload: parsed}));
         } catch (error) {
             console.error("Error saving node", error);
-            if (error.response?.status === 429) alert("Storage limit exceeded.");
-            if (error.response?.status === 403) alert("Access Denied: Read Only Key or Cluster Paused.");
+            if (error.response?.status === 429) await showModal({ type: "alert", message: "Storage limit exceeded." });
+            if (error.response?.status === 403) await showModal({ type: "alert", message: "Access Denied: Read Only Key or Cluster Paused." });
         }
         setIsSaving(false);
     };
@@ -170,7 +173,7 @@ const HierarchicalExplorer = ({ cluster }) => {
     };
 
     const handleDeleteNode = async (nodeId) => {
-        if (!window.confirm("WARNING: This will recursively delete all children of this node. Proceed?")) return;
+        if (!await showModal({ type: "confirm", message: "WARNING: This will recursively delete all children of this node. Proceed?", isDestructive: true })) return;
         try {
             await axios.post(`${serverRoute}/api/hierarchicalExplorer/deleteNode`, {
                 clusterId: cluster.id,
@@ -217,7 +220,7 @@ const HierarchicalExplorer = ({ cluster }) => {
             setMoveToRoot(false);
         } catch (error) {
             console.error("Error moving node", error);
-            alert("Failed to move node");
+            await showModal({ type: "alert", message: "Failed to move node" });
         }
     };
 

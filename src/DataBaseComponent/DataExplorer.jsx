@@ -6,6 +6,8 @@ import VectorExplorer from './VectorExplorer';
 import FlatExplorer from './FlatExplorer';
 import HierarchicalExplorer from './HierarchicalExplorer';
 import GraphExplorer from './GraphExplorer';
+import RealtimeExplorer from './RealtimeExplorer';
+import ChatbaseExplorer from './ChatbaseExplorer';
 
 const DataExplorer = () => {
     const { clusterId } = useParams();
@@ -51,6 +53,14 @@ const DataExplorer = () => {
         
         if (cluster.Cluster_Type?.toLowerCase().trim() === 'graph') {
             return <GraphExplorer cluster={cluster} />;
+        }
+        
+        if (cluster.Cluster_Type?.toLowerCase() === 'realtime') {
+            return <RealtimeExplorer cluster={cluster} />;
+        }
+        
+        if (cluster.Cluster_Type?.toLowerCase() === 'chatbase') {
+            return <ChatbaseExplorer cluster={cluster} />;
         }
         
         

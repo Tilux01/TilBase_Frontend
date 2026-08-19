@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from './DashboardLayout';
@@ -6,6 +7,8 @@ import axios from 'axios';
 import PaginationControls from './PaginationControls';
 
 const Backups = () => {
+  const { showModal } = useGlobalModal();
+
     const navigate = useNavigate();
     const { serverRoute, userCred, currentProjectCred } = useContext(objContext);
 
@@ -64,17 +67,17 @@ const Backups = () => {
                 clusterName: cluster.Cluster_Name
             });
             await fetchBackups();
-            alert("Backup created successfully!");
+            await showModal({ type: "alert", message: "Backup created successfully!" });
         } catch (error) {
             console.error("Error creating backup:", error);
-            alert("Failed to create backup.");
+            await showModal({ type: "alert", message: "Failed to create backup." });
         } finally {
             setIsCreating(false);
         }
     };
 
     const handleDeleteBackup = async (backupId, backupName) => {
-        if (!window.confirm(`Are you sure you want to delete ${backupName}?`)) return;
+        if (!await showModal({ type: "confirm", message: `Are you sure you want to delete ${backupName}?`, isDestructive: true })) return;
 
         try {
             await axios.post(`${serverRoute}/deleteBackup`, {
@@ -88,7 +91,7 @@ const Backups = () => {
             await fetchBackups();
         } catch (error) {
             console.error("Error deleting backup:", error);
-            alert("Failed to delete backup.");
+            await showModal({ type: "alert", message: "Failed to delete backup." });
         }
     };
 

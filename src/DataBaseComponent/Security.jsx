@@ -1,3 +1,4 @@
+import { useGlobalModal } from "../Context/GlobalModalContext";
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from './DashboardLayout';
@@ -7,6 +8,8 @@ import PaginationControls from './PaginationControls';
 import CopyButton from './CopyButton';
 
 const Security = () => {
+  const { showModal } = useGlobalModal();
+
     const navigate = useNavigate();
     const { serverRoute, userCred, currentProjectCred, setUserCred, setCurrentProjectCred } = useContext(objContext);
 
@@ -53,7 +56,7 @@ const Security = () => {
 
 
     const handleRegenerateProfileKey = async () => {
-        if (!confirm("Are you sure you want to regenerate your Profile API Key? Any application currently using this key will lose access immediately.")) return;
+        if (!await showModal({ type: "confirm", message: "Are you sure you want to regenerate your Profile API Key? Any application currently using this key will lose access immediately.", isDestructive: true })) return;
         setGeneratingProfile(true);
         try {
             const response = await axios.post(`${serverRoute}/regenerateProfileKey`, {
@@ -62,14 +65,14 @@ const Security = () => {
             setUserCred({ ...userCred, Profile_Key: response.data.message });
         } catch (error) {
             console.error(error);
-            alert("Error regenerating Profile Key");
+            await showModal({ type: "alert", message: "Error regenerating Profile Key" });
         } finally {
             setGeneratingProfile(false);
         }
     };
 
     const handleRegenerateProjectKey = async () => {
-        if (!confirm("Are you sure you want to regenerate this Project's API Key? Any application currently using this key will lose access immediately.")) return;
+        if (!await showModal({ type: "confirm", message: "Are you sure you want to regenerate this Project's API Key? Any application currently using this key will lose access immediately.", isDestructive: true })) return;
         setGeneratingProject(true);
         try {
             const response = await axios.post(`${serverRoute}/regenerateProjectKey`, {
@@ -93,7 +96,7 @@ const Security = () => {
             setSecurityData(secResponse.data.message);
         } catch (error) {
             console.error(error);
-            alert("Error regenerating Project Key");
+            await showModal({ type: "alert", message: "Error regenerating Project Key" });
         } finally {
             setGeneratingProject(false);
         }

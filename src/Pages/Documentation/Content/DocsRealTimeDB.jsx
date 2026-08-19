@@ -3,9 +3,11 @@ import DocsLayout from '../DocsLayout';
 import CodeWindow from '../../../Components/CodeWindow';
 
 const sections = [
-    { id: 'concepts', title: 'Core Concepts' },
-    { id: 'publish', title: 'Publishing Events' },
-    { id: 'subscribe', title: 'Subscribing to Events' },
+    { id: 'init', title: 'Initialization' },
+    { id: 'crud', title: 'Reading & Writing' },
+    { id: 'listen', title: 'Real-Time Listeners' },
+    { id: 'query', title: 'Queries & Sorting' },
+    { id: 'presence', title: 'Offline & Presence' },
 ];
 
 const DocsRealTimeDB = () => {
@@ -67,66 +69,166 @@ const DocsRealTimeDB = () => {
                     <span className="text-on-surface-variant font-medium text-sm">Realtime DB</span>
                 </div>
                 <h1 className="text-3xl font-extrabold text-on-surface tracking-tight mb-4">
-                    Realtime DB SDK
+                    Realtime Database SDK
                 </h1>
                 <p className="text-on-surface-variant text-base max-w-3xl leading-relaxed">
-                    A dedicated engine for high-frequency, low-latency live data syncing. Perfect for multiplayer games, stock tickers, and live collaborative dashboards.
+                    A highly optimized, low-latency database that stores data as one large JSON tree. The TilBase Realtime SDK is built for strict 1:1 parity with Firebase Realtime Database.
                 </p>
             </div>
 
-            <section id="concepts" className="scroll-mt-28 mb-16 space-y-6">
+            <section id="init" className="scroll-mt-28 mb-16 space-y-6">
                 <h2 className="text-xl font-bold text-on-surface flex items-center gap-3">
                     <span className="material-symbols-outlined text-primary">bolt</span>
-                    Core Concepts
+                    Initialization
                 </h2>
                 <p className="text-on-surface-variant leading-relaxed">
-                    The Realtime DB operates entirely over WebSockets using a Publisher/Subscriber (PubSub) model. Instead of writing data to a hard drive and querying it later, you publish events to "channels". Anyone listening to that channel receives the data instantly.
-                </p>
-            </section>
-
-            <section id="publish" className="scroll-mt-28 mb-16 space-y-6">
-                <h2 className="text-xl font-bold text-on-surface flex items-center gap-3">
-                    <span className="material-symbols-outlined text-primary">send</span>
-                    Publishing Events
-                </h2>
-                <p className="text-on-surface-variant leading-relaxed">
-                    You can push JSON payloads to any channel you define. 
+                    To interact with the Realtime Database, import the necessary modular functions from the SDK and initialize your connection.
                 </p>
                 <CodeWindow 
-                    title="Publish Data" 
+                    title="Setup SDK" 
                     language="javascript"
-                    code={`const realStore = db.realtime();
+                    code={`const { ref, set, get, onValue } = require("tilbase-node-module");
 
-// Push a stock price update to the "finance_ticker" channel
-await realStore.publish("finance_ticker", {
-    symbol: "TSLA",
-    price: 245.50,
-    timestamp: Date.now()
+// Initialize TilBase
+const db = new TilBase();
+await db.Auth(PROFILE_KEY, PROJECT_KEY, CLUSTER_KEY, DB_USER, DB_PASS, SERVER_NAME);`} 
+                />
+            </section>
+
+            <section id="crud" className="scroll-mt-28 mb-16 space-y-6">
+                <h2 className="text-xl font-bold text-on-surface flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary">edit_document</span>
+                    Reading & Writing Data
+                </h2>
+                <p className="text-on-surface-variant leading-relaxed">
+                    Data is written to a specific <code>ref()</code> path. You can overwrite entirely with <code>set()</code>, merge data with <code>update()</code>, or delete with <code>remove()</code>. You can fetch data once using <code>get()</code>. All write operations support an optional <code>onComplete</code> callback.
+                </p>
+                <CodeWindow 
+                    title="Write & Read Data" 
+                    language="javascript"
+                    code={`const userRef = ref(db, 'users/user_123');
+
+// Write data with an onComplete callback
+await set(userRef, {
+    name: "Alice",
+    score: 100
+}, (error) => {
+    if (error) console.error("Write failed:", error);
+    else console.log("Write successful!");
+});
+
+// Update specific fields without overwriting
+await update(userRef, {
+    score: 200
+});
+
+// Read data once
+const snapshot = await get(userRef);
+if (snapshot.exists()) {
+    console.log(snapshot.val()); // { name: "Alice", score: 200 }
+}`} 
+                />
+            </section>
+
+            <section id="listen" className="scroll-mt-28 mb-16 space-y-6">
+                <h2 className="text-xl font-bold text-on-surface flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary">sensors</span>
+                    Real-Time Listeners & Context Binding
+                </h2>
+                <p className="text-on-surface-variant leading-relaxed">
+                    Attach an event listener to sync data locally over WebSockets. The SDK features smart delta-detection and triggers callbacks precisely when data changes. You can also explicitly bind the callback context via the <code>context</code> argument, or read data exactly once using <code>once()</code>.
+                </p>
+                <CodeWindow 
+                    title="Live Updates & Index Shifts" 
+                    language="javascript"
+                    code={`const { onValue, onChildAdded, onChildRemoved, onChildMoved } = require("tilbase-node-module");
+
+const chatRef = ref(db, 'chats/room_1');
+
+// Listen to entire object changes
+onValue(chatRef, function(snapshot) {
+    console.log("Room data changed:", snapshot.val());
+    console.log("Bound context:", this.name); // Using context binding
+}, { name: 'ContextObject' });
+
+// Listen to list events (highly optimized for long lists)
+onChildAdded(chatRef, (snapshot) => {
+    console.log("New message added:", snapshot.val());
+});
+
+onChildRemoved(chatRef, (snapshot) => {
+    console.log("Message deleted:", snapshot.key);
+});
+
+// Reacts strictly when a child's relative index changes
+onChildMoved(chatRef, (snapshot) => {
+    console.log("Message moved order:", snapshot.key);
+});
+
+// Fetch data once without maintaining a WebSocket listener
+const snap = await chatRef.once('value');`} 
+                />
+            </section>
+
+            <section id="query" className="scroll-mt-28 mb-16 space-y-6">
+                <h2 className="text-xl font-bold text-on-surface flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary">filter_list</span>
+                    Queries & Sorting
+                </h2>
+                <p className="text-on-surface-variant leading-relaxed">
+                    Filter and limit results directly on the backend using the <code>query()</code> function alongside modifier constraints like <code>startAfter()</code>, <code>endBefore()</code>, or <code>orderByPriority()</code>. Socket listeners gracefully respect queries.
+                </p>
+                <CodeWindow 
+                    title="Querying Data" 
+                    language="javascript"
+                    code={`const { query, orderByChild, equalTo, limitToFirst, startAfter, endBefore } = require("tilbase-node-module");
+
+const usersRef = ref(db, 'users');
+
+// Build a query: Get up to 10 users older than 25 but under 50
+const topUsersQuery = query(
+    usersRef, 
+    orderByChild('age'), 
+    startAfter(25, 'age'),
+    endBefore(50, 'age'),
+    limitToFirst(10)
+);
+
+// Fetch the query results
+const snapshot = await get(topUsersQuery);
+console.log(snapshot.val());`} 
+                />
+            </section>
+
+            <section id="presence" className="scroll-mt-28 mb-16 space-y-6">
+                <h2 className="text-xl font-bold text-on-surface flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary">public</span>
+                    Offline & Presence Engine
+                </h2>
+                <p className="text-on-surface-variant leading-relaxed">
+                    The <code>onDisconnect</code> class lets you write or clear data when your client disconnects from the database server. These updates occur whether the client disconnects cleanly or unexpectedly (e.g., loss of power).
+                </p>
+                <CodeWindow 
+                    title="Building a Presence System" 
+                    language="javascript"
+                    code={`const { onDisconnect, serverTimestamp } = require("tilbase-node-module");
+
+const presenceRef = ref(db, 'status/user_123');
+
+// 1. Tell the SQL WebSocket Daemon what to do if we drop connection
+onDisconnect(presenceRef).update({
+    state: 'offline',
+    lastSeen: serverTimestamp()
+});
+
+// 2. Safely mark ourselves as online
+await set(presenceRef, {
+    state: 'online',
+    lastSeen: serverTimestamp()
 });`} 
                 />
             </section>
 
-            <section id="subscribe" className="scroll-mt-28 mb-16 space-y-6">
-                <h2 className="text-xl font-bold text-on-surface flex items-center gap-3">
-                    <span className="material-symbols-outlined text-primary">sensors</span>
-                    Subscribing to Events
-                </h2>
-                <p className="text-on-surface-variant leading-relaxed">
-                    Listen to a channel to receive live updates. The callback function fires every time a payload hits the channel.
-                </p>
-                <CodeWindow 
-                    title="Listen for Live Data" 
-                    language="javascript"
-                    code={`// Listen to the finance ticker
-realStore.subscribe("finance_ticker", (data) => {
-    console.log(\`Stock Update: \${data.symbol} is now $\${data.price}\`);
-    // Instantly update your UI chart here
-});
-
-// To stop listening
-// realStore.unsubscribe("finance_ticker");`} 
-                />
-            </section>
         </DocsLayout>
     );
 };

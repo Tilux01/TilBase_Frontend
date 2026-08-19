@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Scale, Cloud, AlertTriangle, ServerOff, Database } from 'lucide-react';
+import TilBaseLogo from "../Components/TilBaseLogo";
 
 const TermsOfService = () => {
     const [activeSection, setActiveSection] = useState('acceptance');
@@ -40,10 +41,8 @@ const TermsOfService = () => {
             {}
             <header className="sticky top-0 z-50 w-full bg-surface-container backdrop-blur-xl border-b border-black/5 dark:border-black/5 dark:border-white/5 px-6 sm:px-12 py-4 flex justify-between items-center">
                 <Link to="/" className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shadow-sm">
-                        <span className="material-symbols-outlined text-primary text-2xl" data-icon="database">database</span>
-                    </div>
-                    <span className="text-xl font-extrabold tracking-tighter text-primary">TIlBase</span>
+                    
+                    <div className="flex items-center gap-2"><TilBaseLogo className="w-6 h-6" /><span className="text-xl font-extrabold tracking-tighter text-primary">TilBase</span></div>
                 </Link>
                 <Link to="/signup">
                     <button className="flex items-center gap-2 text-sm font-bold text-on-surface-variant hover:text-primary bg-surface-container hover:bg-primary-container/20 px-5 py-2 rounded-lg transition-colors border border-black/5 dark:border-black/5 dark:border-white/5">
@@ -54,7 +53,7 @@ const TermsOfService = () => {
 
             {}
             <div className="w-full bg-surface-container border-b border-black/5 dark:border-black/5 dark:border-white/5 px-6 sm:px-12 py-16">
-                <div className="w-full max-w-7xl mx-auto">
+                <div className="w-full mx-auto">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container text-primary text-xs font-bold mb-6 uppercase tracking-widest">
                         <Scale size={14} /> Legal Documentation
                     </div>
@@ -64,7 +63,7 @@ const TermsOfService = () => {
             </div>
 
             {}
-            <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 py-12 flex flex-col md:flex-row gap-12">
+            <div className="w-full mx-auto px-6 sm:px-12 py-12 flex flex-col md:flex-row gap-12">
                 
                 {}
                 <aside className="w-full md:w-64 shrink-0">
