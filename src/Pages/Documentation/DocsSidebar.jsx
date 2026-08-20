@@ -24,12 +24,7 @@ const DocsSidebar = () => {
                 { title: "Graph DB", path: "/docs/graph-db", icon: "hub" },
                 { title: "Hierarchical DB", path: "/docs/hierarchical-db", icon: "account_tree" },
                 { title: "Flat DB", path: "/docs/flat-db", icon: "description" },
-            ]
-        },
-        {
-            title: "AI Integrations",
-            links: [
-                { title: "ChatBase", path: "/docs/chatbase", icon: "forum" }
+                { title: "Core Chat Engine", path: "/docs/chatbase", icon: "forum" }
             ]
         },
         {

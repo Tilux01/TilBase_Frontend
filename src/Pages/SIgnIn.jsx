@@ -122,8 +122,7 @@ const SIgnIn = () => {
                 
                 {/* Logo */}
                 <div className="relative z-10 flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
-                    
-                    <div className="flex items-center gap-2"><TilBaseLogo className="w-8 h-8" /><span className="text-2xl font-bold tracking-tighter text-white">TilBase</span></div>
+                    <div className="flex items-center gap-2"><TilBaseLogo className="w-10 h-10" /><span className="text-3xl font-extrabold tracking-tighter text-white">TilBase</span></div>
                 </div>
 
                 {/* 3D Canvas */}
@@ -161,10 +160,7 @@ const SIgnIn = () => {
                 >
                     {/* Mobile Logo */}
                     <div className="lg:hidden flex items-center gap-3 mb-10 cursor-pointer justify-center" onClick={() => navigate('/')}>
-                        <div className="w-10 h-10 bg-[#0F172A] border border-[#222834] rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(22,163,74,0.2)]">
-                            <Database size={20} color="#39e03d" />
-                        </div>
-                        <div className="flex items-center gap-2"><TilBaseLogo className="w-8 h-8" /><span className="text-2xl font-bold tracking-tighter text-white">TilBase</span></div>
+                        <div className="flex items-center gap-2"><TilBaseLogo className="w-10 h-10" /><span className="text-2xl font-bold tracking-tighter text-white">TilBase</span></div>
                     </div>
 
                     <div className="mb-8">

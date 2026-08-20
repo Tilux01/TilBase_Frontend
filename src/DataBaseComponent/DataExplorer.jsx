@@ -8,6 +8,7 @@ import HierarchicalExplorer from './HierarchicalExplorer';
 import GraphExplorer from './GraphExplorer';
 import RealtimeExplorer from './RealtimeExplorer';
 import ChatbaseExplorer from './ChatbaseExplorer';
+import BroadcastExplorer from './BroadcastExplorer';
 
 const DataExplorer = () => {
     const { clusterId } = useParams();
@@ -61,6 +62,10 @@ const DataExplorer = () => {
         
         if (cluster.Cluster_Type?.toLowerCase() === 'chatbase') {
             return <ChatbaseExplorer cluster={cluster} />;
+        }
+        
+        if (cluster.Cluster_Type?.toLowerCase() === 'chatbase_broadcast') {
+            return <BroadcastExplorer cluster={cluster} />;
         }
         
         

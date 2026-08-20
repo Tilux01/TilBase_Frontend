@@ -87,7 +87,7 @@ const DocsRealTimeDB = () => {
                 <CodeWindow 
                     title="Setup SDK" 
                     language="javascript"
-                    code={`const { ref, set, get, onValue } = require("tilbase-node-module");
+                    code={`const { ref, set, get, onValue } = require("tilbase-sdk");
 
 // Initialize TilBase
 const db = new TilBase();
@@ -141,7 +141,7 @@ if (snapshot.exists()) {
                 <CodeWindow 
                     title="Live Updates & Index Shifts" 
                     language="javascript"
-                    code={`const { onValue, onChildAdded, onChildRemoved, onChildMoved } = require("tilbase-node-module");
+                    code={`const { onValue, onChildAdded, onChildRemoved, onChildMoved } = require("tilbase-sdk");
 
 const chatRef = ref(db, 'chats/room_1');
 
@@ -181,7 +181,7 @@ const snap = await chatRef.once('value');`}
                 <CodeWindow 
                     title="Querying Data" 
                     language="javascript"
-                    code={`const { query, orderByChild, equalTo, limitToFirst, startAfter, endBefore } = require("tilbase-node-module");
+                    code={`const { query, orderByChild, equalTo, limitToFirst, startAfter, endBefore } = require("tilbase-sdk");
 
 const usersRef = ref(db, 'users');
 
@@ -211,7 +211,7 @@ console.log(snapshot.val());`}
                 <CodeWindow 
                     title="Building a Presence System" 
                     language="javascript"
-                    code={`const { onDisconnect, serverTimestamp } = require("tilbase-node-module");
+                    code={`const { onDisconnect, serverTimestamp } = require("tilbase-sdk");
 
 const presenceRef = ref(db, 'status/user_123');
 

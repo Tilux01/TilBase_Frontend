@@ -94,7 +94,7 @@ const DocsFlatDB = () => {
                 <CodeWindow 
                     title="Initialize SDK" 
                     language="javascript"
-                    code={`const TilBase = require("tilbase-server");
+                    code={`const TilBase = require("tilbase-sdk");
 const db = new TilBase();
 
 await db.Auth(profileKey, projectKey, clusterKey, dbUser, dbPassword, serverName);

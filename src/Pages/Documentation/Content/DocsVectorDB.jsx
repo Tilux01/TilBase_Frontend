@@ -90,7 +90,7 @@ const DocsVectorDB = () => {
                 <CodeWindow 
                     title="Initialize Namespace" 
                     language="javascript"
-                    code={`const TilBase = require("tilbase-server");
+                    code={`const TilBase = require("tilbase-sdk");
 const db = new TilBase();
 
 await db.Auth(profileKey, projectKey, clusterKey, dbUser, dbPassword, serverName);

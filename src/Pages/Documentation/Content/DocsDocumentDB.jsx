@@ -90,7 +90,7 @@ const DocsDocumentDB = () => {
                     The TilBase Document SDK is designed with <b>100% mathematical parity to the standard Firestore SDK</b>. This means you can use exactly the same syntax you are used to with Firebase, making migration seamless. Data is structured in <b>Collections</b> containing <b>Documents</b>.
                 </p>
                 <div className="bg-surface-container rounded-xl p-4 border border-black/5 dark:border-black/5 dark:border-white/5 font-mono text-primary text-base">
-                    <code>import &#123; collection, doc &#125; from 'tilbase-node-module';</code><br/><br/>
+                    <code>import &#123; collection, doc &#125; from 'tilbase-sdk';</code><br/><br/>
                     <code>const usersCol = collection(db, "users");</code><br/>
                     <code>const userDoc = doc(db, "users/user_1");</code>
                 </div>
@@ -108,7 +108,7 @@ const DocsDocumentDB = () => {
                 <CodeWindow 
                     title="Write Data" 
                     language="javascript"
-                    code={`import { doc, setDoc, collection, addDoc } from 'tilbase-node-module';
+                    code={`import { doc, setDoc, collection, addDoc } from 'tilbase-sdk';
 
 // Overwrites or creates 'user_1' in 'users' collection
 await setDoc(doc(db, "users", "user_1"), {
@@ -136,7 +136,7 @@ const docRef = await addDoc(collection(db, "users"), {
                 <CodeWindow 
                     title="Read Data" 
                     language="javascript"
-                    code={`import { doc, getDoc } from 'tilbase-node-module';
+                    code={`import { doc, getDoc } from 'tilbase-sdk';
 
 const docRef = doc(db, "users", "user_1");
 const snap = await getDoc(docRef);
@@ -162,7 +162,7 @@ if (snap.exists()) {
                 <CodeWindow 
                     title="Update Data" 
                     language="javascript"
-                    code={`import { doc, updateDoc, setDoc } from 'tilbase-node-module';
+                    code={`import { doc, updateDoc, setDoc } from 'tilbase-sdk';
 
 // Only updates the email, leaves 'name' and 'role' intact
 await updateDoc(doc(db, "users/user_1"), {
@@ -213,7 +213,7 @@ await updateDoc(doc(db, "users/user_1"), {
                 <CodeWindow 
                     title="Field Value Update" 
                     language="javascript"
-                    code={`import { doc, updateDoc, FieldValue } from 'tilbase-node-module';
+                    code={`import { doc, updateDoc, FieldValue } from 'tilbase-sdk';
 
 await updateDoc(doc(db, "posts/123"), {
     views: FieldValue.increment(1),
@@ -236,7 +236,7 @@ await updateDoc(doc(db, "posts/123"), {
                 <CodeWindow 
                     title="Advanced Query" 
                     language="javascript"
-                    code={`import { collection, docQuery, docWhere, docOrderBy, docLimit, getDocs } from 'tilbase-node-module';
+                    code={`import { collection, docQuery, docWhere, docOrderBy, docLimit, getDocs } from 'tilbase-sdk';
 
 // Find up to 20 users age 18 and older, sorted by newest
 const q = docQuery(collection(db, "users"),
@@ -266,7 +266,7 @@ qSnap.forEach(docSnap => {
                 <CodeWindow 
                     title="Batches and Transactions" 
                     language="javascript"
-                    code={`import { writeBatch, runDocTransaction, doc } from 'tilbase-node-module';
+                    code={`import { writeBatch, runDocTransaction, doc } from 'tilbase-sdk';
 
 // Example 1: Atomic Batch Writes
 const b = writeBatch(db);
@@ -298,7 +298,7 @@ await runDocTransaction(db, async (transaction) => {
                 <CodeWindow 
                     title="Real-Time Listener" 
                     language="javascript"
-                    code={`import { doc, onSnapshot } from 'tilbase-node-module';
+                    code={`import { doc, onSnapshot } from 'tilbase-sdk';
 
 // The callback fires immediately, and again whenever the document changes
 const unsubscribe = onSnapshot(doc(db, "users/user_1"), (docSnap) => {
